@@ -69,12 +69,18 @@ Route::group(['middleware'=>['AuthCheck']] , function(){
     Route::post('/editpackage/{id}', [PackageController::class,'update_package'])->name('package.update_package');
 });
 
-
-
-Route::group(['middlware'=>['MemberCheck']],function(){
-    /*Member Part*/
+/*Member Part*/
+Route::group(['middleware'=>['MemberCheck']],function(){
     Route::get('/memberPanel', [MemberController::class,'index'])->name('member.index');
-    /*Member Part*/
-    
+    Route::get('/memberPackage', [MemberController::class,'getPackage'])->name('member.member_package');
+    Route::get('/memberPayment', [MemberController::class,'getPayment'])->name('member.member_getPayment');
+    Route::post('/memberPayment', [MemberController::class,'setPayment'])->name('member.member_postPayment');
 });
+/*Member Part*/
+
+/*Trainer Part*/
+Route::group(['middleware'=>['TrainerCheck']],function(){
+    Route::get('/trainerPanel', [TrainerController::class,'index'])->name('member.index');
+});
+/*Trainer Part*/
 

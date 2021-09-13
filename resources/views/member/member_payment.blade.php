@@ -28,50 +28,12 @@
                                 <div class="col-md-2">
                                     <button style="color: #000;background:#fff;" class="btn btn-sm">GO BACK</button>
                                 </div>
-                                <div class="col-md-3">
-                                    <h4>Payment Details</h4>
-                                </div>
                             </div>
                             <div class="card-body" style="background-color:#3498DB;">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <table class="table table-hover">
-                                            <thead>
-                                                <tr>
-                                                    <th>ID</th> 
-                                                    <th>Package ID</th>
-                                                    <th>Trainer ID </th>
-                                                    <th>Amount</th>
-                                                    <th>Customer ID</th>
-                                                    <th>Customer First Name</th>
-                                                    <th>Customer Trainer Name</th>
-                                                    <th>Payment Type</th>                  
-                                                </tr>   
-                                            </thead>
-                                            {{-- @php
-                                            $package = App\Package::all();   
-                                            @endphp --}}
-                                            <tbody>
-                                              <tr>
-                                                @foreach($payment as $row)
-                                                <tbody>
-                                                <tr>
-                                                <td>{{$row['id']}}</td> 
-                                                <td>{{$row['package_id']}}</td>  
-                                                <td>{{$row['trainer_id']}}</td>     
-                                                <td>{{$row->package['amount']}}</td>
-                                                <td>{{$row['member_id']}}</td>
-                                                <td>{{$row->member['first_name']}}</td>
-                                                <td>{{$row->trainer['trainer_name']}}</td>
-                                                <td>{{$row['payment_type']}}</td>
-                                                </tr>
-                                                </tbody>
-                                                @endforeach
-                                              </tr>
-                                          </tbody>
-                                        </table>
                                         <div class="card-body" >
-                                            <h3>Make new Payment</h3>
+                                            <h3>{{ $member->first_name }} Payment</h3>
                                         </div> 
                                         <div class="card-body" style="border: 1px solid rgba(216, 207, 86, 0.952)">
                                           <form method="post" enctype="multipart/form-data">
@@ -100,7 +62,7 @@
                                                 <span class="text-danger">@error('package_id'){{ $message }}@enderror</span>
                                               </div>
                                               <div class="input-group  mb-3">
-                                                <input type="number" name="member_id" value="{{old('member_id')}}" class="form-control" placeholder="Member Id">
+                                                <input type="number" name="member_id" value="{{$member['id']}}" class="form-control" placeholder="Member Id">
                                                 <div class="input-group-append">
                                                   <div class="input-group-text">
                                                     <span class="fas fa-user"></span>
@@ -116,8 +78,7 @@
                                                   </div>
                                                 </div>
                                                 <span class="text-danger">@error('payment_type'){{ $message }}@enderror</span>
-                                              </div>
-                                                   
+                                              </div>                                                  
                                             <div class="row">
                                               <!-- /.col -->
                                               <div class="col-5">

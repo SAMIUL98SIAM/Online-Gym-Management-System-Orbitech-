@@ -33,19 +33,11 @@
                 {{--Member List Item--}} 
                      {{--Member List Item--}}
                     <div class="list-group">
-                        <a href="/package" class="list-group-item list-group-item-action">Package Details</a>
-                        <a href="/payment" class="list-group-item list-group-item-action">Payments</a>
+                        <a href="/memberPackage" class="list-group-item list-group-item-action">Package Details</a>
+                        <a href="/memberPayment" class="list-group-item list-group-item-action">Payments</a>
                     </div>
                     {{--Member List Item--}} 
-                    <hr/> 
-                    {{--Trainer List Item--}} 
-                    <div class="list-group">
-                      <a href="/addTrainer" class="list-group-item list-group-item-secondary">Trainer</a>
-                      <a href="/addTrainer" class="list-group-item list-group-item-secondary">Trainer Details</a>
-                      <a href="/addTrainer" class="list-group-item list-group-item-secondary">Add new Trainer</a>
-                    </div>
-                     {{--Trainer List Item--}}
-                     <hr/>
+                    <hr/>
                      <div class="list-group">
                       <a href="/memberLogout" id="logout" class="list-group-item list-group-item-secondary">Logout</a>
                       {{-- <a href="/trainer_details" class="list-group-item list-group-item-secondary">Trainer Details</a> --}}
@@ -58,74 +50,7 @@
                     <div class="card">
                         <div class="card-body" style="border: 1px solid rgba(191, 184, 199, 0.349)">
                             <h3 class="card-title card-title1">Member Dashboard</h3>
-                            <form method="post" enctype="multipart/form-data">
-                             <input type="hidden" name="_token" value="{{csrf_token()}}">
-                              {{-- @if (Session::get('success'))
-                                    <div class="alert alert-success">
-                                        {{ Session::get('success') }}
-                                    </div>
-                                @endif
-                              <div class="input-group mb-3">
-                                <input type="text" name="first_name" value="{{old('first_name')}}" class="form-control" placeholder="First Name">
-                                <div class="input-group-append">
-                                  <div class="input-group-text">
-                                    <span class="fas fa-user"></span>
-                                  </div>
-                                </div>
-                                <span class="text-danger">@error('first_name'){{ $message }}@enderror</span>
-                              </div>
-                              <div class="input-group mb-3">
-                                <input type="text" name="last_name" value="{{old('last_name')}}" class="form-control" placeholder="Last Name">
-                                <div class="input-group-append">
-                                  <div class="input-group-text">
-                                    <span class="fas fa-user"></span>
-                                  </div>
-                                </div>
-                                <span class="text-danger">@error('last_name'){{ $message }}@enderror</span>
-                              </div>
-                              <div class="input-group mb-3">
-                                <input type="email" name="email" value="{{old('email')}}" class="form-control" placeholder="Email">
-                                <div class="input-group-append">
-                                  <div class="input-group-text">
-                                    <span class="fas fa-envelope"></span>
-                                  </div>
-                                </div>
-                                <span class="text-danger">@error('email'){{ $message }}@enderror</span>
-                              </div>
-                              <div class="input-group mb-3">
-                                <input type="number" name="phone" value="{{old('phone')}}" class="form-control" placeholder="Phone">
-                                <div class="input-group-append">
-                                  <div class="input-group-text">
-                                    <span class="fas fa-phone"></span>
-                                  </div>
-                                </div>
-                                <span class="text-danger">@error('phone'){{ $message }}@enderror</span>
-                              </div>
-                              <div class="input-group  mb-3">
-                                <input type="number" name="trainer_id" value="{{old('trainer_id')}}" class="form-control" placeholder="Trainer Id">
-                                <div class="input-group-append">
-                                  <div class="input-group-text">
-                                    <span class="fas fa-calculator"></span>
-                                  </div>
-                                </div>
-                                <span class="text-danger">@error('trainer_id'){{ $message }}@enderror</span>
-                              </div>
-                              <div class="input-group  mb-3">
-                                <input type="number" name="member_id" value="{{old('member_id')}}" class="form-control" placeholder="Memeber Id">
-                                <div class="input-group-append">
-                                  <div class="input-group-text">
-                                    <span class="fas fa-calculator"></span>
-                                  </div>
-                                </div>
-                                <span class="text-danger">@error('member_id'){{ $message }}@enderror</span>
-                              </div>              
-                              <div class="row">
-                                <!-- /.col -->
-                                <div class="col-5">
-                                  <button style="color: white" type="submit" class="btn btn-primary btn-block">Add Member</button>
-                                </div>
-                              </div> --}}
-                            </form>	
+                          
                         </div>
                     </div>
                 </div>

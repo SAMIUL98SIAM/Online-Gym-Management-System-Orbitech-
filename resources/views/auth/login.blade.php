@@ -56,8 +56,7 @@
                       </div>
                       <span class="text-danger">@error('password'){{ $message }}@enderror</span>
                     </div>
-                    <div class="row">
-                      
+                    <div class="row">    
                       <!-- /.col -->
                       <div class="col-4">
                         <button type="submit" class="btn btn-outline-success btn-block">Sign In</button>
