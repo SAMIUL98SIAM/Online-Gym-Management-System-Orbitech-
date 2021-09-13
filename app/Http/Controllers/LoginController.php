@@ -42,7 +42,7 @@ class LoginController extends Controller
                     return back()->with('fail','Incorrect password');
                 }
             }
-            else {
+            else  {
                 if((Hash::check($req->password,$memberInfo->password)))
                 {
                     $req->session()->put('members',$memberInfo->id);

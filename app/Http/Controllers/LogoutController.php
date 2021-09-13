@@ -18,6 +18,7 @@ class LogoutController extends Controller
         }
 
     }
+
     public function member_logout()
     {
         if(session()->has('members'))
@@ -28,4 +29,5 @@ class LogoutController extends Controller
         }
 
     }
+    
 }

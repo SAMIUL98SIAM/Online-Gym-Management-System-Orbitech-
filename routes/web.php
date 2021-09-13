@@ -75,5 +75,6 @@ Route::group(['middlware'=>['MemberCheck']],function(){
     /*Member Part*/
     Route::get('/memberPanel', [MemberController::class,'index'])->name('member.index');
     /*Member Part*/
+    
 });
 
