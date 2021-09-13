@@ -1,0 +1,28 @@
+.login_btn
+    {
+        transition: 1.5s all ease;
+    }
+.login_card:hover
+    {
+       box-shadow:  2px 4px 4px 4px #d10b0b;
+    }
+.jumbotron
+    {
+       
+        background-repeat: no-repeat;
+    }
+.card-title1
+    {
+        text-align: center;
+        background-color:#3498DB;
+        height:40px;
+        padding:3px; 
+        border-radius: 12px; 
+    }
+.card-body{
+    color: #fff;
+    background-color:#3498DB;
+} 
+.card-body table{
+    color: #fff;
+}             
