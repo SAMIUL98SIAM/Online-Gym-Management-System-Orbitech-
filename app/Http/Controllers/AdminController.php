@@ -7,6 +7,7 @@ use App\Models\Trainer;
 use Illuminate\Support\Facades\Hash;
 use RealRashid\SweetAlert\Facades\Alert ;
 use Illuminate\Support\Facades\DB ;
+use Session;
 use Illuminate\Http\Request;
 
 class AdminController extends Controller
@@ -19,12 +20,9 @@ class AdminController extends Controller
     }
      
     // Memeber Part
-
     public function member_details()
     {
         $data = ['user'=>User::where('id','=',session('users'))->first()];
-        // $member_users = Member::all();  
-        // return view('admin.member_details',$data)->with('member_users',$member_users);
         return view('admin.member_details',$data);
     }
 
@@ -55,19 +53,19 @@ class AdminController extends Controller
             $total_row = $data->count();
             if($total_row > 0)
             {
-            foreach($data as $row)
-            {
-                $output .= '
-                <tr>
-                <td>'.$row->first_name.'</td>
-                <td>'.$row->last_name.'</td>
-                <td>'.$row->email.'</td>
-                <td>'.$row->member_id.'</td>
-                <td><a href="/editmember/'.$row->id.'" style="color: #fff" class="btn btn-sm btn-success btn-app"><i class="fas fa-edit"></i>Edit</a></td>
-                <td><a href="/deleteMember/'.$row->id.'" style="color: #fff" class="btn btn-sm btn-danger btn-app"><i class="fas fa-trash"></i>Remove</a></td>
-                </tr>'
-                ;
-            }
+                foreach($data as $row)
+                {
+                    $output .= '
+                    <tr>
+                    <td>'.$row->first_name.'</td>
+                    <td>'.$row->last_name.'</td>
+                    <td>'.$row->email.'</td>
+                    <td>'.$row->member_id.'</td>
+                    <td><a href="/editmember/'.$row->id.'" style="color: #fff" class="btn btn-sm btn-success btn-app"><i class="fas fa-edit"></i>Edit</a></td>
+                    <td><a href="/deleteMember/'.$row->id.'" style="color: #fff" class="btn btn-sm btn-danger btn-app"><i class="fas fa-trash"></i>Remove</a></td>
+                    </tr>'
+                    ;
+                }
             }
             else
             {
@@ -109,7 +107,8 @@ class AdminController extends Controller
         $member_save = $member_user->save();
         if($member_save)
         {
-            return back()->with('success','Memeber Added successfully');
+            return back()->redirect('/member_search')->with('success',''.$req->first_name.' Added successfully');
+
 
         }
         else 
@@ -117,15 +116,14 @@ class AdminController extends Controller
             return back()->with('fail','try again');
         }    
     }
-    
-    
-     public function editmember($id){  
+     
+    public function editmember($id){  
         $data = ['user'=>User::where('id','=',session('users'))->first()];
         $member_user = Member::find($id);
         return view('admin.editmember',$data)->with('member_user',$member_user);  
       }
     
-      public function member_update(Request $req, $id)
+    public function member_update(Request $req, $id)
       {
         $req->validate([
             'first_name'=> 'required',
@@ -147,7 +145,7 @@ class AdminController extends Controller
         {
             return back()->with('fail','try again');
         }  
-      }
+    }
 
 
     //Member Part    
@@ -178,7 +176,7 @@ class AdminController extends Controller
         // $trainer_save->type = 'trainer';
         if($trainer_save)
         {
-            return back()->with('success','Trainer Added successfully');
+            return back()->with('success','Trainer '.$req->trainer_name.' Added successfully');
             // redirect('/');
         }
         else 
@@ -188,11 +186,10 @@ class AdminController extends Controller
     }
 
      
-    public function edit_trainer()
+    public function edit_trainer($id)
     {
-        $trainer_user = Trainer::find($id);
-        $trainer_users = Trainer::all();  
-        return view('admin.edit_trainer')->with('trainer_users',$trainer_users);
+        $trainer_user = Trainer::find($id);  
+        return view('admin.edit_trainer')->with('trainer_user',$trainer_user);
     }
     
     public function trainer_update(Request $req, $id)
@@ -205,10 +202,13 @@ class AdminController extends Controller
         $trainer_user = Trainer::find($id);
         $trainer_user->trainer_name = $req->trainer_name ;
         $trainer_user->phone =  $req->phone;
+        // $trainer_user->update();
+        // Session::put('success', ''.$req->trainer_name.' has been updated sucessfully');
+        // redirect('/adminPanel');
         $trainer_save = $trainer_user->save();
         if($trainer_save)
         {
-            return back()->with('success','Trainer Updated successfully');
+            return back()->with('success',''.$req->trainer_name.' Updated successfully');
         }
         else 
         {
@@ -218,10 +218,15 @@ class AdminController extends Controller
 
     
 
-    // public function delete_trainer($id){
-    //     $trainer_user = Trainer::find($id);
-    //     return view('admin.delete_trainer')->with('trainer_user', $trainer_user);
-    // }
+    public function delete_trainer($id){
+        
+        $trainer_user = DB::table('trainers')
+                           ->where('id',$id)
+                           ->first();
+        return view('admin.add_trainer')->with('trainer_user',$trainer_user); 
+        // $trainer_user = Trainer::find($id);
+        // return redirect()->route('admin.delete_trainer')->with('trainer_user',$trainer_user);
+    }
 
     public function destroy_trainer($id){
        

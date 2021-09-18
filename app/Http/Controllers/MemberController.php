@@ -23,6 +23,50 @@ class MemberController extends Controller
         // return view('member.member_panel');
     }
 
+    public function profile()
+    {
+        // echo "Welcome Member Dashboard";
+         $data = ['member'=>Member::where('id','=',session('members'))->first()];
+        // $id = session('id');
+        // $members=Member::where('id',$id)->first();
+        return view('member.profile',$data);
+        // $id = session('id');
+        // $memberInfo = Member::where('id',$id)->first();
+        // return view('member.profile')->with('memberInfo',$memberInfo);   
+    }
+
+    public function update_profile(Request $req)
+    {
+        $req->validate([
+            'first_name'=> 'required',
+            'last_name'=> 'required',
+            'email'=> 'required|email',
+            'phone'=> 'required|max:11'
+        ]);
+        // $members = Member::find('id');
+        $data = ['member'=>Member::where('id','=',session('members'))->first()];
+        $data['member'] ->first_name = $req->first_name ;
+        $data['member'] ->last_name = $req->last_name ;
+        $data['member'] ->email = $req->email ; 
+        $data['member'] ->phone = $req->phone;
+        $memberProfile = $data['member'] ->save();
+        // $id = session('id');
+        // $member = Member::find($id);
+        // $member->first_name = $req->first_name ;
+        // $member->last_name = $req->last_name ;
+        // $member->email = $req->email ; 
+        // $member->phone = $req->phone;
+        //$memberProfile = $member->save();
+        if($memberProfile)
+        {
+            return back()->with('success','Hey '.$req->first_name.', Your Profile is Updated successfully');
+        }
+        else 
+        {
+            return back()->with('fail','try again');
+        }
+    }
+
     public function getPackage()
     {
         $data = ['member'=>Member::where('id','=',session('members'))->first()];

@@ -47,77 +47,6 @@
                             <div class="card-body" style="background-color:#3498DB;">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <table class="table table-hover">
-                                            <thead>
-                                                <tr>
-                                                    <th>Name</th>
-                                                    <th>Phone</th>
-                                                    <th>Edit</th>
-                                                    <th>Delete</th>                  
-                                                </tr>   
-                                            </thead>
-                                            <tbody>
-                                                <tr>
-                                                    @foreach($trainer_users as $trainer_user)
-                                                    <tbody>
-                                                    <tr>     
-                                                    <td>{{$trainer_user['trainer_name']}}</td>
-                                                    <td>{{$trainer_user['phone']}}</td>
-                                                    <td><a href="/edittrainer/{{$trainer_user['id']}}" style="color: #fff" class="btn btn-success btn-app"><i class="fas fa-edit"></i>Edit</a></td>
-                                                    {{-- <td><a style="color: #fff" class="btn btn-danger btn-app"><i class="fas fa-trash">Remove</i></a></td> --}}
-                                                    <td>
-                                                      <a href="/deletetrainer/{{$trainer_user['id']}}" type="button" data-toggle="modal" data-target="#modal-default"  style="color: #fff" class="btn btn-danger btn-app"> <i class="fas fa-trash"></i>Remove</a>
-                                                      <div style="color: black" class="modal fade" id="modal-default">
-                                                          <div class="modal-dialog">
-                                                            <div class="modal-content">
-                                                              <div class="modal-header">
-                                                                <h4 class="modal-title">Remove Trainer</h4>
-                                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                                  <span aria-hidden="true">&times;</span>
-                                                                </button>
-                                                              </div>
-                                                              <div class="modal-body">
-                                                                  <form method="post" action="" enctype="multipart/form-data">
-                                                                      @csrf
-                                                                      <input type="hidden" name="_token" value="{{csrf_token()}}">
-                                                                       @if (Session::get('success'))
-                                                                             <div class="alert alert-success">
-                                                                                 {{ Session::get('success') }}
-                                                                             </div>
-                                                                         @endif
-                                                                       <div class="input-group mb-3">
-                                                                         <input type="text" name="first_name" value="{{$trainer_user['tainer_name']}}" class="form-control" placeholder="Trainer Name">
-                                                                         <div class="input-group-append">
-                                                                           <div class="input-group-text">
-                                                                             <span class="fas fa-user"></span>
-                                                                           </div>
-                                                                         </div>
-                                                                         <span class="text-danger">@error('trainer_name'){{ $message }}@enderror</span>
-                                                                       </div>        
-                                                                       <div class="row">
-                                                                         <!-- /.col -->
-                                                                         <div class="col-5">
-                                                                           <button style="color: white" type="submit" class="btn btn-primary btn-block">Delete</button>
-                                                                         </div>
-                                                                       </div>
-                                                                  </form>	
-                                                              </div>
-                                                              <div class="modal-footer justify-content-between">
-                                                                <button style="color: black" type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                                                              </div>
-                                                            </div>
-                                                            <!-- /.modal-content -->
-                                                          </div>
-                                                          <!-- /.modal-dialog -->
-                                                        </div>
-                                                        <!-- /.modal -->  
-                                                      </td>
-                                                    </tr>
-                                                    </tbody>
-                                                    @endforeach
-                                                </tr>
-                                            </tbody>
-                                        </table>
                                         <div class="card-body" >
                                             <h3>Register New Trainer</h3>
                                         </div> 
@@ -127,10 +56,11 @@
                                                 @if (Session::get('success'))
                                                       <div class="alert alert-success">
                                                           {{ Session::get('success') }}
+                                                          {{ Session::put('success',null) }}
                                                       </div>
                                                 @endif  
                                                 <div class="input-group mb-3">
-                                                  <input type="text" name="trainer_name" value="{{old('trainer_name')}}" class="form-control" placeholder="Trainer Name">
+                                                  <input type="text" name="trainer_name" value="{{$trainer_user['trainer_name']}}" class="form-control" placeholder="Trainer Name">
                                                   <div class="input-group-append">
                                                     <div class="input-group-text">
                                                       <span class="fas fa-user"></span>
@@ -139,7 +69,7 @@
                                                   <span class="text-danger">@error('trainer_name'){{ $message }}@enderror</span>
                                                 </div>
                                                 <div class="input-group mb-3">
-                                                  <input type="number" name="phone" value="{{old('phone')}}" class="form-control" placeholder="Phone">
+                                                  <input type="number" name="phone" value="{{$trainer_user['phone']}}" class="form-control" placeholder="Phone">
                                                   <div class="input-group-append">
                                                     <div class="input-group-text">
                                                       <span class="fas fa-phone"></span>
@@ -167,9 +97,8 @@
     </div> 
 	  
 		
-        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
-        <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
-        </svg>
+    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+    <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/></svg>
 		<script src="js/vendor/modernizr-3.11.2.min.js"></script>
 		<script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
 		<script src="js/plugins.js"></script>

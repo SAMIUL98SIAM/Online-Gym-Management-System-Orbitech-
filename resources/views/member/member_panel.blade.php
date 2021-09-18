@@ -33,6 +33,7 @@
                 {{--Member List Item--}} 
                      {{--Member List Item--}}
                     <div class="list-group">
+                      <a href="/memberProfile" class="list-group-item list-group-item-action">Profile</a>
                         <a href="/memberPackage" class="list-group-item list-group-item-action">Package Details</a>
                         <a href="/memberPayment" class="list-group-item list-group-item-action">Payments</a>
                     </div>
@@ -58,50 +59,6 @@
         </div>
         <!---alertjs file-->
 
-        {{-- <script>
-        @if(Session::has('messege'))
-            var type="{{Session::get('alert-type','info')}}"
-            switch(type){
-                case 'info':
-                      toastr.info("{{ Session::get('messege') }}");
-                      break;
-                case 'success':
-                    toastr.success("{{ Session::get('messege') }}");
-                    break;
-                case 'warning':
-                    toastr.warning("{{ Session::get('messege') }}");
-                    break;
-                case 'error':
-                    toastr.error("{{ Session::get('messege') }}");
-                    break;
-            }
-            @endif
-         
-    </script>
-
-      <script>
-              $(document).on("click", "#logout", function(e){
-                  e.preventDefault();
-                    var link = $(this).attr("href");
-                    swal({
-                    title: "Are you want to log out",
-                    text: "You will not be able to recover this imaginary file!",
-                    type: "warning",
-                    showCancelButton: true,
-                    confirmButtonClass: "btn-danger",
-                    confirmButtonText: "Yes, delete it!",
-                    cancelButtonText: "No, cancel!",
-                  },
-                  function(isConfirm) {
-                    if (isConfirm) {
-                      swal("Deleted!", "Your imaginary file has been deleted.", "success");
-                      window.location.href = link;
-                    } else {
-                      swal("Cancelled", "Your imaginary file is safe :)", "error");
-                    }
-                  });
-                  });
-          </script> --}}
 	<script src="js/vendor/modernizr-3.11.2.min.js"></script>
 	<script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
 	<script src="js/plugins.js"></script>

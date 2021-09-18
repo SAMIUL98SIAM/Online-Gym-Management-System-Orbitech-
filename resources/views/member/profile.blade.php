@@ -30,112 +30,95 @@
 		<div class="jumbotron" style="background: url('img/gym2.jpg');background-size:cover;height:200px;backgorund-repeat:no-repeat;"></div>
         <div class="container-fluid">
             <div class="row">
-                <div class="col-md-3">
-                  {{--Member List Item--}}
-                  <div class="list-group">
-                    <a class="list-group-item list-group-item-action">Admin Name: {{ $user['first_name'] }}</a>
-                  </div>
-                  <hr/>
-                {{--Member List Item--}} 
-                     {{--Member List Item--}}
-                    <div class="list-group">
-                       
-                        <a href="/adminPanel" class="list-group-item list-group-item-action active">
-                          Members
-                        </a>
-                        <a href="/member_search" class="list-group-item list-group-item-action">Members Details</a>
-                        <a href="/package" class="list-group-item list-group-item-action">Package Details</a>
-                        <a href="/payment" class="list-group-item list-group-item-action">Payments</a>
-                    </div>
-                    {{--Member List Item--}} 
-                    <hr/> 
-                    {{--Trainer List Item--}} 
-                    <div class="list-group">
-                      <a href="/addTrainer" class="list-group-item list-group-item-secondary">Trainer</a>
-                      <a href="/addTrainer" class="list-group-item list-group-item-secondary">Trainer Details</a>
-                      <a href="/addTrainer" class="list-group-item list-group-item-secondary">Add new Trainer</a>
-                    </div>
-                     {{--Trainer List Item--}}
-                     <hr/>
-                     <div class="list-group">
-                      <a href="/logout" id="logout" class="list-group-item list-group-item-secondary">Logout</a>
-                      {{-- <a href="/trainer_details" class="list-group-item list-group-item-secondary">Trainer Details</a> --}}
-                    </div> 
-
-                </div>
-                
-                {{-- <div id="toastsContainerTopRight" class="toasts-top-right fixed"><div class="toast fade show" role="alert" aria-live="assertive" aria-atomic="true"><div class="toast-header"><strong class="mr-auto">Toast Title</strong><button data-dismiss="toast" type="button" class="ml-2 mb-1 close" aria-label="Close"><span aria-hidden="true">×</span></button></div><div class="toast-body">Lorem ipsum dolor sit amet, consetetur sadipscing elitr.</div></div><div class="toast fade show" role="alert" aria-live="assertive" aria-atomic="true"><div class="toast-header"><i class="mr-2 fas fa-envelope fa-lg"></i><strong class="mr-auto">Toast Title</strong><small>Subtitle</small><button data-dismiss="toast" type="button" class="ml-2 mb-1 close" aria-label="Close"><span aria-hidden="true">×</span></button></div><div class="toast-body">Lorem ipsum dolor sit amet, consetetur sadipscing elitr.</div></div><div class="toast fade show" role="alert" aria-live="assertive" aria-atomic="true"><div class="toast-header"><strong class="mr-auto">Toast Title</strong><button data-dismiss="toast" type="button" class="ml-2 mb-1 close" aria-label="Close"><span aria-hidden="true">×</span></button></div><div class="toast-body">Lorem ipsum dolor sit amet, consetetur sadipscing elitr.</div></div><div class="toast bg-danger fade show" role="alert" aria-live="assertive" aria-atomic="true"><div class="toast-header"><strong class="mr-auto">Toast Title</strong><small>Subtitle</small><button data-dismiss="toast" type="button" class="ml-2 mb-1 close" aria-label="Close"><span aria-hidden="true">×</span></button></div><div class="toast-body">Lorem ipsum dolor sit amet, consetetur sadipscing elitr.</div></div></div> --}}
-                {{--New member registration form--}}
-                <div class="col-md-9">
-                    <div class="card">
-                        <div class="card-body" style="border: 1px solid rgba(191, 184, 199, 0.349)">
-                            <h3 class="card-title card-title1">Register new members</h3>
-                            <form method="post" enctype="multipart/form-data">
-                             <input type="hidden" name="_token" value="{{csrf_token()}}">
-                              @if (Session::get('success'))
-                                    <div class="alert alert-success">
-                                        {{ Session::get('success') }}
-                                        {{ Session::put('success',null) }}
-                                    </div>
-                                @endif
-                              <div class="input-group mb-3">
-                                <input type="text" name="first_name" value="{{old('first_name')}}" class="form-control" placeholder="First Name">
-                                <div class="input-group-append">
-                                  <div class="input-group-text">
-                                    <span class="fas fa-user"></span>
-                                  </div>
-                                </div>
-                                <span class="text-danger">@error('first_name'){{ $message }}@enderror</span>
-                              </div>
-                              <div class="input-group mb-3">
-                                <input type="text" name="last_name" value="{{old('last_name')}}" class="form-control" placeholder="Last Name">
-                                <div class="input-group-append">
-                                  <div class="input-group-text">
-                                    <span class="fas fa-user"></span>
-                                  </div>
-                                </div>
-                                <span class="text-danger">@error('last_name'){{ $message }}@enderror</span>
-                              </div>
-                              <div class="input-group mb-3">
-                                <input type="email" name="email" value="{{old('email')}}" class="form-control" placeholder="Email">
-                                <div class="input-group-append">
-                                  <div class="input-group-text">
-                                    <span class="fas fa-envelope"></span>
-                                  </div>
-                                </div>
-                                <span class="text-danger">@error('email'){{ $message }}@enderror</span>
-                              </div>
-                              <div class="input-group mb-3">
-                                <input type="number" name="phone" value="{{old('phone')}}" class="form-control" placeholder="Phone">
-                                <div class="input-group-append">
-                                  <div class="input-group-text">
-                                    <span class="fas fa-phone"></span>
-                                  </div>
-                                </div>
-                                <span class="text-danger">@error('phone'){{ $message }}@enderror</span>
-                              </div>
-                              <div class="input-group  mb-3">
-                                <input type="number" name="member_id" value="{{old('member_id')}}" class="form-control" placeholder="Memeber Id">
-                                <div class="input-group-append">
-                                  <div class="input-group-text">
-                                    <span class="fas fa-calculator"></span>
-                                  </div>
-                                </div>
-                                <span class="text-danger">@error('member_id'){{ $message }}@enderror</span>
-                              </div>              
-                              <div class="row">
-                                <!-- /.col -->
-                                <div class="col-5">
-                                  <button style="color: white" type="submit" class="btn btn-primary btn-block">Add Member</button>
-                                </div>
-                                <button type="button" class="btn btn-default toastsDefaultMaroon">
-                                  Launch Full Toast (with icon)
-                                </button>
-                              </div>
-                            </form>	
+                        <div class="col-md-3">
+                          {{--Member List Item-
+                          <div class="list-group">
+                            <a class="list-group-item list-group-item-action">First Name: {{ $member['first_name'] }}</a>
+                            <a class="list-group-item list-group-item-action">Last Name:{{ $member['last_name'] }}</a>
+                          </div>
+                          <hr/>
+                        --Member List Item--}} 
+                             {{--Member List Item--}}
+                            <div class="list-group">
+                              <a href="/member/memberProfile" class="list-group-item list-group-item-action active">Profile</a>
+                                <a href="/memberPackage" class="list-group-item list-group-item-action">Package Details</a>
+                                <a href="/memberPayment" class="list-group-item list-group-item-action">Payments</a>
+                            </div>
+                            {{--Member List Item--}} 
+                            <hr/>
+                             <div class="list-group">
+                              <a href="/memberLogout" id="logout" class="list-group-item list-group-item-secondary">Logout</a>
+                              {{-- <a href="/trainer_details" class="list-group-item list-group-item-secondary">Trainer Details</a> --}}
+                            </div> 
+        
                         </div>
-                    </div>
-                </div>
+                        
+                        {{--New member registration form--}}
+                        {{-- <div class="col-md-9">
+                            <div class="card">
+                                <div class="card-body" style="border: 1px solid rgba(191, 184, 199, 0.349)">
+                                    <h3 class="card-title card-title1">Member Profile</h3>   
+                                </div>
+                            </div>
+                        </div> --}}
+                        <div class="col-md-9">
+                            <div class="card">
+                                <div class="card-body" style="border: 1px solid rgba(191, 184, 199, 0.349)">
+                                    <h3 class="card-title card-title1">Update Profile</h3>
+                                    <form method="post" enctype="multipart/form-data">
+                                    @csrf
+                                    <input type="hidden" name="_token" value="{{csrf_token()}}">
+                                        @if (Session::get('success'))
+                                            <div class="alert alert-success">
+                                                {{ Session::get('success') }}
+                                            </div>
+                                        @endif
+                                    <div class="input-group mb-3">
+                                        <input type="text" name="first_name" value="{{$member['first_name']}}" class="form-control" placeholder="First Name">
+                                        <div class="input-group-append">
+                                        <div class="input-group-text">
+                                        <span class="fas fa-user"></span>
+                                        </div>
+                                        </div>
+                                        <span class="text-danger">@error('first_name'){{ $message }}@enderror</span>
+                                    </div>
+                                    <div class="input-group mb-3">
+                                        <input type="text" name="last_name" value="{{$member['last_name']}}" class="form-control" placeholder="Last Name">
+                                        <div class="input-group-append">
+                                        <div class="input-group-text">
+                                            <span class="fas fa-user"></span>
+                                        </div>
+                                        </div>
+                                        <span class="text-danger">@error('last_name'){{ $message }}@enderror</span>
+                                    </div>
+                                    <div class="input-group mb-3">
+                                        <input type="email" name="email" value="{{$member['email']}}" class="form-control" placeholder="Email">
+                                        <div class="input-group-append">
+                                        <div class="input-group-text">
+                                            <span class="fas fa-envelope"></span>
+                                        </div>
+                                        </div>
+                                        <span class="text-danger">@error('email'){{ $message }}@enderror</span>
+                                    </div>
+                                    <div class="input-group mb-3">
+                                        <input type="number" name="phone" value="{{$member['phone']}}" class="form-control" placeholder="Phone">
+                                        <div class="input-group-append">
+                                        <div class="input-group-text">
+                                            <span class="fas fa-phone"></span>
+                                        </div>
+                                        </div>
+                                        <span class="text-danger">@error('phone'){{ $message }}@enderror</span>
+                                    </div>             
+                                    <div class="row">
+                                        <!-- /.col -->
+                                        <div class="col-5">
+                                        <button style="color: white" type="submit" class="btn btn-sm btn-primary btn-block">Update</button>
+                                        </div>
+                                    </div>
+                                    </form>	
+                                </div>
+                            </div>
+                        </div>
             </div>
         </div>     
    <!-- Content Wrapper. Contains page content -->

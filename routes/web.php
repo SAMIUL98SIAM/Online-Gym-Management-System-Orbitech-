@@ -44,21 +44,17 @@ Route::group(['middleware'=>['AuthCheck']] , function(){
     
     Route::get('/member_search', [AdminController::class,'member_details'])->name('search.live_search');
     Route::get('/member_search/action', [AdminController::class,'member_action'])->name('admin.memberaction');
-
-
-    // Route::get('/memberlist/{id}', [AdminController::class,'member_edit']);
     Route::get('/editmember/{id}', [AdminController::class,'editmember'])->name('admin.editmember');
+    //Route::post('/editmember/{id}', [AdminController::class,'member_update'])->name('admin.member_update');
     Route::post('/editmember/{id}', [AdminController::class,'member_update'])->name('admin.member_update');
 
-    Route::post('/memberlist/{id}', [AdminController::class,'member_update']);
+    Route::get('/addTrainer', [AdminController::class,'trainers_details'])->name('admin.trainers_details');
+    Route::post('/addTrainer', [AdminController::class,'save_trainer'])->name('admin.save_trainer');
+    Route::get('/edittrainer/{id}',[AdminController::class,'edit_trainer'])->name('admin.edit_trainer');
+    Route::post('/edittrainer/{id}', [AdminController::class,'trainer_update'])->name('admin.trainer_update');
 
-    Route::get('/addTrainer', [AdminController::class,'trainers_details'])->name('admin.add_trainer');
-    Route::post('/addTrainer', [AdminController::class,'save_trainer']);
-    Route::get('/edittrainer',[AdminController::class,'edit_trainer'])->name('admin.edit_trainer');
-    Route::post('/edittrainer/{id}', [AdminController::class,'trainer_update']);
-
-    // Route::get('/deletetrainer/{id}', [AdminController::class,'delete_trainer'])->name('admin.delete_trainer');
-    Route::post('/deletetrainer/{id}', [AdminController::class,'destroy_trainer'])->name('admin.destroy_trainer');
+    Route::get('/deleteTrainer/{id}', [AdminController::class,'delete_trainer'])->name('admin.delete_trainer');
+    Route::post('/deleteTrainer/{id}', [AdminController::class,'destroy_trainer'])->name('admin.destroy_trainer');
     
     Route::get('/payment', [PaymentController::class,'index']);
     Route::post('/payment', [PaymentController::class,'payment']);
@@ -72,6 +68,8 @@ Route::group(['middleware'=>['AuthCheck']] , function(){
 /*Member Part*/
 Route::group(['middleware'=>['MemberCheck']],function(){
     Route::get('/memberPanel', [MemberController::class,'index'])->name('member.index');
+    Route::get('/memberProfile', [MemberController::class,'profile'])->name('member.profile');
+    Route::post('/memberProfile', [MemberController::class,'update_profile'])->name('member.update_profile');
     Route::get('/memberPackage', [MemberController::class,'getPackage'])->name('member.member_package');
     Route::get('/memberPayment', [MemberController::class,'getPayment'])->name('member.member_getPayment');
     Route::post('/memberPayment', [MemberController::class,'setPayment'])->name('member.member_postPayment');
