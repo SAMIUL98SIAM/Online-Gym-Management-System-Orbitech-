@@ -69,6 +69,15 @@
                                                   <span class="text-danger">@error('trainer_name'){{ $message }}@enderror</span>
                                                 </div>
                                                 <div class="input-group mb-3">
+                                                  <input type="email" name="email" value="{{$trainer_user['email']}}" class="form-control" placeholder="Email">
+                                                  <div class="input-group-append">
+                                                    <div class="input-group-text">
+                                                      <span class="fas fa-envelop"></span>
+                                                    </div>
+                                                  </div>
+                                                  <span class="text-danger">@error('email'){{ $message }}@enderror</span>
+                                                </div>
+                                                <div class="input-group mb-3">
                                                   <input type="number" name="phone" value="{{$trainer_user['phone']}}" class="form-control" placeholder="Phone">
                                                   <div class="input-group-append">
                                                     <div class="input-group-text">

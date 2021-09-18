@@ -27,6 +27,15 @@ class LogoutController extends Controller
             $notifications = array('message'=>'You are logged out','alert-type'=>'success');
             return redirect()->route('auth.login')->with($notifications);
         }
+    }
+    public function trainer_logout()
+    {
+        if(session()->has('trainers'))
+        {
+            session()->pull('trainers');
+            $notifications = array('message'=>'You are logged out','alert-type'=>'success');
+            return redirect()->route('auth.login')->with($notifications);
+        }
 
     }
     

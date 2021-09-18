@@ -32,7 +32,7 @@ Route::get('/register',[RegistrationController::class,'index'])->name('auth.regi
 Route::post('/register',[RegistrationController::class,'save'])->name('auth.registration');
 Route::get('/logout',[LogoutController::class,'logout'])->name('auth.logout');
 Route::get('/memberLogout',[LogoutController::class,'member_logout'])->name('member.logout');
-
+Route::get('/trainerLogout',[LogoutController::class,'trainer_logout'])->name('trainer.logout');
 //orbitech
 
 Route::group(['middleware'=>['AuthCheck']] , function(){
@@ -79,6 +79,8 @@ Route::group(['middleware'=>['MemberCheck']],function(){
 /*Trainer Part*/
 Route::group(['middleware'=>['TrainerCheck']],function(){
     Route::get('/trainerPanel', [TrainerController::class,'index'])->name('member.index');
+    Route::get('/trainerProfile', [TrainerController::class,'profile'])->name('trainer.profile');
+    Route::post('/trainerProfile', [TrainerController::class,'update_profile'])->name('trainer.update_profile');
 });
 /*Trainer Part*/
 

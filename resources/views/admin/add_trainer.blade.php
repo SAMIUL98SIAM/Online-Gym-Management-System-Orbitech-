@@ -51,6 +51,7 @@
                                             <thead>
                                                 <tr>
                                                     <th>Name</th>
+                                                    <th>Email</th>
                                                     <th>Phone</th>
                                                     <th>Edit</th>
                                                     <th>Delete</th>                  
@@ -62,6 +63,7 @@
                                                     <tbody>
                                                     <tr>     
                                                     <td>{{$trainer_user['trainer_name']}}</td>
+                                                    <td>{{$trainer_user['email']}}</td>
                                                     <td>{{$trainer_user['phone']}}</td>
                                                     <td><a style="color: #fff" class="btn btn-success btn-app" href="/edittrainer/{{$trainer_user['id']}}"><i class="fas fa-edit"></i>Edit</a></td>
                                                     {{-- <td><a href="/deletetrainer/{{$trainer_user['id']}}" data-toggle="modal" data-target="#modal-danger" style="color: #fff" class="btn btn-danger btn-app"><i class="fas fa-trash">Remove</i></a>
@@ -93,6 +95,15 @@
                                                                 <div class="input-group-append">
                                                                   <div class="input-group-text">
                                                                     <span class="fas fa-user"></span>
+                                                                  </div>
+                                                                </div>
+                                                                <span class="text-danger">@error('trainer_name'){{ $message }}@enderror</span>
+                                                              </div>
+                                                              <div class="input-group mb-3">
+                                                                <input type="email" name="email" value="{{$trainer_user['email']}}" class="form-control" placeholder="Email">
+                                                                <div class="input-group-append">
+                                                                  <div class="input-group-text">
+                                                                    <span class="fas fa-envelop"></span>
                                                                   </div>
                                                                 </div>
                                                                 <span class="text-danger">@error('trainer_name'){{ $message }}@enderror</span>
@@ -148,6 +159,15 @@
                                                     </div>
                                                   </div>
                                                   <span class="text-danger">@error('trainer_name'){{ $message }}@enderror</span>
+                                                </div>
+                                                <div class="input-group mb-3">
+                                                  <input type="email" name="email" value="{{old('email')}}" class="form-control" placeholder="Email">
+                                                  <div class="input-group-append">
+                                                    <div class="input-group-text">
+                                                      <span class="fas fa-envelop"></span>
+                                                    </div>
+                                                  </div>
+                                                  <span class="text-danger">@error('email'){{ $message }}@enderror</span>
                                                 </div>
                                                 <div class="input-group mb-3">
                                                   <input type="number" name="phone" value="{{old('phone')}}" class="form-control" placeholder="Phone">

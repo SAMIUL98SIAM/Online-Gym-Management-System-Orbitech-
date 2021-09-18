@@ -58,6 +58,7 @@ class Kernel extends HttpKernel
         'AuthCheck' => \App\Http\Middleware\AuthCheck::class,
         'AdminCheck' => \App\Http\Middleware\AdminCheck::class,
         'MemberCheck' => \App\Http\Middleware\MemberCheck::class,
+        'TrainerCheck' => \App\Http\Middleware\TrainerCheck::class,
         'auth.basic' => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
         'cache.headers' => \Illuminate\Http\Middleware\SetCacheHeaders::class,
         'can' => \Illuminate\Auth\Middleware\Authorize::class,

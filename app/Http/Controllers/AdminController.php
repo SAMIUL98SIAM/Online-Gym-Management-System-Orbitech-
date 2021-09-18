@@ -166,12 +166,14 @@ class AdminController extends Controller
         $data = ['user'=>User::where('id','=',session('users'))->first()];
         $req->validate([
             'trainer_name'=> 'required',
+            'email'=> 'required|email',
             'phone'=> 'required|max:11'
         ]);
         $trainer_user = new Trainer ;
         $trainer_user->trainer_name = $req->trainer_name ;
+        $trainer_user->email = $req->email ;
         $trainer_user->phone =  $req->phone;
-        $trainer_user->password = Hash::make("orbitech") ;
+        $trainer_user->password = Hash::make("orbitecht") ;
         $trainer_save = $trainer_user->save();
         // $trainer_save->type = 'trainer';
         if($trainer_save)
@@ -201,6 +203,7 @@ class AdminController extends Controller
         ]);
         $trainer_user = Trainer::find($id);
         $trainer_user->trainer_name = $req->trainer_name ;
+        $trainer_user->email = $req->email ;
         $trainer_user->phone =  $req->phone;
         // $trainer_user->update();
         // Session::put('success', ''.$req->trainer_name.' has been updated sucessfully');

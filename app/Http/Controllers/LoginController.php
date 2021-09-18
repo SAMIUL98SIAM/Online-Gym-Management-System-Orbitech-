@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\Models\User;
 use App\Models\Member;
+use App\Models\Trainer;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
 
@@ -23,9 +24,10 @@ class LoginController extends Controller
         
           
         $userInfo = User::where('email','=',$req->email)->first(); 
-        $memberInfo = Member::where('email','=',$req->email)->first();  
+        $memberInfo = Member::where('email','=',$req->email)->first();
+        $trainerInfo = Trainer::where('email','=',$req->email)->first();    
                    
-        if(!$userInfo && !$memberInfo)
+        if(!$userInfo && !$memberInfo && !$trainerInfo)
         {
             return back()->with('fail','We do not recognize your email address');
         }
@@ -48,6 +50,17 @@ class LoginController extends Controller
                 {
                     $req->session()->put('members',$memberInfo->id);
                     return redirect('/memberPanel');
+                }
+                else 
+                {
+                    return back()->with('fail','Incorrect password');
+                }
+            }
+            elseif($trainerInfo){
+                if((Hash::check($req->password,$trainerInfo->password)))
+                {
+                    $req->session()->put('trainers',$trainerInfo->id);
+                    return redirect('/trainerPanel');
                 }
                 else 
                 {
