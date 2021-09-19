@@ -57,6 +57,58 @@
                                         </table>
                                         <div class="card-body" >
                                             <h3>Packages</h3>
+                                            <form method="post" enctype="multipart/form-data">
+                                                <input type="hidden" name="_token" value="{{csrf_token()}}">
+                                                @if (Session::get('success'))
+                                                      <div class="alert alert-success">
+                                                          {{ Session::get('success') }}
+                                                      </div>
+                                                  @endif
+                                                  @if($member->package_counter=="1")
+                                                     <h4 style="color: crimson ; margin-bottom:12px;"> You have taken these <b style="color: blanchedalmond"> "{{ $member['package_name'] }}" </b> packages. You have only choose 1 package</h4>  
+                                                  @endif
+                                                  {{-- <h2> You have taken {{ $member['last_name'] }}< packages</h2> --}}
+                                                  <div class="input-group  mb-3">
+                                                    <label>Member ID:</label>
+                                                    <input type="number" name="member_id" value="{{$member['id']}}" class="form-control" placeholder="Member Id" disabled>
+                                                    <div class="input-group-append">
+                                                      <div class="input-group-text">
+                                                        <span class="fas fa-user"></span>
+                                                      </div>
+                                                    </div>
+                                                    <span class="text-danger">@error('member_id'){{ $message }}@enderror</span>
+                                                  </div>
+                                                  {{-- <div class="input-group  mb-3">
+                                                    <input type="number" name="id" value="{{$package['id']}}" class="form-control" placeholder="Package Id" disabled>
+                                                    <div class="input-group-append">
+                                                      <div class="input-group-text">
+                                                        <span class="fas fa-user"></span>
+                                                      </div>
+                                                    </div>
+                                                    <span class="text-danger">@error('member_id'){{ $message }}@enderror</span>
+                                                  </div> --}}
+                                                  <div class="input-group  mb-3">
+                                                    {{-- <input type="text" name="payment_type" value="{{old('payment_type')}}" class="form-control" placeholder="Packages List"> --}}
+                                                    <select name="package_name" id="package_name" class="form-control">
+                                                      <option selected disabled>Package List</option>
+                                                      @foreach ( $packages as $package)
+                                                        <option value="{{$package->package_name }}">" '{{ $package->id }}' : {{$package->package_name}}"</option>
+                                                      @endforeach
+                                                    </select>
+                                                    <div class="input-group-append">
+                                                      <div class="input-group-text">
+                                                        <span class="fas fa-money"></span>
+                                                      </div>
+                                                    </div>
+                                                    <span class="text-danger">@error('payment_type'){{ $message }}@enderror</span>
+                                                  </div>                                                  
+                                                <div class="row">
+                                                  <!-- /.col -->
+                                                  <div class="col-5">
+                                                    <button style="color: white" type="submit" class="btn btn-primary btn-block">Get these Package</button>
+                                                  </div>
+                                                </div>
+                                              </form>
                                         </div>     
                                         </div>
                                     </div>

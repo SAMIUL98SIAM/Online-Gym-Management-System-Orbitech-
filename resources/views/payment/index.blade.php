@@ -39,12 +39,11 @@
                                             <thead>
                                                 <tr>
                                                     <th>ID</th> 
-                                                    <th>Package ID</th>
-                                                    <th>Trainer ID </th>
+                                                    <th>Package Name</th>
                                                     <th>Amount</th>
                                                     <th>Customer ID</th>
                                                     <th>Customer First Name</th>
-                                                    <th>Customer Trainer Name</th>
+                                                    {{-- <th>Customer Trainer Name</th> --}}
                                                     <th>Payment Type</th>                  
                                                 </tr>   
                                             </thead>
@@ -57,12 +56,11 @@
                                                 <tbody>
                                                 <tr>
                                                 <td>{{$row['id']}}</td> 
-                                                <td>{{$row['package_id']}}</td>  
-                                                <td>{{$row['trainer_id']}}</td>     
+                                                <td>{{$row->member['package_name']}}</td>    
                                                 <td>{{$row->package['amount']}}</td>
                                                 <td>{{$row['member_id']}}</td>
                                                 <td>{{$row->member['first_name']}}</td>
-                                                <td>{{$row->trainer['trainer_name']}}</td>
+                                                {{-- <td>{{$row->trainer['trainer_name']}}</td> --}}
                                                 <td>{{$row['payment_type']}}</td>
                                                 </tr>
                                                 </tbody>
@@ -81,7 +79,7 @@
                                                       {{ Session::get('success') }}
                                                   </div>
                                               @endif
-                                              <div class="input-group  mb-3">
+                                              {{-- <div class="input-group  mb-3">
                                                 <input type="number" name="trainer_id" value="{{old('trainer_id')}}" class="form-control" placeholder="Trainer Id">
                                                 <div class="input-group-append">
                                                   <div class="input-group-text">
@@ -98,7 +96,7 @@
                                                   </div>
                                                 </div>
                                                 <span class="text-danger">@error('package_id'){{ $message }}@enderror</span>
-                                              </div>
+                                              </div> --}}
                                               <div class="input-group  mb-3">
                                                 <input type="number" name="member_id" value="{{old('member_id')}}" class="form-control" placeholder="Member Id">
                                                 <div class="input-group-append">

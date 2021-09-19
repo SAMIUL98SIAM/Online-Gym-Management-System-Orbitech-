@@ -70,12 +70,9 @@
                                                     <td>{{$trainer_user['trainer_name']}}</td>
                                                     <td>{{$trainer_user['email']}}</td>
                                                     <td>{{$trainer_user['phone']}}</td>
-                                                    <td><a style="color: #fff" class="btn btn-success btn-app" href="/edittrainer/{{$trainer_user['id']}}"><i class="fas fa-edit"></i>Edit</a></td>
-                                                    {{-- <td><a href="/deletetrainer/{{$trainer_user['id']}}" data-toggle="modal" data-target="#modal-danger" style="color: #fff" class="btn btn-danger btn-app"><i class="fas fa-trash">Remove</i></a>
-                                                    </td> --}}
-
+                                                    <td><a style="color: #fff" class="btn btn-success btn-app" href="/edittrainer/{{$trainer_user['id']}}"><i class="fas fa-edit"></i></a></td>
+                                                    
                                                     <td><a style="color: #fff" class="btn btn-danger  btn-app" href="/deleteTrainer/{{$trainer_user->id}}"><i class="fas fa-trash"></i>
-                                                    Delete
                                                     </a>
                                                     {{--<div class="modal fade" id="modal-danger">
                                                       <div class="modal-dialog">

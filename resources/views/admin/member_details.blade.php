@@ -62,10 +62,11 @@
                                     <table class="table">
                                         <thead>
                                             <tr>
+                                                <th>Member ID</th>
                                                 <th>First Name</th>
                                                 <th>Last Name</th>
                                                 <th>Email</th>
-                                                <th>Member ID</th>
+                                                {{-- <th>Member ID</th> --}}
                                                 <th>Edit</th>
                                                 <th>Delete</th>
                                             </tr>   

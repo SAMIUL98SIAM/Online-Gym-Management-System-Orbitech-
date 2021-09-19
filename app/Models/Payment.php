@@ -20,9 +20,9 @@ class Payment extends Model
     {
         return $this->belongsTo(Member::class);
     }
-    public function trainer()
-    {
-        return $this->belongsTo(Trainer::class);
-    }
+    // public function trainer()
+    // {
+    //     return $this->belongsTo(Trainer::class);
+    // }
 
 }

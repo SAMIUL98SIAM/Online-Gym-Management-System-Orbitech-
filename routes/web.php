@@ -42,19 +42,26 @@ Route::group(['middleware'=>['AuthCheck']] , function(){
     
     Route::get('/member_search', [AdminController::class,'member_details'])->name('search.live_search');
     Route::get('/member_search/action', [AdminController::class,'member_action'])->name('admin.memberaction');
+
+
     Route::get('/editmember/{id}', [AdminController::class,'editmember'])->name('admin.editmember');
     Route::post('/editmember/{id}', [AdminController::class,'member_update'])->name('admin.member_update');
+
+
 
     Route::get('/addTrainer', [AdminController::class,'trainers_details'])->name('admin.trainers_details');
     Route::post('/addTrainer', [AdminController::class,'save_trainer'])->name('admin.save_trainer');
     Route::get('/edittrainer/{id}',[AdminController::class,'edit_trainer'])->name('admin.edit_trainer');
     Route::post('/edittrainer/{id}', [AdminController::class,'trainer_update'])->name('admin.trainer_update');
 
-    Route::get('/deleteTrainer/{trainer_name}', [AdminController::class,'delete_trainer'])->name('admin.delete_trainer');
-    Route::post('/deleteTrainer/{trainer_name}', [AdminController::class,'destroy_trainer'])->name('admin.destroy_trainer');
+    // Route::get('/deleteTrainer/{trainer_name}', [AdminController::class,'delete_trainer'])->name('admin.delete_trainer');
+    // Route::post('/deleteTrainer/{trainer_name}', [AdminController::class,'destroy_trainer'])->name('admin.destroy_trainer');
     
+
     Route::get('/payment', [PaymentController::class,'index']);
     Route::post('/payment', [PaymentController::class,'payment']);
+
+
 
     Route::get('/package', [PackageController::class,'index'])->name('package.index');
     Route::post('/package', [PackageController::class,'package'])->name('package.add_package');
@@ -67,7 +74,8 @@ Route::group(['middleware'=>['MemberCheck']],function(){
     Route::get('/memberPanel', [MemberController::class,'index'])->name('member.index');
     Route::get('/memberProfile', [MemberController::class,'profile'])->name('member.profile');
     Route::post('/memberProfile', [MemberController::class,'update_profile'])->name('member.update_profile');
-    Route::get('/memberPackage', [MemberController::class,'getPackage'])->name('member.member_package');
+    Route::get('/memberPackage', [MemberController::class,'getPackage'])->name('member.get_package');
+    Route::post('/memberPackage', [MemberController::class,'setPackage'])->name('member.set_package');
     Route::get('/memberPayment', [MemberController::class,'getPayment'])->name('member.member_getPayment');
     Route::post('/memberPayment', [MemberController::class,'setPayment'])->name('member.member_postPayment');
 });

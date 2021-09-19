@@ -36,10 +36,10 @@ class AdminController extends Controller
             if($query != '')
             {
             $data = DB::table('members')
-                ->where('first_name', 'like', '%'.$query.'%')
+                ->where('id', 'like', '%'.$query.'%')
+                ->orwhere('first_name', 'like', '%'.$query.'%')
                 ->orWhere('last_name', 'like', '%'.$query.'%')
                 ->orWhere('email', 'like', '%'.$query.'%')
-                ->orWhere('member_id', 'like', '%'.$query.'%')
                 ->orderBy('id', 'desc')
                 ->get();
                 
@@ -57,10 +57,10 @@ class AdminController extends Controller
                 {
                     $output .= '
                     <tr>
+                    <td>'.$row->id.'</td>
                     <td>'.$row->first_name.'</td>
                     <td>'.$row->last_name.'</td>
                     <td>'.$row->email.'</td>
-                    <td>'.$row->member_id.'</td>
                     <td><a href="/editmember/'.$row->id.'" style="color: #fff" class="btn btn-sm btn-success btn-app"><i class="fas fa-edit"></i></a></td>
                     <td><a href="/deleteMember/'.$row->id.'" style="color: #fff" class="btn btn-sm btn-danger btn-app"><i class="fas fa-trash"></i></a></td>
                     </tr>'
@@ -115,12 +115,19 @@ class AdminController extends Controller
         }    
     }
      
+    
+    
     public function editmember($id){  
         $data = ['user'=>User::where('id','=',session('users'))->first()];
+        //var_dump($data['user']->id);
+        //echo "<br/><br/>";
         $member_user = Member::find($id);
-        return view('admin.editmember')->with('member_user',$member_user);  
+        // var_dump($member_user->id); 
+        return view('admin.editmember',$data)->with('member_user',$member_user);  
       }
     
+
+
     public function member_update(Request $req, $id)
       {
         $req->validate([

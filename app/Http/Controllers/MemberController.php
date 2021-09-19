@@ -74,6 +74,30 @@ class MemberController extends Controller
         return view('member.member_package',$data)->with('packages',$packages); 
     }
     
+     public function setPackage(Request $req)
+     {
+        $req->validate([
+            'package_name'=> 'required|unique:members'
+        ]);
+        $data = ['member'=>Member::where('id','=',session('members'))->first()];
+        // $data['member'] ->id = $req->id ;
+        $package = new Package;
+        //$package->id = $req->id ;
+        //$data['member']->$package->id = $req->id ;
+        //$package_save = $package->save();   
+        $data['member'] ->package_name = $req->package_name ;
+        $data['member'] ->package_counter = "1" ;
+        $package = $data['member']->save();
+        if($package)
+        {
+            return back()->with('success','Hey,  Your get these '.$req->package_name.' package');
+        }
+        else 
+        {
+            return back()->with('fail','try again');
+        }
+     }
+
    public function getPayment()
    {
     $data = ['member'=>Member::where('id','=',session('members'))->first()];    
@@ -82,21 +106,28 @@ class MemberController extends Controller
 
     public function setPayment(Request $req)
     {
+        
         $req->validate([
-            'trainer_id'=> 'required',
-            'package_id'=> 'required',
-            'member_id'=> 'required',
-            // 'customer_name'=> 'required',
+            // 'trainer_id'=> 'required',
+            // 'package_id'=> 'required',
+            // 'member_id'=> 'required',
+            //'customer_name'=> 'required',
             'payment_type'=> 'required'
         ]);
-        $payment = new Payment ;
-        $payment->trainer_id = $req->trainer_id ;
-        $payment->package_id = $req->package_id ;
-        $payment->member_id = $req->member_id ;
-        //$payment->customer_name = $req->customer_name ;
-        $payment->payment_type = $req->payment_type  ;
-        $payment_save = $payment->save();
-        if($payment_save)
+        $data = ['member'=>Member::where('id','=',session('members'))->first()];
+        $payment = new Payment;
+        $data['member'] ->package_name = $req->package_name ;
+        $data['member']->payment_type = $req->payment_type  ;
+        $payment = $data['member']->save();
+        // $payment = new Payment ;        
+        // $payment = new Payment ;
+        // $payment->trainer_id = $req->trainer_id ;
+        // $payment->package_id = $req->package_id ;
+        // $payment->member_id = $req->member_id ;
+        // $payment->customer_name = $req->customer_name ;
+        // $payment->payment_type = $req->payment_type  ;
+        //$payment_save = $payment->save();
+        if($payment)
         {
             return back()->with('success','You have Payment successfully');
         }

@@ -73,8 +73,8 @@
                                                   <td>{{$package['id']}}</td>
                                                   <td>{{$package['package_name']}}</td>
                                                   <td>{{$package['amount']}}</td>
-                                                  <td><a href="/editpackage/{{$package['id']}}" style="color: #fff" class="btn btn-success btn-app"><i class="fas fa-edit"></i>Edit</a></td>
-                                                  <td><a href="" style="color: #fff" class="btn btn-danger btn-app"><i class="fas fa-trash"></i>Remove</a></td>
+                                                  <td><a href="/editpackage/{{$package['id']}}" style="color: #fff" class="btn btn-success btn-app"><i class="fas fa-edit"></i></a></td>
+                                                  <td><a href="" style="color: #fff" class="btn btn-danger btn-app"><i class="fas fa-trash"></i></a></td>
                                                   </tr>
                                                   </tbody>
                                                   @endforeach

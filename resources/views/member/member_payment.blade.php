@@ -26,7 +26,7 @@
                         <div class="card-body" style="background-color:#3498DB;">
                             <div class="row">
                                 <div class="col-md-2">
-                                    <button style="color: #000;background:#fff;" class="btn btn-sm">GO BACK</button>
+                                    <a style="color: #000;background:#fff;" href="/memberPanel" class="btn btn-success btn-sm">GO BACK</a>
                                 </div>
                             </div>
                             <div class="card-body" style="background-color:#3498DB;">
@@ -38,31 +38,15 @@
                                         <div class="card-body" style="border: 1px solid rgba(216, 207, 86, 0.952)">
                                           <form method="post" enctype="multipart/form-data">
                                             <input type="hidden" name="_token" value="{{csrf_token()}}">
-                                            @if (Session::get('success'))
+                                            @if(Session::get('success'))
                                                   <div class="alert alert-success">
                                                       {{ Session::get('success') }}
                                                   </div>
-                                              @endif
+                                            @endif
+
                                               <div class="input-group  mb-3">
-                                                <input type="number" name="trainer_id" value="{{old('trainer_id')}}" class="form-control" placeholder="Trainer Id">
-                                                <div class="input-group-append">
-                                                  <div class="input-group-text">
-                                                    <span class="fas fa-calculator"></span>
-                                                  </div>
-                                                </div>
-                                                <span class="text-danger">@error('payment_id'){{ $message }}@enderror</span>
-                                              </div>    
-                                              <div class="input-group  mb-3">
-                                                <input type="number" name="package_id" value="{{old('package_id')}}" class="form-control" placeholder="Package Id">
-                                                <div class="input-group-append">
-                                                  <div class="input-group-text">
-                                                    <span class="fas fa-calculator"></span>
-                                                  </div>
-                                                </div>
-                                                <span class="text-danger">@error('package_id'){{ $message }}@enderror</span>
-                                              </div>
-                                              <div class="input-group  mb-3">
-                                                <input type="number" name="member_id" value="{{$member['id']}}" class="form-control" placeholder="Member Id">
+                                                <label>Member ID:</label>
+                                                <input type="number" name="member_id" value="{{$member['id']}}" class="form-control" placeholder="Member Id" disabled>
                                                 <div class="input-group-append">
                                                   <div class="input-group-text">
                                                     <span class="fas fa-user"></span>
@@ -71,7 +55,16 @@
                                                 <span class="text-danger">@error('member_id'){{ $message }}@enderror</span>
                                               </div>
                                               <div class="input-group  mb-3">
-                                                <input type="text" name="payment_type" value="{{old('payment_type')}}" class="form-control" placeholder="Payment Type">
+                                                <input type="text" name="package_name" value="{{$member['package_name']}}" class="form-control" placeholder="You have choose no package thats why you cant payment" disabled>
+                                                <div class="input-group-append">
+                                                  <div class="input-group-text">
+                                                    <span class="fas fa-user"></span>
+                                                  </div>
+                                                </div>
+                                                <span class="text-danger">@error('member_id'){{ $message }}@enderror</span>
+                                              </div>
+                                              <div class="input-group  mb-3">
+                                                <input type="text" name="payment_type" value="{{$member['payment_type']}}" class="form-control" placeholder="You couldnt have payment yet">
                                                 <div class="input-group-append">
                                                   <div class="input-group-text">
                                                     <span class="fas fa-balance"></span>

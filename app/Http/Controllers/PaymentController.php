@@ -23,15 +23,15 @@ class PaymentController extends Controller
     public function payment(Request $req)
     {
         $req->validate([
-            'trainer_id'=> 'required',
-            'package_id'=> 'required',
+            // 'trainer_id'=> 'required',
+            // 'package_id'=> 'required',
             'member_id'=> 'required',
             // 'customer_name'=> 'required',
             'payment_type'=> 'required'
         ]);
         $payment = new Payment ;
-        $payment->trainer_id = $req->trainer_id ;
-        $payment->package_id = $req->package_id ;
+        // $payment->trainer_id = $req->trainer_id ;
+        // $payment->package_id = $req->package_id ;
         $payment->member_id = $req->member_id ;
         //$payment->customer_name = $req->customer_name ;
         $payment->payment_type = $req->payment_type  ;
