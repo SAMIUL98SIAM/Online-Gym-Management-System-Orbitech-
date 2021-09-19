@@ -44,6 +44,11 @@
                                     <h4>Add Trainer</h4>
                                 </div>
                             </div>
+                            @if (Session::get('fail'))
+                              <div class="alert alert-danger">
+                                {{ Session::get('fail') }}
+                              </div>
+                            @endif 
                             <div class="card-body" style="background-color:#3498DB;">
                                 <div class="row">
                                     <div class="col-md-12">
@@ -69,10 +74,10 @@
                                                     {{-- <td><a href="/deletetrainer/{{$trainer_user['id']}}" data-toggle="modal" data-target="#modal-danger" style="color: #fff" class="btn btn-danger btn-app"><i class="fas fa-trash">Remove</i></a>
                                                     </td> --}}
 
-                                                    <td><a style="color: #fff" class="btn btn-danger  btn-app" data-toggle="modal" data-target="#modal-danger" href="/deleteTrainer/{{$trainer_user->id}}"><i class="fas fa-trash"></i>
+                                                    <td><a style="color: #fff" class="btn btn-danger  btn-app" href="/deleteTrainer/{{$trainer_user->id}}"><i class="fas fa-trash"></i>
                                                     Delete
                                                     </a>
-                                                    <div class="modal fade" id="modal-danger">
+                                                    {{--<div class="modal fade" id="modal-danger">
                                                       <div class="modal-dialog">
                                                         <div class="modal-content bg-danger">
                                                           <div class="modal-header">
@@ -90,7 +95,7 @@
                                                                         {{ Session::put('success',null) }}
                                                                     </div>
                                                               @endif  
-                                                              <div class="input-group mb-3">
+                                                               <div class="input-group mb-3">
                                                                 <input type="text" name="trainer_name" value="{{$trainer_user['trainer_name']}}" class="form-control" placeholder="Trainer Name">
                                                                 <div class="input-group-append">
                                                                   <div class="input-group-text">
@@ -133,7 +138,7 @@
                                                       </div>
                                                       <!-- /.modal-dialog -->
                                                     </div>
-                                                    <!-- /.modal --></td>  
+                                                    <!-- /.modal --></td>   --}}
                                                     </tr>
                                                     </tbody>
                                                     @endforeach

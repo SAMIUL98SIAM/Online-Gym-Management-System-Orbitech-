@@ -38,7 +38,7 @@
                         <div class="card-body" style="background-color:#3498DB;">
                             <div class="row">
                                 <div class="col-md-2">
-                                    <button href="/adminPanel" style="color: #000;background:#fff;" class="btn btn-sm">GO BACK</button>
+                                    <a href="/adminPanel" style="color: #000;background:#fff;" class="btn btn-sm">GO BACK</a>
                                 </div>
                                 <div class="col-md-3">
                                     <h4>Add Trainer</h4>

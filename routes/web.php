@@ -39,13 +39,10 @@ Route::group(['middleware'=>['AuthCheck']] , function(){
    
     Route::get('/adminPanel', [AdminController::class,'index']);
     Route::post('/adminPanel', [AdminController::class,'save_member']);
-    // Route::get('/memberlist', [AdminController::class,'member_details']);
-    // Route::get('/memberlist/search', [AdminController::class,'member_action'])->name('membersearch.action');
     
     Route::get('/member_search', [AdminController::class,'member_details'])->name('search.live_search');
     Route::get('/member_search/action', [AdminController::class,'member_action'])->name('admin.memberaction');
     Route::get('/editmember/{id}', [AdminController::class,'editmember'])->name('admin.editmember');
-    //Route::post('/editmember/{id}', [AdminController::class,'member_update'])->name('admin.member_update');
     Route::post('/editmember/{id}', [AdminController::class,'member_update'])->name('admin.member_update');
 
     Route::get('/addTrainer', [AdminController::class,'trainers_details'])->name('admin.trainers_details');
@@ -53,8 +50,8 @@ Route::group(['middleware'=>['AuthCheck']] , function(){
     Route::get('/edittrainer/{id}',[AdminController::class,'edit_trainer'])->name('admin.edit_trainer');
     Route::post('/edittrainer/{id}', [AdminController::class,'trainer_update'])->name('admin.trainer_update');
 
-    Route::get('/deleteTrainer/{id}', [AdminController::class,'delete_trainer'])->name('admin.delete_trainer');
-    Route::post('/deleteTrainer/{id}', [AdminController::class,'destroy_trainer'])->name('admin.destroy_trainer');
+    Route::get('/deleteTrainer/{trainer_name}', [AdminController::class,'delete_trainer'])->name('admin.delete_trainer');
+    Route::post('/deleteTrainer/{trainer_name}', [AdminController::class,'destroy_trainer'])->name('admin.destroy_trainer');
     
     Route::get('/payment', [PaymentController::class,'index']);
     Route::post('/payment', [PaymentController::class,'payment']);

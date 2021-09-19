@@ -113,24 +113,15 @@
                                   </div>
                                 </div>
                                 <span class="text-danger">@error('phone'){{ $message }}@enderror</span>
-                              </div>
-                              <div class="input-group  mb-3">
-                                <input type="number" name="member_id" value="{{old('member_id')}}" class="form-control" placeholder="Memeber Id">
-                                <div class="input-group-append">
-                                  <div class="input-group-text">
-                                    <span class="fas fa-calculator"></span>
-                                  </div>
-                                </div>
-                                <span class="text-danger">@error('member_id'){{ $message }}@enderror</span>
-                              </div>              
+                              </div>             
                               <div class="row">
                                 <!-- /.col -->
                                 <div class="col-5">
                                   <button style="color: white" type="submit" class="btn btn-primary btn-block">Add Member</button>
                                 </div>
-                                <button type="button" class="btn btn-default toastsDefaultMaroon">
+                                {{-- <button type="button" class="btn btn-default toastsDefaultMaroon">
                                   Launch Full Toast (with icon)
-                                </button>
+                                </button> --}}
                               </div>
                             </form>	
                         </div>
@@ -165,6 +156,27 @@
                     </div>
                  
                   </div> --}}
+
+                  @if(Session::has('messege'))
+                  <script>
+                     var type="{{Session::get('alert-type','info')}}"
+                     switch(type)
+                     {
+                         case 'info':
+                               toastr.info("{{ Session::get('messege') }}");
+                               break;
+                         case 'success':
+                             toastr.success("{{ Session::get('messege') }}");
+                             break;
+                         case 'warning':
+                             toastr.warning("{{ Session::get('messege') }}");
+                             break;
+                         case 'error':
+                             toastr.error("{{ Session::get('messege') }}");
+                             break;
+                     }
+                   </script>
+                   @endif          
       
 
 

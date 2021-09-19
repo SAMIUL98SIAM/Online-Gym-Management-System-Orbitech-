@@ -80,10 +80,12 @@
     </div> 
 	  
 		
-		<script>
-      @if(Session::has('messege'))
+		
+       @if(Session::has('messege'))
+       <script>
           var type="{{Session::get('alert-type','info')}}"
-          switch(type){
+          switch(type)
+          {
               case 'info':
                     toastr.info("{{ Session::get('messege') }}");
                     break;
@@ -97,9 +99,9 @@
                   toastr.error("{{ Session::get('messege') }}");
                   break;
           }
-          @endif
+        </script>
+        @endif
        
-  </script>
 
     <script>
             $(document).on("click", "#delete", function(e){

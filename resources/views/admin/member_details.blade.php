@@ -24,7 +24,7 @@
                     {{--Member List Item--}}
                     <div class="list-group">
                         <a href="/adminPanel" class="list-group-item list-group-item-action">Members</a>
-                        <a href="/memberlist" class="list-group-item list-group-item-action  active">Members Details</a>
+                        <a href="/member_search" class="list-group-item list-group-item-action  active">Members Details</a>
                         <a href="/package" class="list-group-item list-group-item-action">Package Details</a>
                         <a href="/payment" class="list-group-item list-group-item-action">Payments</a>
                     </div>

@@ -61,8 +61,8 @@ class AdminController extends Controller
                     <td>'.$row->last_name.'</td>
                     <td>'.$row->email.'</td>
                     <td>'.$row->member_id.'</td>
-                    <td><a href="/editmember/'.$row->id.'" style="color: #fff" class="btn btn-sm btn-success btn-app"><i class="fas fa-edit"></i>Edit</a></td>
-                    <td><a href="/deleteMember/'.$row->id.'" style="color: #fff" class="btn btn-sm btn-danger btn-app"><i class="fas fa-trash"></i>Remove</a></td>
+                    <td><a href="/editmember/'.$row->id.'" style="color: #fff" class="btn btn-sm btn-success btn-app"><i class="fas fa-edit"></i></a></td>
+                    <td><a href="/deleteMember/'.$row->id.'" style="color: #fff" class="btn btn-sm btn-danger btn-app"><i class="fas fa-trash"></i></a></td>
                     </tr>'
                     ;
                 }
@@ -93,7 +93,6 @@ class AdminController extends Controller
             'last_name'=> 'required',
             'email'=> 'required|email|unique:users',
             'phone'=> 'required|max:11',
-            'member_id'=> 'required|unique:users'
             // 'trainer_id'=> 'required|unique:users'
         ]);
         $member_user = new Member ;
@@ -102,12 +101,11 @@ class AdminController extends Controller
         $member_user->email = $req->email ; 
         $member_user->phone =  $req->phone;
         $member_user->password = Hash::make("orbitech") ;
-        $member_user->member_id = $req->member_id ;
         //$member_user->trainer_id = $req->trainer_id ;
         $member_save = $member_user->save();
         if($member_save)
         {
-            return back()->redirect('/member_search')->with('success',''.$req->first_name.' Added successfully');
+            return back()->with('success',''.$req->first_name.' Added successfully');
 
 
         }
@@ -120,7 +118,7 @@ class AdminController extends Controller
     public function editmember($id){  
         $data = ['user'=>User::where('id','=',session('users'))->first()];
         $member_user = Member::find($id);
-        return view('admin.editmember',$data)->with('member_user',$member_user);  
+        return view('admin.editmember')->with('member_user',$member_user);  
       }
     
     public function member_update(Request $req, $id)
@@ -181,10 +179,10 @@ class AdminController extends Controller
             return back()->with('success','Trainer '.$req->trainer_name.' Added successfully');
             // redirect('/');
         }
-        else 
-        {
-            return back()->with('fail','try again');
-        }    
+        // else 
+        // {
+        //     return back()->with('fail','try again');
+        // }    
     }
 
      
@@ -226,15 +224,26 @@ class AdminController extends Controller
         $trainer_user = DB::table('trainers')
                            ->where('id',$id)
                            ->first();
-        return view('admin.add_trainer')->with('trainer_user',$trainer_user); 
+        return view('admin.delete_trainer')->with('trainer_user',$trainer_user); 
         // $trainer_user = Trainer::find($id);
         // return redirect()->route('admin.delete_trainer')->with('trainer_user',$trainer_user);
     }
 
-    public function destroy_trainer($id){
+    public function destroy_trainer(Request $req, $id){
        
-        Trainer::destroy($id);
-        return redirect()->route('admin.destroy_trainer');
+        $trainer_user = Trainer::find($id);
+        $trainer_user->trainer_name = $req->trainer_name ; 
+        
+        $destroy_trainer =  Trainer::destroy($id);
+        // $trainer_user->trainer_name = $req->trainer_name ;
+        if($destroy_trainer)
+        {
+            return redirect('/addTrainer')->with('fail',''.$req->trainer_name.' Deleted');
+
+        }
+        // Session::put('success', ''.$req->trainer_name.' has been updated sucessfully');
+        // redirect('/adminPanel');
+        // return redirect()->route('admin.destroy_trainer');
     } 
 
     // Trainer part

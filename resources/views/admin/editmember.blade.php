@@ -30,7 +30,7 @@
                         <a href="/member_search" class="list-group-item list-group-item-secondary">Trainer Details</a>
                         <a href="/add_trainer" class="list-group-item list-group-item-secondary active">Add new Trainer</a>
                     </div>
-                     {{--Member List Item--}}
+                    {{--Member List Item--}}
                 </div>     
                 {{--New member registration form--}}
                 <div class="col-md-9">
@@ -38,7 +38,7 @@
                         <div class="card-body" style="background-color:#3498DB;">
                             <div class="row">
                                 <div class="col-md-2">
-                                    <button href="/adminPanel" style="color: #000;background:#fff;" class="btn btn-sm">GO BACK</button>
+                                    <a href="/member_search" style="color: #000;background:#fff;" class="btn btn-sm">GO BACK</a>
                                 </div>
                             </div>
                             <div class="card-body" style="background-color:#3498DB;">
