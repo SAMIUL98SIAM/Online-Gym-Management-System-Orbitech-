@@ -45,7 +45,7 @@
                                             @endif
 
                                               <div class="input-group  mb-3">
-                                                <label>Member ID:</label>
+                                                <label>Yur ID:</label>
                                                 <input type="number" name="member_id" value="{{$member['id']}}" class="form-control" placeholder="Member Id" disabled>
                                                 <div class="input-group-append">
                                                   <div class="input-group-text">
@@ -61,8 +61,22 @@
                                                     <span class="fas fa-user"></span>
                                                   </div>
                                                 </div>
-                                                <span class="text-danger">@error('member_id'){{ $message }}@enderror</span>
+                                                <span class="text-danger">@error('package_name'){{ $message }}@enderror</span>
                                               </div>
+                                              <div class="input-group  mb-3">
+                                                <select name="member_id" id="member_id" class="form-control">
+                                                  <option selected disabled>Choose Your ID No: {{$member['id']}}</option>
+                                                  @foreach ( $members as $member)
+                                                    <option value="{{$member->id }}">"{{ $member->id }}"</option>
+                                                  @endforeach
+                                                </select>
+                                                <div class="input-group-append">
+                                                  <div class="input-group-text">
+                                                    <span class="fas fa-money"></span>
+                                                  </div>
+                                                </div>
+                                                <span class="text-danger">@error('package_id'){{ $message }}@enderror</span>
+                                              </div> 
                                               <div class="input-group  mb-3">
                                                 <input type="text" name="payment_type" value="{{$member['payment_type']}}" class="form-control" placeholder="You couldnt have payment yet">
                                                 <div class="input-group-append">

@@ -57,7 +57,7 @@
                                                 <tr>
                                                 <td>{{$row['id']}}</td> 
                                                 <td>{{$row->member['package_name']}}</td>    
-                                                <td>{{$row->package['amount']}}</td>
+                                                <td>{{$row->member->package['amount']}}</td>
                                                 <td>{{$row['member_id']}}</td>
                                                 <td>{{$row->member['first_name']}}</td>
                                                 {{-- <td>{{$row->trainer['trainer_name']}}</td> --}}

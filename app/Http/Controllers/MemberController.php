@@ -77,14 +77,15 @@ class MemberController extends Controller
      public function setPackage(Request $req)
      {
         $req->validate([
-            'package_name'=> 'required|unique:members'
+            'package_name'=> 'required'
         ]);
         $data = ['member'=>Member::where('id','=',session('members'))->first()];
         // $data['member'] ->id = $req->id ;
         $package = new Package;
         //$package->id = $req->id ;
         //$data['member']->$package->id = $req->id ;
-        //$package_save = $package->save();   
+        //$package_save = $package->save(); 
+        $data['member'] ->package_id = $req->package_id ;  
         $data['member'] ->package_name = $req->package_name ;
         $data['member'] ->package_counter = "1" ;
         $package = $data['member']->save();
@@ -100,8 +101,9 @@ class MemberController extends Controller
 
    public function getPayment()
    {
-    $data = ['member'=>Member::where('id','=',session('members'))->first()];    
-    return view('member.member_payment',$data);
+    $data = ['member'=>Member::where('id','=',session('members'))->first()];
+    $members = Member::all();    
+    return view('member.member_payment',$data)->with('members',$members);
    }
 
     public function setPayment(Request $req)
@@ -116,9 +118,10 @@ class MemberController extends Controller
         ]);
         $data = ['member'=>Member::where('id','=',session('members'))->first()];
         $payment = new Payment;
-        $data['member'] ->package_name = $req->package_name ;
-        $data['member']->payment_type = $req->payment_type  ;
-        $payment = $data['member']->save();
+        // $data['member'] ->package_name = $req->package_name ;
+        // $data['member'] ->package_name = $req->package_name ;
+        $payment->member_id = $req->member_id  ;
+        $payment->payment_type = $req->payment_type  ;
         // $payment = new Payment ;        
         // $payment = new Payment ;
         // $payment->trainer_id = $req->trainer_id ;
@@ -126,8 +129,8 @@ class MemberController extends Controller
         // $payment->member_id = $req->member_id ;
         // $payment->customer_name = $req->customer_name ;
         // $payment->payment_type = $req->payment_type  ;
-        //$payment_save = $payment->save();
-        if($payment)
+        $payment_save = $payment->save();
+        if($payment_save)
         {
             return back()->with('success','You have Payment successfully');
         }

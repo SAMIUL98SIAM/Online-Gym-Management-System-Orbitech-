@@ -24,7 +24,7 @@
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-md-2">
-                                    <button style="color: #000;background:#fff;" class="btn btn-sm">GO BACK</button>
+                                    <a style="color: #000;background:#fff;" href="/memberPanel" class="btn btn-sm">GO BACK</a>
                                 </div>
                                 <div class="col-md-3">
                                   <h4>Offer</h4>
@@ -36,7 +36,7 @@
                                         <table class="table table-hover">
                                             <thead>
                                                 <tr>
-                                                    <th>ID</th>
+                                                    <th>Cupon ID</th>
                                                     <th>Package Name</th>
                                                     <th>Amount</th>
                                                 </tr>   
@@ -88,7 +88,6 @@
                                                     <span class="text-danger">@error('member_id'){{ $message }}@enderror</span>
                                                   </div> --}}
                                                   <div class="input-group  mb-3">
-                                                    {{-- <input type="text" name="payment_type" value="{{old('payment_type')}}" class="form-control" placeholder="Packages List"> --}}
                                                     <select name="package_name" id="package_name" class="form-control">
                                                       <option selected disabled>Package List</option>
                                                       @foreach ( $packages as $package)
@@ -100,9 +99,23 @@
                                                         <span class="fas fa-money"></span>
                                                       </div>
                                                     </div>
-                                                    <span class="text-danger">@error('payment_type'){{ $message }}@enderror</span>
+                                                    <span class="text-danger">@error('package_name'){{ $message }}@enderror</span>
+                                                  </div>
+                                                  <div class="input-group  mb-3">
+                                                    <select name="package_id" id="package_id" class="form-control">
+                                                      <option selected disabled>Select the Cupon ID</option>
+                                                      @foreach ( $packages as $package)
+                                                        <option value="{{$package->id }}">"{{ $package->id }}"</option>
+                                                      @endforeach
+                                                    </select>
+                                                    <div class="input-group-append">
+                                                      <div class="input-group-text">
+                                                        <span class="fas fa-money"></span>
+                                                      </div>
+                                                    </div>
+                                                    <span class="text-danger">@error('package_id'){{ $message }}@enderror</span>
                                                   </div>                                                  
-                                                <div class="row">
+                                                 <div class="row">
                                                   <!-- /.col -->
                                                   <div class="col-5">
                                                     <button style="color: white" type="submit" class="btn btn-primary btn-block">Get these Package</button>

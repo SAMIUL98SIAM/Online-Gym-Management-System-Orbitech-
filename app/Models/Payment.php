@@ -9,7 +9,7 @@ class Payment extends Model
 {
     use HasFactory;
     protected $fillable =[
-        'trainer_id','amount','customer_id', 'trainer_name' ,'first_name','payment_type'
+        'trainer_id','amount','customer_id', 'trainer_name' ,'first_name','payment_type','package_name'
     ];
     public function package()
     {
