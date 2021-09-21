@@ -60,6 +60,12 @@
                             <div class="row">
                                 <div class="col-md-12">
                                     <table class="table">
+                                        @if(Session::get('success'))
+                                            <div class="alert alert-success">
+                                                {{ Session::get('success') }}
+                                                {{ Session::put('success',null) }}
+                                            </div>
+                                         @endif
                                         <thead>
                                             <tr>
                                                 <th>Member ID</th>

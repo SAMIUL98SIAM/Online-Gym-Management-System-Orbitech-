@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Models\Payment;
+use App\Models\Member;
 use App\Models\User;
 use Illuminate\Http\Request;
 use DB;
@@ -16,8 +17,9 @@ class PaymentController extends Controller
         //           ->select('payments.*')
         //           ->get();
     //    echo "<pre>";
-    //    print_r($payment);        
-        return view('payment.index')->with('payment',$payment); 
+    //    print_r($payment);       
+        $members = Member::all();  
+        return view('payment.index',compact('members'))->with('payment',$payment); 
     }
 
     public function payment(Request $req)

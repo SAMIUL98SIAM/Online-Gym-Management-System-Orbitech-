@@ -26,7 +26,7 @@
                         <div class="card-body" style="background-color:#3498DB;">
                             <div class="row">
                                 <div class="col-md-2">
-                                    <button style="color: #000;background:#fff;" class="btn btn-sm">GO BACK</button>
+                                    <a href="/adminPanel" style="color: #000;background:#fff;" class="btn btn-sm">GO BACK</a>
                                 </div>
                                 <div class="col-md-3">
                                     <h4>Payment Details</h4>
@@ -43,7 +43,6 @@
                                                     <th>Amount</th>
                                                     <th>Customer ID</th>
                                                     <th>Customer First Name</th>
-                                                    {{-- <th>Customer Trainer Name</th> --}}
                                                     <th>Payment Type</th>                  
                                                 </tr>   
                                             </thead>
@@ -60,7 +59,6 @@
                                                 <td>{{$row->member->package['amount']}}</td>
                                                 <td>{{$row['member_id']}}</td>
                                                 <td>{{$row->member['first_name']}}</td>
-                                                {{-- <td>{{$row->trainer['trainer_name']}}</td> --}}
                                                 <td>{{$row['payment_type']}}</td>
                                                 </tr>
                                                 </tbody>
@@ -79,38 +77,33 @@
                                                       {{ Session::get('success') }}
                                                   </div>
                                               @endif
-                                              {{-- <div class="input-group  mb-3">
-                                                <input type="number" name="trainer_id" value="{{old('trainer_id')}}" class="form-control" placeholder="Trainer Id">
-                                                <div class="input-group-append">
-                                                  <div class="input-group-text">
-                                                    <span class="fas fa-calculator"></span>
-                                                  </div>
-                                                </div>
-                                                <span class="text-danger">@error('payment_id'){{ $message }}@enderror</span>
-                                              </div>    
                                               <div class="input-group  mb-3">
-                                                <input type="number" name="package_id" value="{{old('package_id')}}" class="form-control" placeholder="Package Id">
-                                                <div class="input-group-append">
-                                                  <div class="input-group-text">
-                                                    <span class="fas fa-calculator"></span>
-                                                  </div>
-                                                </div>
-                                                <span class="text-danger">@error('package_id'){{ $message }}@enderror</span>
-                                              </div> --}}
-                                              <div class="input-group  mb-3">
-                                                <input type="number" name="member_id" value="{{old('member_id')}}" class="form-control" placeholder="Member Id">
+                                                <select name="member_id" id="member_id" class="form-control">
+                                                  <option selected disabled>Select the Cupon ID</option>
+                                                  @foreach ($members as $member)
+                                                    @if($member->package_counter	== "1")
+                                                    <option value="{{$member->id }}">"{{ $member->id }}"</option>
+                                                    @endif
+                                                    @endforeach
+                                                </select>
                                                 <div class="input-group-append">
                                                   <div class="input-group-text">
                                                     <span class="fas fa-user"></span>
                                                   </div>
                                                 </div>
-                                                <span class="text-danger">@error('member_id'){{ $message }}@enderror</span>
+                                                <span class="text-danger">@error('package_id'){{ $message }}@enderror</span>
                                               </div>
                                               <div class="input-group  mb-3">
-                                                <input type="text" name="payment_type" value="{{old('payment_type')}}" class="form-control" placeholder="Payment Type">
+                                                <select name="payment_type" id="payment_type" class="form-control">
+                                                    <option selected disabled>Select the payment option</option>
+                                                    <option value="cash">Cash</option>
+                                                    <option value="Bkash">Bkash</option>
+                                                    <option value="Card">Card</option>
+                                                </select>
+                                                {{-- <input type="text" name="payment_type" value="{{old('payment_type')}}" class="form-control" placeholder="Payment Type"> --}}
                                                 <div class="input-group-append">
                                                   <div class="input-group-text">
-                                                    <span class="fas fa-balance"></span>
+                                                    <span class="fas fa-money"></span>
                                                   </div>
                                                 </div>
                                                 <span class="text-danger">@error('payment_type'){{ $message }}@enderror</span>

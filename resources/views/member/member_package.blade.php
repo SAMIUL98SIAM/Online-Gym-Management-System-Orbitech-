@@ -78,15 +78,6 @@
                                                     </div>
                                                     <span class="text-danger">@error('member_id'){{ $message }}@enderror</span>
                                                   </div>
-                                                  {{-- <div class="input-group  mb-3">
-                                                    <input type="number" name="id" value="{{$package['id']}}" class="form-control" placeholder="Package Id" disabled>
-                                                    <div class="input-group-append">
-                                                      <div class="input-group-text">
-                                                        <span class="fas fa-user"></span>
-                                                      </div>
-                                                    </div>
-                                                    <span class="text-danger">@error('member_id'){{ $message }}@enderror</span>
-                                                  </div> --}}
                                                   <div class="input-group  mb-3">
                                                     <select name="package_name" id="package_name" class="form-control">
                                                       <option selected disabled>Package List</option>

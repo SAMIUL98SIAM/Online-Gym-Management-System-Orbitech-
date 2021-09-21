@@ -144,7 +144,7 @@ class AdminController extends Controller
         $member_save = $member_user->save();
         if($member_save)
         {
-            return back()->with('success','Updated successfully');
+            return redirect('/member_search')->with('success',''.$req->first_name.' Updated successfully');
         }
         else 
         {
