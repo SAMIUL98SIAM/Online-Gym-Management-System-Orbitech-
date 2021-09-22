@@ -54,8 +54,8 @@ Route::group(['middleware'=>['AuthCheck']] , function(){
     Route::get('/edittrainer/{id}',[AdminController::class,'edit_trainer'])->name('admin.edit_trainer');
     Route::post('/edittrainer/{id}', [AdminController::class,'trainer_update'])->name('admin.trainer_update');
 
-    // Route::get('/deleteTrainer/{trainer_name}', [AdminController::class,'delete_trainer'])->name('admin.delete_trainer');
-    // Route::post('/deleteTrainer/{trainer_name}', [AdminController::class,'destroy_trainer'])->name('admin.destroy_trainer');
+    Route::get('/deleteTrainer/{id}', [AdminController::class,'delete_trainer'])->name('admin.delete_trainer');
+    Route::post('/deleteTrainer/{id}', [AdminController::class,'destroy_trainer'])->name('admin.destroy_trainer');
     
 
     Route::get('/payment', [PaymentController::class,'index']);

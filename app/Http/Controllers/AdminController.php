@@ -224,24 +224,24 @@ class AdminController extends Controller
 
     public function delete_trainer($id){
         
-        $trainer_user = DB::table('trainers')
-                           ->where('id',$id)
-                           ->first();
-        return view('admin.delete_trainer')->with('trainer_user',$trainer_user); 
-        // $trainer_user = Trainer::find($id);
-        // return redirect()->route('admin.delete_trainer')->with('trainer_user',$trainer_user);
+        // $trainer_user = DB::table('trainers')
+        //                    ->where('id',$id)
+        //                    ->first();
+        // return view('admin.delete_trainer')->with('trainer_user',$trainer_user); 
+        $trainer_user = Trainer::find($id);
+        return view('admin.delete_trainer')->with('trainer_user',$trainer_user);
     }
 
     public function destroy_trainer(Request $req, $id){
        
-        $trainer_user = Trainer::find($id);
-        $trainer_user->trainer_name = $req->trainer_name ; 
+        // $trainer_user = Trainer::find($id);
+        // $trainer_user->trainer_name = $req->trainer_name ; 
         
         $destroy_trainer =  Trainer::destroy($id);
-        // $trainer_user->trainer_name = $req->trainer_name ;
+        //$trainer_user->trainer_name = $req->trainer_name ;
         if($destroy_trainer)
         {
-            return redirect('/addTrainer')->with('fail',''.$req->trainer_name.' Deleted');
+            return redirect('/addTrainer')->with('fail',''.$req->trainer_name.' has been Deleted');
 
         }
         // Session::put('success', ''.$req->trainer_name.' has been updated sucessfully');

@@ -69,7 +69,6 @@
                                                      @if ($members->id == $member['id'])
                                                      <option value="{{$member->id}}">"{{ $member->id }}"</option>
                                                      @endif
-                                                    
                                                   @endforeach
                                                 </select>
                                                 <div class="input-group-append">
