@@ -55,7 +55,7 @@
                                                 <tbody>
                                                 <tr>
                                                 <td>{{$row['id']}}</td> 
-                                                <td>{{$row->member['package_name']}}</td>    
+                                                <td>{{$row->member->package['package_name']}}</td>    
                                                 <td>{{$row->member->package['amount']}}</td>
                                                 <td>{{$row['member_id']}}</td>
                                                 <td>{{$row->member['first_name']}}</td>
@@ -79,7 +79,7 @@
                                               @endif
                                               <div class="input-group  mb-3">
                                                 <select name="member_id" id="member_id" class="form-control">
-                                                  <option selected disabled>Select the Cupon ID</option>
+                                                  <option selected disabled>Select Member ID</option>
                                                   @foreach ($members as $member)
                                                     @if($member->package_counter	== "1")
                                                     <option value="{{$member->id }}">"{{ $member->id }}"</option>

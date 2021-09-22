@@ -67,6 +67,8 @@ class MemberController extends Controller
         }
     }
 
+
+    
     public function getPackage()
     {
         $data = ['member'=>Member::where('id','=',session('members'))->first()];
@@ -77,7 +79,7 @@ class MemberController extends Controller
      public function setPackage(Request $req)
      {
         $req->validate([
-            'package_name'=> 'required'
+            'package_id'=> 'required'
         ]);
         $data = ['member'=>Member::where('id','=',session('members'))->first()];
         // $data['member'] ->id = $req->id ;
@@ -86,7 +88,7 @@ class MemberController extends Controller
         //$data['member']->$package->id = $req->id ;
         //$package_save = $package->save(); 
         $data['member'] ->package_id = $req->package_id ;  
-        $data['member'] ->package_name = $req->package_name ;
+        // $data['member'] ->package_name = $req->package_name ;
         $data['member'] ->package_counter = "1" ;
         $package = $data['member']->save();
         if($package)

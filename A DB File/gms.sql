@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 20, 2021 at 02:32 PM
+-- Generation Time: Sep 21, 2021 at 06:21 PM
 -- Server version: 10.4.18-MariaDB
 -- PHP Version: 7.3.27
 
@@ -53,7 +53,7 @@ CREATE TABLE `members` (
   `password` varchar(222) COLLATE utf8mb4_unicode_ci NOT NULL,
   `package_name` varchar(222) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `package_counter` int(11) DEFAULT NULL,
-  `package_id` int(222) NOT NULL,
+  `package_id` int(222) DEFAULT NULL,
   `payment_type` varchar(222) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `amount` int(222) DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
@@ -65,13 +65,15 @@ CREATE TABLE `members` (
 --
 
 INSERT INTO `members` (`id`, `first_name`, `last_name`, `email`, `phone`, `trainer_id`, `password`, `package_name`, `package_counter`, `package_id`, `payment_type`, `amount`, `created_at`, `updated_at`) VALUES
-(1, 'Mohammad Nazmul', 'Hoque', 'nazmul34@gmail.com', 1780882914, NULL, '$2y$10$b8BEHGKhVLZc6JlZ67Za3e9NlHE6B41roxt.bKdUeZimFeEV2NGdC', NULL, 0, 0, '', NULL, '2021-09-19 08:16:59', '2021-09-19 08:16:59'),
-(2, 'Sharman akter', 'Mumu', 'mumubaal9@gmail.com', 1780882914, 14, '$2y$10$nvVUTp8EM/h6IcLuQETZF.iaN8gVZbwAzdW.4IVFxzyblFUXr9T.2', NULL, 0, 0, '', NULL, '2021-09-19 08:17:27', '2021-09-19 08:17:27'),
-(3, 'Md Samiul', 'Hoque', 'samiulsiam59@gmail.com', 1325435, NULL, '$2y$10$kc71CZGj2SCAxlULTgMKyeYoXxmWYGCYUCNgbFLHMypf0JgmOyB1G', NULL, 0, 0, '', NULL, '2021-09-19 08:48:56', '2021-09-20 01:41:08'),
-(4, 'Md, Aminul', 'Hoque', 'Amnul121@gmail.com', 1111, NULL, '$2y$10$cTU2IwxSK6N0X1jkkWsr5ecfXOoGjLuevSOQHuKYuT5JKID0/2dVe', 'BP', 1, 0, '', NULL, '2021-09-19 08:49:18', '2021-09-20 02:20:23'),
-(5, 'Md Al amin', 'Hossain', 'anamul145@gmail.com', 1780882914, NULL, '$2y$10$EAWln3i7CdmGIQJQj5Truud/ZLdIc141wWxL6DrG4VdATZpjQXa02', NULL, 0, 0, '', NULL, '2021-09-19 08:49:41', '2021-09-19 08:49:41'),
-(6, 'Raihan', 'Hoque', 'raihan54@gmail.com', 1111, NULL, '$2y$10$hxnP/IBCCpZ72A44uErTIOa/EKYFf1DnqurtazrE9gbWbKNEYWMZC', NULL, 0, 0, '', NULL, '2021-09-19 08:50:00', '2021-09-19 08:50:00'),
-(7, 'Rafiur', 'Hoque', 'Rafiur12@gmail.com', 1780882914, NULL, '$2y$10$ijEBsFOV9ifrM5VTuDxiPu2/A4HDg9jcPJXsfDk2uH.2U/DGhT3l6', NULL, 0, 0, '', NULL, '2021-09-19 08:50:14', '2021-09-19 08:50:14');
+(1, 'Mohammad Nazmul', 'Hoque', 'nazmul34@gmail.com', 1780882914, NULL, '$2y$10$b8BEHGKhVLZc6JlZ67Za3e9NlHE6B41roxt.bKdUeZimFeEV2NGdC', '90% discount', 1, 1, '', NULL, '2021-09-19 08:16:59', '2021-09-21 04:22:55'),
+(2, 'Sharman akter', 'Mumu', 'mumucute9@gmail.com', 1780882914, 14, '$2y$10$nvVUTp8EM/h6IcLuQETZF.iaN8gVZbwAzdW.4IVFxzyblFUXr9T.2', 'Alesha Card Offer', 1, 7, '', NULL, '2021-09-19 08:17:27', '2021-09-21 00:37:37'),
+(3, 'Samiul', 'Hoque', 'samiulsiam59@gmail.com', 1325435, NULL, '$2y$10$kc71CZGj2SCAxlULTgMKyeYoXxmWYGCYUCNgbFLHMypf0JgmOyB1G', '12% discount', 1, 1, '', NULL, '2021-09-19 08:48:56', '2021-09-21 00:39:46'),
+(4, 'Mohmmad, Aminul', 'Hoque', 'Amnul121@gmail.com', 1111, NULL, '$2y$10$cTU2IwxSK6N0X1jkkWsr5ecfXOoGjLuevSOQHuKYuT5JKID0/2dVe', '50% discount', 1, 4, '', NULL, '2021-09-19 08:49:18', '2021-09-21 00:40:17'),
+(5, 'Md Al amin', 'Hossain', 'anamul145@gmail.com', 1780882914, NULL, '$2y$10$EAWln3i7CdmGIQJQj5Truud/ZLdIc141wWxL6DrG4VdATZpjQXa02', '90% discount', 1, 2, '', NULL, '2021-09-19 08:49:41', '2021-09-20 22:30:22'),
+(6, 'Raihan', 'Hoque', 'raihan54@gmail.com', 1781579751, NULL, '$2y$10$hxnP/IBCCpZ72A44uErTIOa/EKYFf1DnqurtazrE9gbWbKNEYWMZC', 'BP', 1, 3, '', NULL, '2021-09-19 08:50:00', '2021-09-21 00:42:50'),
+(7, 'Rafiur', 'Hoque', 'Rafiur12@gmail.com', 1780882914, NULL, '$2y$10$ijEBsFOV9ifrM5VTuDxiPu2/A4HDg9jcPJXsfDk2uH.2U/DGhT3l6', NULL, 0, 0, '', NULL, '2021-09-19 08:50:14', '2021-09-19 08:50:14'),
+(8, 'Mohammad Shariful', 'Khan', 'Shariful69@gmail.com', 1992569682, NULL, '$2y$10$ww2Y1tLOq0xJixmQY29mfe1ULf8ISEEmyOrfVFcG5OnwDPklt1yya', NULL, NULL, NULL, NULL, NULL, '2021-09-21 00:31:12', '2021-09-21 04:43:47'),
+(9, 'Anik', 'vii', 'Atowar14@gmail.com', 12314253, NULL, '$2y$10$77ySe89WG6nZd/mmfwAmh.ccUckIc2Pn3oNAnE/yJk9uehmE3EFUW', 'Alesha Card Offer', 1, 7, NULL, NULL, '2021-09-21 04:14:55', '2021-09-21 04:18:05');
 
 -- --------------------------------------------------------
 
@@ -147,10 +149,11 @@ CREATE TABLE `password_resets` (
 
 CREATE TABLE `payments` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `trainer_id` int(11) DEFAULT NULL,
+  `package_id` int(11) DEFAULT NULL,
   `package_name` varchar(111) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `member_id` int(11) DEFAULT NULL,
   `member_name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `amount` int(222) DEFAULT NULL,
   `payment_type` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
@@ -160,8 +163,15 @@ CREATE TABLE `payments` (
 -- Dumping data for table `payments`
 --
 
-INSERT INTO `payments` (`id`, `trainer_id`, `package_name`, `member_id`, `member_name`, `payment_type`, `created_at`, `updated_at`) VALUES
-(1, NULL, NULL, NULL, NULL, 'card', '2021-09-20 02:31:21', '2021-09-20 02:31:21');
+INSERT INTO `payments` (`id`, `package_id`, `package_name`, `member_id`, `member_name`, `amount`, `payment_type`, `created_at`, `updated_at`) VALUES
+(1, NULL, NULL, 4, NULL, NULL, 'Cash', '2021-09-20 11:37:40', '2021-09-20 11:37:40'),
+(2, NULL, NULL, 2, NULL, NULL, 'Cash', '2021-09-20 11:44:32', '2021-09-20 11:44:32'),
+(3, NULL, NULL, 4, NULL, NULL, 'Bkash', '2021-09-20 22:27:47', '2021-09-20 22:27:47'),
+(4, NULL, NULL, 3, NULL, NULL, 'card', '2021-09-20 23:19:54', '2021-09-20 23:19:54'),
+(5, NULL, NULL, 6, NULL, NULL, 'Bkash', '2021-09-20 23:40:58', '2021-09-20 23:40:58'),
+(6, NULL, NULL, 5, NULL, NULL, 'cash', '2021-09-20 23:41:33', '2021-09-20 23:41:33'),
+(7, NULL, NULL, 9, NULL, NULL, 'Card', '2021-09-21 04:20:56', '2021-09-21 04:20:56'),
+(8, NULL, NULL, 1, NULL, NULL, 'Bkash', '2021-09-21 04:23:53', '2021-09-21 04:23:53');
 
 -- --------------------------------------------------------
 
@@ -316,7 +326,7 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT for table `members`
 --
 ALTER TABLE `members`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `migrations`
@@ -334,7 +344,7 @@ ALTER TABLE `packages`
 -- AUTO_INCREMENT for table `payments`
 --
 ALTER TABLE `payments`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `personal_access_tokens`

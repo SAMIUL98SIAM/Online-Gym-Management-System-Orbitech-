@@ -65,7 +65,7 @@
                                                       </div>
                                                   @endif
                                                   @if($member->package_counter=="1")
-                                                     <h4 style="color: crimson ; margin-bottom:12px;"> You have taken these <b style="color: blanchedalmond"> "{{ $member['package_name'] }}" </b> packages. You have only choose 1 package</h4>  
+                                                     <h4 style="color: crimson ; margin-bottom:12px;"> You have taken these <b style="color: blanchedalmond"> "{{ $member->package['package_name'] }}" </b> packages. You have only choose 1 package</h4>  
                                                   @endif
                                                   {{-- <h2> You have taken {{ $member['last_name'] }}< packages</h2> --}}
                                                   <div class="input-group  mb-3">
@@ -79,10 +79,10 @@
                                                     <span class="text-danger">@error('member_id'){{ $message }}@enderror</span>
                                                   </div>
                                                   <div class="input-group  mb-3">
-                                                    <select name="package_name" id="package_name" class="form-control">
+                                                    <select name="package_id" id="package_id" class="form-control">
                                                       <option selected disabled>Package List</option>
                                                       @foreach ( $packages as $package)
-                                                        <option value="{{$package->package_name }}">" '{{ $package->id }}' : {{$package->package_name}}"</option>
+                                                        <option value="{{$package->id }}">" '{{ $package->id }}' : {{$package->package_name}}"</option>
                                                       @endforeach
                                                     </select>
                                                     <div class="input-group-append">
@@ -92,7 +92,7 @@
                                                     </div>
                                                     <span class="text-danger">@error('package_name'){{ $message }}@enderror</span>
                                                   </div>
-                                                  <div class="input-group  mb-3">
+                                                  {{-- <div class="input-group  mb-3">
                                                     <select name="package_id" id="package_id" class="form-control">
                                                       <option selected disabled>Select the Cupon ID</option>
                                                       @foreach ( $packages as $package)
@@ -105,11 +105,14 @@
                                                       </div>
                                                     </div>
                                                     <span class="text-danger">@error('package_id'){{ $message }}@enderror</span>
-                                                  </div>                                                  
+                                                  </div>--}}
                                                  <div class="row">
                                                   <!-- /.col -->
-                                                  <div class="col-5">
+                                                  <div class="col-4">
                                                     <button style="color: white" type="submit" class="btn btn-primary btn-block">Get these Package</button>
+                                                  </div>
+                                                  <div class="col-4">
+                                                    <a style="color: white" href="/memberPayment" class="btn btn-primary btn-block">If you get package then go throw the Payment</a>
                                                   </div>
                                                 </div>
                                               </form>

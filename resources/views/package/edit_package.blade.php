@@ -4,23 +4,23 @@
 		<meta charset="utf-8">
 		<meta name="description" content="">
 		<title></title>
-		<link rel="manifest" href="site.webmanifest">
-		<link rel="apple-touch-icon" href="icon.png">
+		<link rel="manifest" href="/site.webmanifest">
+		<link rel="apple-touch-icon" href="/icon.png">
 		<!-- Place favicon.ico in the root directory -->
-		<link rel="stylesheet" href="css/normalize.css">
-		<link rel="stylesheet" href="css/responsive.css">
-		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-		<link rel="stylesheet" href="css/all.min.css">
-		<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
-		<link rel="stylesheet" href="css/main.css">
-        <link rel="stylesheet" href="css/style.css"/>
-        <link rel="stylesheet" href="css/sweetalert.css"/> 
-        <link rel="stylesheet" href="css/toastr.css"/> 
-        <link rel="stylesheet" href="css/toastr.min.css"/>
+		<link rel="stylesheet" href="/css/normalize.css">
+		<link rel="stylesheet" href="/css/responsive.css">
+		<link rel="stylesheet" href="/https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+		<link rel="stylesheet" href="/css/all.min.css">
+		<link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
+		<link rel="stylesheet" href="/css/main.css">
+        <link rel="stylesheet" href="/css/style.css"/>
+        <link rel="stylesheet" href="/css/sweetalert.css"/> 
+        <link rel="stylesheet" href="/css/toastr.css"/> 
+        <link rel="stylesheet" href="/css/toastr.min.css"/>
 	</head>
 	<title></title>
 	<body>
-		<div class="jumbotron" style=" background: url('img/gym2.jpg');background-size:cover;height:200px;backgorund-repeat:no-repeat; height:300px;"></div>
+		<div class="jumbotron" style=" background: url('/img/gym2.jpg');background-size:cover;height:200px;backgorund-repeat:no-repeat; height:300px;"></div>
         <div class="container">
             <div class="row">
                 {{--New member registration form--}}
@@ -91,10 +91,10 @@
         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
         <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
         </svg>
-		<script src="js/vendor/modernizr-3.11.2.min.js"></script>
-		<script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
-		<script src="js/plugins.js"></script>
-		<script type="text/javascript" src="js/popper.min.js"></script>
-		<script type="text/javascript" src="js/bootstrap.min.js"></script> 
+		<script src="/js/vendor/modernizr-3.11.2.min.js"></script>
+		<script type="text/javascript" src="/js/jquery-3.4.1.min.js"></script>
+		<script src="/js/plugins.js"></script>
+		<script type="text/javascript" src="/js/popper.min.js"></script>
+		<script type="text/javascript" src="/js/bootstrap.min.js"></script> 
 	</body>
 </html>

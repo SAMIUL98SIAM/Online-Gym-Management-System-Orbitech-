@@ -72,12 +72,12 @@
                             <h3 class="card-title card-title1">Register new members</h3>
                             <form method="post" enctype="multipart/form-data">
                              <input type="hidden" name="_token" value="{{csrf_token()}}">
-                              @if (Session::get('success'))
+                              @if(Session::get('success'))
                                     <div class="alert alert-success">
                                         {{ Session::get('success') }}
                                         {{ Session::put('success',null) }}
                                     </div>
-                                @endif
+                              @endif
                               <div class="input-group mb-3">
                                 <input type="text" name="first_name" value="{{old('first_name')}}" class="form-control" placeholder="First Name">
                                 <div class="input-group-append">

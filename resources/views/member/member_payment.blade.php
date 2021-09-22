@@ -43,8 +43,7 @@
                                                       {{ Session::get('success') }}
                                                   </div>
                                             @endif
-
-                                              <div class="input-group  mb-3">
+                                              {{-- <div class="input-group  mb-3">
                                                 <label>Yur ID:</label>
                                                 <input type="number" name="member_id" value="{{$member['id']}}" class="form-control" placeholder="Member Id" disabled>
                                                 <div class="input-group-append">
@@ -53,9 +52,9 @@
                                                   </div>
                                                 </div>
                                                 <span class="text-danger">@error('member_id'){{ $message }}@enderror</span>
-                                              </div>
+                                              </div> --}}
                                               <div class="input-group  mb-3">
-                                                <input type="text" name="package_name" value="{{$member['package_name']}}" class="form-control" placeholder="You have choose no package thats why you cant payment" disabled>
+                                                <input type="text" name="package_name" value="{{$member->package['package_name']}}" class="form-control" placeholder="You have choose no package thats why you cant payment" disabled>
                                                 <div class="input-group-append">
                                                   <div class="input-group-text">
                                                     <span class="fas fa-user"></span>
@@ -65,9 +64,12 @@
                                               </div>
                                               <div class="input-group  mb-3">
                                                 <select name="member_id" id="member_id" class="form-control">
-                                                  <option selected disabled>Choose Your ID No: {{$member['id']}}</option>
-                                                  @foreach ( $members as $member)
-                                                    <option value="{{$member->id }}">"{{ $member->id }}"</option>
+                                                  <option selected disabled>Please select Your ID</option>
+                                                  @foreach ( $members as $members)
+                                                     @if ($members->id == $member['id'])
+                                                     <option value="{{$member->id}}">"{{ $member->id }}"</option>
+                                                     @endif
+                                                    
                                                   @endforeach
                                                 </select>
                                                 <div class="input-group-append">

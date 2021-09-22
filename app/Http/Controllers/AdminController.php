@@ -155,10 +155,6 @@ class AdminController extends Controller
 
     //Member Part    
    
-
-
-
-
     // Trainer Part
     public function trainers_details()
     {
