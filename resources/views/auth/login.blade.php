@@ -1,29 +1,9 @@
-<!doctype html>
-<html class="no-js" lang="">
-	<head>
-		<meta charset="utf-8">
-		<meta name="description" content="">
-		<title></title>
-		<link rel="manifest" href="site.webmanifest">
-		<link rel="apple-touch-icon" href="icon.png">
-		<!-- Place favicon.ico in the root directory -->
-		<link rel="stylesheet" href="css/normalize.css">
-			<link rel="stylesheet" href="css/responsive.css">
-		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-		<link rel="stylesheet" href="css/all.min.css">
-		<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
-		<link rel="stylesheet" href="css/main.css">
-    <link rel="stylesheet" href="css/style.css"/>
-    <link rel="stylesheet" href="css/sweetalert.css"/> 
-    <link rel="stylesheet" href="css/toastr.css"/> 
-    <link rel="stylesheet" href="css/toastr.min.css"/> 
-	</head>
-	<title>Login Page</title>
-	<body style="background: url('img/gym1.jpg');background-size:cover;">
+@extends('layouts.app')
+    @section('content')
+	<body style="background: url('/img/gym1.jpg');background-size:cover;">
 		<div>
-			<!-- menu-start -->
-			<div class="container-fluid" style="margin-top: 46px;
-      ;">
+		<!-- menu-start -->
+		<div class="container-fluid" style="margin-top: 46px;">
         <div class="row">
           <div class="col-md-4">
             <div class="card login_card" style="border: 1px solid rgba(191, 184, 199, 0.349)">
@@ -36,7 +16,7 @@
                     @if (Session::get('fail'))
                       <div class="alert alert-danger">
                         {{ Session::get('fail') }}
-                      </div>    
+                      </div>
                     @endif
                     <div class="input-group mb-3">
                       <input type="email" name="email" value="{{old('email')}}" class="form-control" placeholder="Email">
@@ -56,7 +36,7 @@
                       </div>
                       <span class="text-danger">@error('password'){{ $message }}@enderror</span>
                     </div>
-                    <div class="row">    
+                    <div class="row">
                       <!-- /.col -->
                       <div class="col-4">
                         <button type="submit" class="btn btn-outline-success btn-block">Sign In</button>
@@ -76,12 +56,12 @@
             </div>
           </div>
         </div>
-			</div>
-    </div> 
-	  
-		
-		
-       @if(Session::has('messege'))
+	  </div>
+    </div>
+    @endsection
+
+    @section('scripts')
+        @if(Session::has('messege'))
        <script>
           var type="{{Session::get('alert-type','info')}}"
           switch(type)
@@ -101,9 +81,8 @@
           }
         </script>
         @endif
-       
 
-    <script>
+         <script>
             $(document).on("click", "#delete", function(e){
                 e.preventDefault();
                   var link = $(this).attr("href");
@@ -126,14 +105,4 @@
                 });
                 });
         </script>
-		<script src="js/vendor/modernizr-3.11.2.min.js"></script>
-		<script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
-		<script src="js/plugins.js"></script>
-		<script type="text/javascript" src="js/popper.min.js"></script>
-		<script type="text/javascript" src="js/bootstrap.min.js"></script> 
-		<script src="js/main.js"></script>
-    <script type="text/javascript" src="js/sweetalert.min.js"></script>
-    <script type="text/javascript" src="js/sweetalert.js"></script> 
-		<script type="text/javascript" src="js/toastr.min.js"></script>
-	</body>
-</html>
+    @endsection

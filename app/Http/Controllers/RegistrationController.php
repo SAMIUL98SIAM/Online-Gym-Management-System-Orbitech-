@@ -28,7 +28,7 @@ class RegistrationController extends Controller
         $user = new User ;
         $user->first_name = $req->first_name ;
         $user->last_name = $req->last_name ;
-        $user->email = $req->email ; 
+        $user->email = $req->email ;
         $user->phone =  $req->phone;
         $user->password = Hash::make($req->password) ;
         $user->member_id = $req->member_id ;
@@ -41,9 +41,9 @@ class RegistrationController extends Controller
             return back()->with('success','Registration successfully');
             redirect('/');
         }
-        else 
+        else
         {
             return back()->with('fail','try again');
-        }    
-    }    
+        }
+    }
 }

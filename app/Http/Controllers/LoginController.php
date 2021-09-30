@@ -19,39 +19,39 @@ class LoginController extends Controller
             'email'=> 'required|email',
             'password'=> 'required|min:5',
         ]);
-        
-        //Admin Authentication  
-        
-          
-        $userInfo = User::where('email','=',$req->email)->first(); 
+
+        //Admin Authentication
+
+
+        $userInfo = User::where('email','=',$req->email)->first();
         $memberInfo = Member::where('email','=',$req->email)->first();
-        $trainerInfo = Trainer::where('email','=',$req->email)->first();    
-                   
+        $trainerInfo = Trainer::where('email','=',$req->email)->first();
+
         if(!$userInfo && !$memberInfo && !$trainerInfo)
         {
             return back()->with('fail','We do not recognize your email address');
         }
-        else 
+        else
         {
             if($userInfo)
             {
                 if((Hash::check($req->password,$userInfo->password)))
                 {
                     $req->session()->put('users',$userInfo->id);
-                    return redirect('/adminPanel');
+                    return redirect('/Admin');
                 }
-                else 
+                else
                 {
                     return back()->with('fail','Incorrect password');
                 }
-            }   
+            }
             elseif($memberInfo){
                 if((Hash::check($req->password,$memberInfo->password)))
                 {
                     $req->session()->put('members',$memberInfo->id);
                     return redirect('/memberPanel');
                 }
-                else 
+                else
                 {
                     return back()->with('fail','Incorrect password');
                 }
@@ -60,20 +60,20 @@ class LoginController extends Controller
                 if((Hash::check($req->password,$trainerInfo->password)))
                 {
                     $req->session()->put('trainers',$trainerInfo->id);
-                    return redirect('/trainerPanel');
+                    return redirect('/Trainer');
                 }
-                else 
+                else
                 {
                     return back()->with('fail','Incorrect password');
                 }
             }
-            
-            // elseif($memberInfo) 
+
+            // elseif($memberInfo)
             // {
             //     if((Hash::check($req->password,$memberInfo->password)))
             //     {
             //         $req->session()->put('members',$memberInfo->id);
-            //         return redirect('/memberPanel');       
+            //         return redirect('/memberPanel');
             //         // if($userInfo->type=='admin')
             //         // {
             //         //     $req->session()->put('users',$userInfo->id);
@@ -83,36 +83,13 @@ class LoginController extends Controller
             //         // {
             //         //     $req->session()->put('users',$userInfo->id);
             //         //     return redirect('/memberPanel');
-            //         // }           
+            //         // }
             //     }
-            //     else 
+            //     else
             //     {
             //         return back()->with('fail','Incorrect password');
             //     }
             // }
         }
-       
-        //Admin Authentication
-
-        //Member Authentication
-
-        // $memberInfo = Member::where('email','=',$req->email)->first();
-
-        // if(!$memberInfo)
-        // {
-        //     return back()->with('fail','We do not recognize your email address');
-        // }
-        // else 
-        // {
-        //     if(Hash::check($req->password,$memberInfo->password))
-        //     {
-        //         $req->session()->put('members',$memberInfo->id);
-        //         return redirect('/memberPanel');
-        //     }
-        //     else 
-        //     {
-        //         return back()->with('fail','Incorrect password');
-        //     }
-        // }
     }
 }

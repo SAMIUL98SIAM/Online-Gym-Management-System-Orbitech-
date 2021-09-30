@@ -1,72 +1,240 @@
 <!doctype html>
 <html class="no-js" lang="">
 	<head>
-		<meta charset="utf-8">
-		<meta name="description" content="">
-		<title></title>
-		<link rel="manifest" href="site.webmanifest">
-		<link rel="apple-touch-icon" href="icon.png">
-		<link rel="stylesheet" href="css/normalize.css">
-		<link rel="stylesheet" href="css/responsive.css">
-		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-		<link rel="stylesheet" href="css/all.min.css">
-		<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
-		<link rel="stylesheet" href="css/main.css">
-    <link rel="stylesheet" href="css/style.css"/>
-    <link rel="stylesheet" href="css/style.css"/>
-    <link rel="stylesheet" href="css/sweetalert.css"/> 
-    <link rel="stylesheet" href="css/toastr.css"/> 
-    <link rel="stylesheet" href="css/toastr.min.css"/> 
-     <!-- SweetAlert2 -->
-    <link rel="stylesheet" href="plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css">
-    <!-- Toastr -->
-    <link rel="stylesheet" href="plugins/toastr/toastr.min.css">
-    <!-- Theme style -->
-    <link rel="stylesheet" href="dist/css/adminlte.min.css">
-</head>
+        <meta charset="utf-8">
+        <meta name="description" content="">
+        <title></title>
+        <link rel="manifest" href="/site.webmanifest">
+        <link rel="apple-touch-icon" href="{{asset('/icon.png')}}">
+        <!-- Place favicon.ico in the root directory -->
+        <link rel="stylesheet" href="{{asset('/css/normalize.css')}}">
+        <link rel="stylesheet" href="{{asset('/css/responsive.css')}}">
+        <link rel="stylesheet" href="/https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="{{asset('/css/all.min.css')}}">
+        <link rel="stylesheet" type="text/css" href="{{asset('/css/bootstrap.min.css')}}">
+        <link rel="stylesheet" href="{{asset('/css/main.css')}}">
+        <link rel="stylesheet" href="{{asset('/css/style.css')}}"/>
+        <link rel="stylesheet" href="{{asset('/css/sweetalert.css')}}"/>
+        <link rel="stylesheet" href="{{asset('/css/toastr.css')}}"/>
+         <link rel="stylesheet" href="{{asset('/css/toastr.min.css')}}"/>
+        <!-- SweetAlert2 -->
+        <link rel="stylesheet" href="{{ asset('/plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css') }}">
+        <!-- Toastr -->
+        <link rel="stylesheet" href="{{ asset('/plugins/toastr/toastr.min.css') }} ">
+        <!-- Theme style -->
+        <link rel="stylesheet" href="{{ asset('/dist/css/adminlte.min.css') }} ">
 	</head>
 	<title></title>
 	<body>
-		<div class="jumbotron" style="background: url('img/gym2.jpg');background-size:cover;height:200px;backgorund-repeat:no-repeat;"></div>
+		<div class="jumbotron" style="background: url('/img/gym2.jpg');background-size:cover;height:200px;backgorund-repeat:no-repeat;"></div>
         <div class="container-fluid">
             <div class="row">
-                <div class="col-md-3">
+                <div class="col-md-2">
                   {{--Member List Item--}}
                   <div class="list-group">
                     <a class="list-group-item list-group-item-action">Admin Name: {{ $user['first_name'] }}</a>
                   </div>
                   <hr/>
-                {{--Member List Item--}} 
+                {{--Member List Item--}}
                      {{--Member List Item--}}
                     <div class="list-group">
-                       
-                        <a href="/adminPanel" class="list-group-item list-group-item-action active">
+
+                        <a href="/admin/adminPanel" class="list-group-item list-group-item-action active">
                           Members
                         </a>
-                        <a href="/member_search" class="list-group-item list-group-item-action">Members Details</a>
-                        <a href="/package" class="list-group-item list-group-item-action">Package Details</a>
-                        <a href="/payment" class="list-group-item list-group-item-action">Payments</a>
+                        <a href="/admin/member_search" class="list-group-item list-group-item-action">Members Details</a>
+                        <a href="/admin/package" class="list-group-item list-group-item-action">Package Details</a>
+                        <a href="/admin/payment" class="list-group-item list-group-item-action">Payments</a>
                     </div>
-                    {{--Member List Item--}} 
-                    <hr/> 
-                    {{--Trainer List Item--}} 
+                    {{--Member List Item--}}
+                    <hr/>
+                    {{--Trainer List Item--}}
                     <div class="list-group">
-                      <a href="/addTrainer" class="list-group-item list-group-item-secondary">Trainer</a>
-                      <a href="/addTrainer" class="list-group-item list-group-item-secondary">Trainer Details</a>
-                      <a href="/addTrainer" class="list-group-item list-group-item-secondary">Add new Trainer</a>
+                      <a href="/admin/addTrainer" class="list-group-item list-group-item-secondary">Trainer</a>
+                      <a href="/admin/addTrainer" class="list-group-item list-group-item-secondary">Trainer Details</a>
+                      <a href="/admin/addTrainer" class="list-group-item list-group-item-secondary">Add new Trainer</a>
                     </div>
                      {{--Trainer List Item--}}
                      <hr/>
                      <div class="list-group">
                       <a href="/logout" id="logout" class="list-group-item list-group-item-secondary">Logout</a>
                       {{-- <a href="/trainer_details" class="list-group-item list-group-item-secondary">Trainer Details</a> --}}
-                    </div> 
+                    </div>
 
                 </div>
-                
-                {{-- <div id="toastsContainerTopRight" class="toasts-top-right fixed"><div class="toast fade show" role="alert" aria-live="assertive" aria-atomic="true"><div class="toast-header"><strong class="mr-auto">Toast Title</strong><button data-dismiss="toast" type="button" class="ml-2 mb-1 close" aria-label="Close"><span aria-hidden="true">×</span></button></div><div class="toast-body">Lorem ipsum dolor sit amet, consetetur sadipscing elitr.</div></div><div class="toast fade show" role="alert" aria-live="assertive" aria-atomic="true"><div class="toast-header"><i class="mr-2 fas fa-envelope fa-lg"></i><strong class="mr-auto">Toast Title</strong><small>Subtitle</small><button data-dismiss="toast" type="button" class="ml-2 mb-1 close" aria-label="Close"><span aria-hidden="true">×</span></button></div><div class="toast-body">Lorem ipsum dolor sit amet, consetetur sadipscing elitr.</div></div><div class="toast fade show" role="alert" aria-live="assertive" aria-atomic="true"><div class="toast-header"><strong class="mr-auto">Toast Title</strong><button data-dismiss="toast" type="button" class="ml-2 mb-1 close" aria-label="Close"><span aria-hidden="true">×</span></button></div><div class="toast-body">Lorem ipsum dolor sit amet, consetetur sadipscing elitr.</div></div><div class="toast bg-danger fade show" role="alert" aria-live="assertive" aria-atomic="true"><div class="toast-header"><strong class="mr-auto">Toast Title</strong><small>Subtitle</small><button data-dismiss="toast" type="button" class="ml-2 mb-1 close" aria-label="Close"><span aria-hidden="true">×</span></button></div><div class="toast-body">Lorem ipsum dolor sit amet, consetetur sadipscing elitr.</div></div></div> --}}
-                {{--New member registration form--}}
-                <div class="col-md-9">
+
+
+                <div class="col-md-10">
+                    <div class="card card1">
+                      <div class="card-header p-2">
+                        <ul class="nav nav-pills">
+                          <li class="nav-item"><a class="nav-link active" href="#activity" data-toggle="tab">Weekly</a></li>
+                          <li class="nav-item"><a class="nav-link" href="#settings" data-toggle="tab">Monthly</a></li>
+                          <li class="nav-item"><a class="nav-link" href="#" data-toggle="tab">Yearly</a></li>
+                          <li class="nav-item"><a class="nav-link" href="#" data-toggle="tab">Custom</a></li>
+                        </ul>
+                      </div><!-- /.card-header -->
+                    </div>
+                      <div class="card-body1">
+                              <!-- Content Wrapper. Contains page content -->
+                                  <div class="tab-content">
+                                      <div class="active tab-pane" id="activity">
+                                        <div class="row">
+                                          <div class="col-md-5">
+                                              <!-- AREA CHART -->
+                                              <div class="card card-primary">
+                                                <div class="card-header">
+                                                  <h3 class="card-title">Area Chart</h3>
+                                                   <div class="card-tools">
+                                                    <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                                                      <i class="fas fa-minus"></i>
+                                                    </button>
+                                                    <button type="button" class="btn btn-tool" data-card-widget="remove">
+                                                      <i class="fas fa-times"></i>
+                                                    </button>
+                                                  </div>
+                                                </div>
+                                                <div class="card-body1">
+                                                  <div class="chart">
+                                                    <canvas id="areaChart" style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
+                                                  </div>
+                                                </div>
+
+                                              </div>
+                                              <!-- /.card -->
+                                              <!-- DONUT CHART -->
+                                              <div class="card card-danger">
+                                                <div class="card-header">
+                                                  <h3 class="card-title">Donut Chart</h3>
+
+                                                  <div class="card-tools">
+                                                    <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                                                      <i class="fas fa-minus"></i>
+                                                    </button>
+                                                    <button type="button" class="btn btn-tool" data-card-widget="remove">
+                                                      <i class="fas fa-times"></i>
+                                                    </button>
+                                                  </div>
+                                                </div>
+                                                <div class="card-body1">
+                                                  <canvas id="donutChart" style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
+                                                </div>
+
+                                              </div>
+                                              <!-- /.card -->
+
+                                              <!-- PIE CHART -->
+                                              <div class="card card-danger">
+                                                <div class="card-header">
+                                                  <h3 class="card-title">Pie Chart</h3>
+
+                                                  <div class="card-tools">
+                                                    <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                                                      <i class="fas fa-minus"></i>
+                                                    </button>
+                                                    <button type="button" class="btn btn-tool" data-card-widget="remove">
+                                                      <i class="fas fa-times"></i>
+                                                    </button>
+                                                  </div>
+                                                </div>
+                                                <div class="card-body1">
+                                                  <canvas id="pieChart" style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
+                                                </div>
+
+                                              </div>
+                                              <!-- /.card -->
+                                          </div>
+                                          <!-- /.col (LEFT) -->
+                                          <div class="col-md-5">
+                                             <!-- LINE CHART -->
+                                          <div class="card card-info">
+                                            <div class="card-header">
+                                              <h3 class="card-title">Line Chart</h3>
+
+                                              <div class="card-tools">
+                                                <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                                                  <i class="fas fa-minus"></i>
+                                                </button>
+                                                <button type="button" class="btn btn-tool" data-card-widget="remove">
+                                                  <i class="fas fa-times"></i>
+                                                </button>
+                                              </div>
+                                            </div>
+                                            <div class="card-body1">
+                                              <div class="chart">
+                                                <canvas id="lineChart" style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
+                                              </div>
+                                            </div>
+                                            <!-- /.card-body -->
+                                          </div>
+                                          <!-- /.card -->
+
+                                          <!-- BAR CHART -->
+                                          <div class="card card-success">
+                                            <div class="card-header">
+                                              <h3 class="card-title">Bar Chart</h3>
+
+                                              <div class="card-tools">
+                                                <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                                                  <i class="fas fa-minus"></i>
+                                                </button>
+                                                <button type="button" class="btn btn-tool" data-card-widget="remove">
+                                                  <i class="fas fa-times"></i>
+                                                </button>
+                                              </div>
+                                            </div>
+                                            <div class="card-body1">
+                                              <div class="chart">
+                                                <canvas id="barChart" style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
+                                              </div>
+                                            </div>
+                                            <!-- /.card-body -->
+                                          </div>
+                                          <!-- /.card -->
+
+                                          <!-- STACKED BAR CHART -->
+                                          <div class="card card-success">
+                                            <div class="card-header">
+                                              <h3 class="card-title">Stacked Bar Chart</h3>
+
+                                              <div class="card-tools">
+                                                <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                                                  <i class="fas fa-minus"></i>
+                                                </button>
+                                                <button type="button" class="btn btn-tool" data-card-widget="remove">
+                                                  <i class="fas fa-times"></i>
+                                                </button>
+                                              </div>
+                                            </div>
+                                            <div class="card-body1">
+                                              <div class="chart">
+                                                <canvas id="stackedBarChart" style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
+                                              </div>
+                                            </div>
+                                            <!-- /.card-body -->
+                                          </div>
+                                          <!-- /.card -->
+                              </div>
+
+
+                          </div>
+                          <!-- /.tab-pane -->
+
+                          <!-- /.tab-pane -->
+                        </div>
+                         <div class="tab-pane" id="timeline">
+                         </div>
+                          <!-- /.tab-pane -->
+                          <div class="tab-pane" id="settings">
+                          </div>
+                        <!-- /.tab-content -->
+                      </div>
+
+                  <!-- /.col -->
+                </div>
+              </div>
+
+                {{-- <div class="col-md-9">
                     <div class="card">
                         <div class="card-body" style="border: 1px solid rgba(191, 184, 199, 0.349)">
                             <h3 class="card-title card-title1">Register new members</h3>
@@ -113,49 +281,20 @@
                                   </div>
                                 </div>
                                 <span class="text-danger">@error('phone'){{ $message }}@enderror</span>
-                              </div>             
+                              </div>
                               <div class="row">
-                                <!-- /.col -->
                                 <div class="col-5">
                                   <button style="color: white" type="submit" class="btn btn-primary btn-block">Add Member</button>
                                 </div>
-                                {{-- <button type="button" class="btn btn-default toastsDefaultMaroon">
-                                  Launch Full Toast (with icon)
-                                </button> --}}
                               </div>
-                            </form>	
+                            </form>
                         </div>
                     </div>
-                </div>
+                </div> --}}
             </div>
-        </div>     
+        </div>
    <!-- Content Wrapper. Contains page content -->
 
-          
-          <!-- Main content -->
-         
-                    {{-- <div class="card-body">
-                      <button type="button" class="btn btn-success swalDefaultSuccess">
-                        Launch Success Toast
-                      </button>
-                      <button type="button" class="btn btn-info swalDefaultInfo">
-                        Launch Info Toast
-                      </button>
-                      <button type="button" class="btn btn-danger swalDefaultError">
-                        Launch Error Toast
-                      </button>
-                      <button type="button" class="btn btn-warning swalDefaultWarning">
-                        Launch Warning Toast
-                      </button>
-                      <button type="button" class="btn btn-default swalDefaultQuestion">
-                        Launch Question Toast
-                      </button>
-                      <div class="text-muted mt-3">
-                        For more examples look at <a href="https://sweetalert2.github.io/">https://sweetalert2.github.io/</a>
-                      </div>
-                    </div>
-                 
-                  </div> --}}
 
                   @if(Session::has('messege'))
                   <script>
@@ -176,186 +315,21 @@
                              break;
                      }
                    </script>
-                   @endif          
-      
+                   @endif
 
 
-        <!-- jQuery -->
-        <script src="plugins/jquery/jquery.min.js"></script>
-        <!-- Bootstrap 4 -->
-        <script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-        <!-- SweetAlert2 -->
-        <script src="plugins/sweetalert2/sweetalert2.min.js"></script>
-        <!-- Toastr -->
-        <script src="plugins/toastr/toastr.min.js"></script>
-        <!-- AdminLTE App -->
-        <script src="dist/js/adminlte.min.js"></script>
-        <!-- AdminLTE for demo purposes -->
-        <script src="dist/js/demo.js"></script>
-        <!-- Page specific script -->
-        <script>
-          $(function() {
-            var Toast = Swal.mixin({
-              toast: true,
-              position: 'top-end',
-              showConfirmButton: false,
-              timer: 3000
-            });
 
-            $('.swalDefaultSuccess').click(function() {
-              Toast.fire({
-                icon: 'success',
-                title: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr.'
-              })
-            });
-            $('.swalDefaultInfo').click(function() {
-              Toast.fire({
-                icon: 'info',
-                title: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr.'
-              })
-            });
-            $('.swalDefaultError').click(function() {
-              Toast.fire({
-                icon: 'error',
-                title: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr.'
-              })
-            });
-            $('.swalDefaultWarning').click(function() {
-              Toast.fire({
-                icon: 'warning',
-                title: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr.'
-              })
-            });
-            $('.swalDefaultQuestion').click(function() {
-              Toast.fire({
-                icon: 'question',
-                title: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr.'
-              })
-            });
 
-            $('.toastrDefaultSuccess').click(function() {
-              toastr.success('Lorem ipsum dolor sit amet, consetetur sadipscing elitr.')
-            });
-            $('.toastrDefaultInfo').click(function() {
-              toastr.info('Lorem ipsum dolor sit amet, consetetur sadipscing elitr.')
-            });
-            $('.toastrDefaultError').click(function() {
-              toastr.error('Lorem ipsum dolor sit amet, consetetur sadipscing elitr.')
-            });
-            $('.toastrDefaultWarning').click(function() {
-              toastr.warning('Lorem ipsum dolor sit amet, consetetur sadipscing elitr.')
-            });
-
-            $('.toastsDefaultDefault').click(function() {
-              $(document).Toasts('create', {
-                title: 'Toast Title',
-                body: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr.'
-              })
-            });
-            $('.toastsDefaultTopLeft').click(function() {
-              $(document).Toasts('create', {
-                title: 'Toast Title',
-                position: 'topLeft',
-                body: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr.'
-              })
-            });
-            $('.toastsDefaultBottomRight').click(function() {
-              $(document).Toasts('create', {
-                title: 'Toast Title',
-                position: 'bottomRight',
-                body: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr.'
-              })
-            });
-            $('.toastsDefaultBottomLeft').click(function() {
-              $(document).Toasts('create', {
-                title: 'Toast Title',
-                position: 'bottomLeft',
-                body: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr.'
-              })
-            });
-            $('.toastsDefaultAutohide').click(function() {
-              $(document).Toasts('create', {
-                title: 'Toast Title',
-                autohide: true,
-                delay: 750,
-                body: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr.'
-              })
-            });
-            $('.toastsDefaultNotFixed').click(function() {
-              $(document).Toasts('create', {
-                title: 'Toast Title',
-                fixed: false,
-                body: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr.'
-              })
-            });
-            $('.toastsDefaultFull').click(function() {
-              $(document).Toasts('create', {
-                body: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr.',
-                title: 'Toast Title',
-                subtitle: 'Subtitle',
-                icon: 'fas fa-envelope fa-lg',
-              })
-            });
-            $('.toastsDefaultFullImage').click(function() {
-              $(document).Toasts('create', {
-                body: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr.',
-                title: 'Toast Title',
-                subtitle: 'Subtitle',
-                image: '../../dist/img/user3-128x128.jpg',
-                imageAlt: 'User Picture',
-              })
-            });
-            $('.toastsDefaultSuccess').click(function() {
-              $(document).Toasts('create', {
-                class: 'bg-success',
-                title: 'Toast Title',
-                subtitle: 'Subtitle',
-                body: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr.'
-              })
-            });
-            $('.toastsDefaultInfo').click(function() {
-              $(document).Toasts('create', {
-                class: 'bg-info',
-                title: 'Toast Title',
-                subtitle: 'Subtitle',
-                body: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr.'
-              })
-            });
-            $('.toastsDefaultWarning').click(function() {
-              $(document).Toasts('create', {
-                class: 'bg-warning',
-                title: 'Toast Title',
-                subtitle: 'Subtitle',
-                body: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr.'
-              })
-            });
-            $('.toastsDefaultDanger').click(function() {
-              $(document).Toasts('create', {
-                class: 'bg-danger',
-                title: 'Toast Title',
-                subtitle: 'Subtitle',
-                body: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr.'
-              })
-            });
-            $('.toastsDefaultMaroon').click(function() {
-              $(document).Toasts('create', {
-                class: 'bg-maroon',
-                title: 'Toast Title',
-                subtitle: 'Subtitle',
-                body: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr.'
-              })
-            });
-          });
-    </script>
-		<script src="js/vendor/modernizr-3.11.2.min.js"></script>
-		<script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
-		<script src="js/plugins.js"></script>
-		<script type="text/javascript" src="js/popper.min.js"></script>
-		<script type="text/javascript" src="js/bootstrap.min.js"></script> 
-    <script type="text/javascript" src="js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="js/sweetalert.min.js"></script>
-    <script type="text/javascript" src="js/sweetalert.js"></script> 
-		<script type="text/javascript" src="js/toastr.min.js"></script>
-    <script src="js/main.js"></script>
+	{{-- {{ asset('') }} --}}
+    <script src="{{ asset('/js/vendor/modernizr-3.11.2.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('/js/jquery-3.4.1.min.js') }}"></script>
+    <script src="{{ asset('/js/plugins.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('/js/popper.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('/js/bootstrap.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('/js/bootstrap.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('/js/sweetalert.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('/js/sweetalert.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('/js/toastr.min.js') }}"></script>
+    <script src="{{ asset('/js/main.js') }}"></script>
 	</body>
 </html>

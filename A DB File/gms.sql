@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 21, 2021 at 06:21 PM
+-- Generation Time: Sep 24, 2021 at 06:17 PM
 -- Server version: 10.4.18-MariaDB
 -- PHP Version: 7.3.27
 
@@ -65,15 +65,16 @@ CREATE TABLE `members` (
 --
 
 INSERT INTO `members` (`id`, `first_name`, `last_name`, `email`, `phone`, `trainer_id`, `password`, `package_name`, `package_counter`, `package_id`, `payment_type`, `amount`, `created_at`, `updated_at`) VALUES
-(1, 'Mohammad Nazmul', 'Hoque', 'nazmul34@gmail.com', 1780882914, NULL, '$2y$10$b8BEHGKhVLZc6JlZ67Za3e9NlHE6B41roxt.bKdUeZimFeEV2NGdC', '90% discount', 1, 1, '', NULL, '2021-09-19 08:16:59', '2021-09-21 04:22:55'),
-(2, 'Sharman akter', 'Mumu', 'mumucute9@gmail.com', 1780882914, 14, '$2y$10$nvVUTp8EM/h6IcLuQETZF.iaN8gVZbwAzdW.4IVFxzyblFUXr9T.2', 'Alesha Card Offer', 1, 7, '', NULL, '2021-09-19 08:17:27', '2021-09-21 00:37:37'),
-(3, 'Samiul', 'Hoque', 'samiulsiam59@gmail.com', 1325435, NULL, '$2y$10$kc71CZGj2SCAxlULTgMKyeYoXxmWYGCYUCNgbFLHMypf0JgmOyB1G', '12% discount', 1, 1, '', NULL, '2021-09-19 08:48:56', '2021-09-21 00:39:46'),
-(4, 'Mohmmad, Aminul', 'Hoque', 'Amnul121@gmail.com', 1111, NULL, '$2y$10$cTU2IwxSK6N0X1jkkWsr5ecfXOoGjLuevSOQHuKYuT5JKID0/2dVe', '50% discount', 1, 4, '', NULL, '2021-09-19 08:49:18', '2021-09-21 00:40:17'),
-(5, 'Md Al amin', 'Hossain', 'anamul145@gmail.com', 1780882914, NULL, '$2y$10$EAWln3i7CdmGIQJQj5Truud/ZLdIc141wWxL6DrG4VdATZpjQXa02', '90% discount', 1, 2, '', NULL, '2021-09-19 08:49:41', '2021-09-20 22:30:22'),
-(6, 'Raihan', 'Hoque', 'raihan54@gmail.com', 1781579751, NULL, '$2y$10$hxnP/IBCCpZ72A44uErTIOa/EKYFf1DnqurtazrE9gbWbKNEYWMZC', 'BP', 1, 3, '', NULL, '2021-09-19 08:50:00', '2021-09-21 00:42:50'),
-(7, 'Rafiur', 'Hoque', 'Rafiur12@gmail.com', 1780882914, NULL, '$2y$10$ijEBsFOV9ifrM5VTuDxiPu2/A4HDg9jcPJXsfDk2uH.2U/DGhT3l6', NULL, 0, 0, '', NULL, '2021-09-19 08:50:14', '2021-09-19 08:50:14'),
+(1, 'Mohammad Nazmul', 'Hoque', 'nazmul34@gmail.com', 1780882914, NULL, '$2y$10$b8BEHGKhVLZc6JlZ67Za3e9NlHE6B41roxt.bKdUeZimFeEV2NGdC', NULL, NULL, NULL, '', NULL, '2021-09-19 08:16:59', '2021-09-21 04:22:55'),
+(2, 'Sharman akter', 'Mumu', 'mumucute9@gmail.com', 1780882914, 14, '$2y$10$nvVUTp8EM/h6IcLuQETZF.iaN8gVZbwAzdW.4IVFxzyblFUXr9T.2', NULL, NULL, NULL, '', NULL, '2021-09-19 08:17:27', '2021-09-21 00:37:37'),
+(3, 'Samiul', 'Hoque', 'samiulsiam59@gmail.com', 1325435, NULL, '$2y$10$kc71CZGj2SCAxlULTgMKyeYoXxmWYGCYUCNgbFLHMypf0JgmOyB1G', NULL, 1, 5, '', NULL, '2021-09-19 08:48:56', '2021-09-22 04:07:30'),
+(4, 'Mohmmad, Aminul', 'Hoque', 'Amnul121@gmail.com', 1111, NULL, '$2y$10$cTU2IwxSK6N0X1jkkWsr5ecfXOoGjLuevSOQHuKYuT5JKID0/2dVe', NULL, 1, 3, '', NULL, '2021-09-19 08:49:18', '2021-09-21 00:40:17'),
+(5, 'Md Al amin', 'Hossain', 'anamul145@gmail.com', 1780882914, NULL, '$2y$10$EAWln3i7CdmGIQJQj5Truud/ZLdIc141wWxL6DrG4VdATZpjQXa02', NULL, 1, 2, '', NULL, '2021-09-19 08:49:41', '2021-09-20 22:30:22'),
+(6, 'Raihan', 'Hoque', 'raihan54@gmail.com', 9909779, NULL, '$2y$10$hxnP/IBCCpZ72A44uErTIOa/EKYFf1DnqurtazrE9gbWbKNEYWMZC', NULL, NULL, NULL, '', NULL, '2021-09-19 08:50:00', '2021-09-23 14:04:05'),
+(7, 'Rafiur', 'Hoque', 'Rafiur12@gmail.com', 1780882914, NULL, '$2y$10$ijEBsFOV9ifrM5VTuDxiPu2/A4HDg9jcPJXsfDk2uH.2U/DGhT3l6', NULL, 1, 1, '', NULL, '2021-09-19 08:50:14', '2021-09-21 21:48:56'),
 (8, 'Mohammad Shariful', 'Khan', 'Shariful69@gmail.com', 1992569682, NULL, '$2y$10$ww2Y1tLOq0xJixmQY29mfe1ULf8ISEEmyOrfVFcG5OnwDPklt1yya', NULL, NULL, NULL, NULL, NULL, '2021-09-21 00:31:12', '2021-09-21 04:43:47'),
-(9, 'Anik', 'vii', 'Atowar14@gmail.com', 12314253, NULL, '$2y$10$77ySe89WG6nZd/mmfwAmh.ccUckIc2Pn3oNAnE/yJk9uehmE3EFUW', 'Alesha Card Offer', 1, 7, NULL, NULL, '2021-09-21 04:14:55', '2021-09-21 04:18:05');
+(9, 'Anik', 'vii', 'Atowar14@gmail.com', 12314253, NULL, '$2y$10$77ySe89WG6nZd/mmfwAmh.ccUckIc2Pn3oNAnE/yJk9uehmE3EFUW', NULL, NULL, NULL, NULL, NULL, '2021-09-21 04:14:55', '2021-09-21 04:18:05'),
+(10, 'Mohammad Nazmul', 'Khan', 'samiulsm19@gmail.com', 123, NULL, '$2y$10$esJYBB0yviiKDAkXd/fMbeAfn/r2UCcsYaFZHbYav71jBdSUB42La', NULL, 1, 1, NULL, NULL, '2021-09-23 13:34:08', '2021-09-23 13:45:57');
 
 -- --------------------------------------------------------
 
@@ -120,14 +121,11 @@ CREATE TABLE `packages` (
 --
 
 INSERT INTO `packages` (`id`, `package_name`, `amount`, `created_at`, `updated_at`) VALUES
-(1, '12% discount', 150, '2021-09-09 04:37:19', '2021-09-11 13:03:03'),
-(2, '90% discount', 250, '2021-09-09 04:37:19', '2021-09-10 11:21:58'),
-(3, 'BP', 1214, '2021-09-11 06:55:19', '2021-09-11 06:55:19'),
-(4, '50% discount', 121, '2021-09-09 06:17:23', '2021-09-10 10:58:04'),
-(5, '1 % discount', 421, '2021-09-09 15:15:10', '2021-09-10 10:58:29'),
-(6, '90% discount', 390, '2021-09-10 10:33:04', '2021-09-11 06:53:34'),
-(7, 'Alesha Card Offer', 800, '2021-09-11 06:55:19', '2021-09-11 06:55:19'),
-(8, 'hot offer', 123, '2021-09-19 03:31:53', '2021-09-19 07:55:46');
+(1, '90% discount', 123, '2021-09-21 12:28:59', '2021-09-21 12:28:59'),
+(2, '50% discount', 432, '2021-09-21 12:29:13', '2021-09-21 12:29:13'),
+(3, 'Alesha Card Offer', 900, '2021-09-21 12:29:27', '2021-09-21 12:29:27'),
+(4, 'Hot Offer', 111, '2021-09-21 12:29:51', '2021-09-21 12:29:51'),
+(5, 'Alesha Card Offer', 980, '2021-09-22 04:06:45', '2021-09-22 04:06:45');
 
 -- --------------------------------------------------------
 
@@ -164,14 +162,13 @@ CREATE TABLE `payments` (
 --
 
 INSERT INTO `payments` (`id`, `package_id`, `package_name`, `member_id`, `member_name`, `amount`, `payment_type`, `created_at`, `updated_at`) VALUES
-(1, NULL, NULL, 4, NULL, NULL, 'Cash', '2021-09-20 11:37:40', '2021-09-20 11:37:40'),
-(2, NULL, NULL, 2, NULL, NULL, 'Cash', '2021-09-20 11:44:32', '2021-09-20 11:44:32'),
-(3, NULL, NULL, 4, NULL, NULL, 'Bkash', '2021-09-20 22:27:47', '2021-09-20 22:27:47'),
-(4, NULL, NULL, 3, NULL, NULL, 'card', '2021-09-20 23:19:54', '2021-09-20 23:19:54'),
-(5, NULL, NULL, 6, NULL, NULL, 'Bkash', '2021-09-20 23:40:58', '2021-09-20 23:40:58'),
-(6, NULL, NULL, 5, NULL, NULL, 'cash', '2021-09-20 23:41:33', '2021-09-20 23:41:33'),
-(7, NULL, NULL, 9, NULL, NULL, 'Card', '2021-09-21 04:20:56', '2021-09-21 04:20:56'),
-(8, NULL, NULL, 1, NULL, NULL, 'Bkash', '2021-09-21 04:23:53', '2021-09-21 04:23:53');
+(1, NULL, NULL, 4, NULL, NULL, 'Bkash', '2021-09-21 21:42:00', '2021-09-21 21:42:00'),
+(2, NULL, NULL, 5, NULL, NULL, 'Card', '2021-09-21 21:46:48', '2021-09-21 21:46:48'),
+(3, NULL, NULL, 7, NULL, NULL, 'card', '2021-09-21 21:49:06', '2021-09-21 21:49:06'),
+(4, NULL, NULL, 3, NULL, NULL, 'cash', '2021-09-21 23:35:15', '2021-09-21 23:35:15'),
+(5, NULL, NULL, 4, NULL, NULL, 'Bkash', '2021-09-22 04:08:27', '2021-09-22 04:08:27'),
+(7, NULL, NULL, 10, NULL, NULL, 'Bkash', '2021-09-23 13:51:55', '2021-09-23 13:51:55'),
+(8, NULL, NULL, 3, NULL, NULL, 'cash', '2021-09-23 14:01:56', '2021-09-23 14:01:56');
 
 -- --------------------------------------------------------
 
@@ -213,7 +210,8 @@ CREATE TABLE `trainers` (
 
 INSERT INTO `trainers` (`id`, `trainer_name`, `email`, `password`, `phone`, `created_at`, `updated_at`) VALUES
 (14, 'Alimullah', 'anikvi@gmail.com', '$2y$10$VT0Ujp1m9weA58eSxZXqiunWvXuhNDf9dfBW65ownRgxRWWGE5bQ2', 1780882914, '2021-09-18 10:52:04', '2021-09-18 10:52:04'),
-(15, 'tashfiq Zahid', 'tasgh14@gmail.com', '$2y$10$tPSJt6DmpHMfe2T3YvZX0.mpu2JANBVTNppmItYFW0o9cC3vFrjqi', 1780882914, '2021-09-19 03:29:19', '2021-09-19 03:29:19');
+(27, 'tashfiq Zahid', '18-38844-3@student.aiub.edu', '$2y$10$k0PTzlSSJ/zIPQxTa92yduKGpLzK6A1RmxXMZNp.g5KNQOsb07pNW', 1111, '2021-09-22 03:22:05', '2021-09-22 03:22:05'),
+(28, 'Eaffat', 'rajib113@student.aiub.edu', '$2y$10$Wg82QFIsFKQRwVFf4DkQouWVvUPRVBUBt1qU4.4aa6SQOX29IusQm', 1780882914, '2021-09-22 03:22:11', '2021-09-22 03:22:11');
 
 -- --------------------------------------------------------
 
@@ -326,7 +324,7 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT for table `members`
 --
 ALTER TABLE `members`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `migrations`
@@ -338,7 +336,7 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT for table `packages`
 --
 ALTER TABLE `packages`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `payments`
@@ -356,7 +354,7 @@ ALTER TABLE `personal_access_tokens`
 -- AUTO_INCREMENT for table `trainers`
 --
 ALTER TABLE `trainers`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
 -- AUTO_INCREMENT for table `users`

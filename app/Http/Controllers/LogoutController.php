@@ -38,5 +38,5 @@ class LogoutController extends Controller
         }
 
     }
-    
+
 }

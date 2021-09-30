@@ -36,37 +36,45 @@ Route::get('/trainerLogout',[LogoutController::class,'trainer_logout'])->name('t
 //orbitech
 
 Route::group(['middleware'=>['AuthCheck']] , function(){
-   
-    Route::get('/adminPanel', [AdminController::class,'index']);
-    Route::post('/adminPanel', [AdminController::class,'save_member']);
-    
-    Route::get('/member_search', [AdminController::class,'member_details'])->name('search.live_search');
+
+    Route::resource('/Admin', AdminController::class);
+    Route::get('/admin/adminPanel', [AdminController::class,'index']);
+    // Route::post('/admin/adminPanel', [AdminController::class,'save_member']);
+
+    Route::get('/admin/member_search', [AdminController::class,'member_details'])->name('search.live_search');
+    Route::post('/admin/member_search', [AdminController::class,'save_member'])->name('admin.add_member');
     Route::get('/member_search/action', [AdminController::class,'member_action'])->name('admin.memberaction');
 
 
-    Route::get('/editmember/{id}', [AdminController::class,'editmember'])->name('admin.editmember');
-    Route::post('/editmember/{id}', [AdminController::class,'member_update'])->name('admin.member_update');
+    Route::get('/admin/editmember/{id}', [AdminController::class,'editmember'])->name('admin.editmember');
+    Route::post('/admin/editmember/{id}', [AdminController::class,'member_update'])->name('admin.member_update');
+    // Route::get('/member_search/{id}', [AdminController::class,'member_details'])->name('search.live_search');
+    // Route::post('/member_search/{id}', [AdminController::class,'member_details'])->name('search.live_search');
+    Route::delete('delete-student/{id}', [AdminController::class, 'destroy_member']);
+
+
+    Route::get('/admin/addTrainer', [AdminController::class,'trainers_details'])->name('admin.trainers_details');
+    Route::post('/admin/addTrainer', [AdminController::class,'save_trainer'])->name('admin.save_trainer');
+    Route::get('/admin/edittrainer/{id}',[AdminController::class,'edit_trainer'])->name('admin.edit_trainer');
+    Route::post('/admin/edittrainer/{id}', [AdminController::class,'trainer_update'])->name('admin.trainer_update');
+
+    Route::get('/admin/deleteTrainer/{id}', [AdminController::class,'delete_trainer'])->name('admin.delete_trainer');
+    Route::post('/admin/deleteTrainer/{id}', [AdminController::class,'destroy_trainer'])->name('admin.destroy_trainer');
+
+
+    Route::get('/admin/payment', [PaymentController::class,'index']);
+    Route::post('/admin/payment', [PaymentController::class,'payment']);
 
 
 
-    Route::get('/addTrainer', [AdminController::class,'trainers_details'])->name('admin.trainers_details');
-    Route::post('/addTrainer', [AdminController::class,'save_trainer'])->name('admin.save_trainer');
-    Route::get('/edittrainer/{id}',[AdminController::class,'edit_trainer'])->name('admin.edit_trainer');
-    Route::post('/edittrainer/{id}', [AdminController::class,'trainer_update'])->name('admin.trainer_update');
+    Route::get('/admin/package', [PackageController::class,'index'])->name('package.index');
+    Route::post('/admin/admin/package', [PackageController::class,'package'])->name('package.add_package');
 
-    Route::get('/deleteTrainer/{id}', [AdminController::class,'delete_trainer'])->name('admin.delete_trainer');
-    Route::post('/deleteTrainer/{id}', [AdminController::class,'destroy_trainer'])->name('admin.destroy_trainer');
-    
+    Route::get('/admin/package/{id}', [PackageController::class,'delete_package'])->name('package.delete_package');
+    // Route::post('/package/{id}', [PackageController::class,'destroy_package'])->name('package.destroy_package');
 
-    Route::get('/payment', [PaymentController::class,'index']);
-    Route::post('/payment', [PaymentController::class,'payment']);
-
-
-
-    Route::get('/package', [PackageController::class,'index'])->name('package.index');
-    Route::post('/package', [PackageController::class,'package'])->name('package.add_package');
-    Route::get('/editpackage/{id}', [PackageController::class,'edit_package'])->name('package.edit_package');
-    Route::post('/editpackage/{id}', [PackageController::class,'update_package'])->name('package.update_package');
+    Route::get('/admin/editpackage/{id}', [PackageController::class,'edit_package'])->name('package.edit_package');
+    Route::post('/admin/editpackage/{id}', [PackageController::class,'update_package'])->name('package.update_package');
 });
 
 /*Member Part*/
@@ -83,9 +91,10 @@ Route::group(['middleware'=>['MemberCheck']],function(){
 
 /*Trainer Part*/
 Route::group(['middleware'=>['TrainerCheck']],function(){
-    Route::get('/trainerPanel', [TrainerController::class,'index'])->name('member.index');
-    Route::get('/trainerProfile', [TrainerController::class,'profile'])->name('trainer.profile');
-    Route::post('/trainerProfile', [TrainerController::class,'update_profile'])->name('trainer.update_profile');
+    Route::resource('/Trainer', TrainerController::class);
+    Route::get('/trainer/trainerPanel', [TrainerController::class,'index'])->name('member.index');
+    Route::get('/trainer/trainerProfile', [TrainerController::class,'profile'])->name('trainer.profile');
+    Route::post('/trainer/trainerProfile', [TrainerController::class,'update_profile'])->name('trainer.update_profile');
 });
 /*Trainer Part*/
 

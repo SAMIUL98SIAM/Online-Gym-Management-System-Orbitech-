@@ -18,7 +18,7 @@ class TrainerController extends Controller
         // echo "Welcome Member Dashboard";
         $data = ['trainer'=>Trainer::where('id','=',session('trainers'))->first()];
         Alert::success('You Successfully logged in','Success Message');
-        return view('trainer.trainer_panel',$data) ;   
+        return view('trainer.trainer_panel',$data) ;
         // return view('member.member_panel',$data)->with('member',$member);
         // return view('member.member_panel');
     }
@@ -32,7 +32,7 @@ class TrainerController extends Controller
         return view('trainer.profile',$data);
         // $id = session('id');
         // $memberInfo = Member::where('id',$id)->first();
-        // return view('member.profile')->with('memberInfo',$memberInfo);   
+        // return view('member.profile')->with('memberInfo',$memberInfo);
     }
 
     public function update_profile(Request $req)
@@ -45,21 +45,21 @@ class TrainerController extends Controller
         // $members = Member::find('id');
         $data = ['trainer'=>Trainer::where('id','=',session('trainers'))->first()];
         $data['trainer'] ->trainer_name = $req->trainer_name ;
-        $data['trainer'] ->email = $req->email ; 
+        $data['trainer'] ->email = $req->email ;
         $data['trainer'] ->phone = $req->phone;
         $trainerProfile = $data['trainer'] ->save();
         // $id = session('id');
         // $member = Member::find($id);
         // $member->first_name = $req->first_name ;
         // $member->last_name = $req->last_name ;
-        // $member->email = $req->email ; 
+        // $member->email = $req->email ;
         // $member->phone = $req->phone;
         //$memberProfile = $member->save();
         if($trainerProfile)
         {
             return back()->with('success','Hey '.$req->trainer_name.', Your Profile is Updated successfully');
         }
-        else 
+        else
         {
             return back()->with('fail','try again');
         }

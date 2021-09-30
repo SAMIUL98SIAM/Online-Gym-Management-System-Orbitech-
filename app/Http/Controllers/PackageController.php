@@ -60,7 +60,24 @@ class PackageController extends Controller
         else 
         {
             return back()->with('fail','try again');
-        }    
+        } 
+        
+        
     }
+
+         
+    public function delete_package($id){
+        $package = Package::find($id);
+        return view('package.index')->with('package',$package);
+    }
+
+    public function destroy_package(Request $req, $id){
+        $destroy_package =  Package::destroy($id);
+        if($destroy_package)
+        {
+            return redirect('/package')->with('fail',''.$req->package_name.' Package has been Deleted');
+
+        }
+    } 
     
 }

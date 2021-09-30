@@ -9,16 +9,16 @@
 <body>
 	<nav aria-label="breadcrumb" class="main-breadcrumb">
         <ol class="breadcrumb">
-         <button class="btn btn-primary"><li class="breadcrumb-item"><a style="text-decoration: none;color:white" href="/admin">Home</a></li></button> 
+         <button class="btn btn-primary"><li class="breadcrumb-item"><a style="text-decoration: none;color:white" href="/admin">Home</a></li></button>
         </ol>
       </nav>
-	
+
 	<div class="card" style="width: 18rem;" class="col-md-4" >
   <div class="card-body">
     <h5 class="card-title">{{$trainer_user->trainer_name}}</h5>
     <p class="card-text">{{$blog->discription}}</p>
     <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#exampleModal">Edit</button>
-    <a class="btn btn-danger" href="/blog/delete/{{$blog->id}}">Delete</a>		
+    <a class="btn btn-danger" href="/blog/delete/{{$blog->id}}">Delete</a>
   </div>
 </div>
 
@@ -30,7 +30,7 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-      	<form method="post" enctype="multipart/form-data"> 
+      	<form method="post" enctype="multipart/form-data">
       	<input type="hidden" name="_token" value="{{csrf_token()}}">
       	<table>
 		<tr>

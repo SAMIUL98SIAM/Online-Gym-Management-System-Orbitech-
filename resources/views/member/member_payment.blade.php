@@ -62,12 +62,12 @@
                                                 </div>
                                                 <span class="text-danger">@error('package_name'){{ $message }}@enderror</span>
                                               </div>
-                                              <div class="input-group  mb-3">
+                                              <div style="display: hidden;" class="input-group  mb-3">
                                                 <select name="member_id" id="member_id" class="form-control">
-                                                  <option selected disabled>Please select Your ID</option>
+                                                  {{-- <option  disabled>Please select Your ID</option> --}}
                                                   @foreach ( $members as $members)
                                                      @if ($members->id == $member['id'])
-                                                     <option value="{{$member->id}}">"{{ $member->id }}"</option>
+                                                     <option selected value="{{$member->id}}">"{{ $member->id }}"</option>
                                                      @endif
                                                   @endforeach
                                                 </select>
