@@ -75,29 +75,34 @@ class AdminController extends Controller
         $data = ['user'=>User::where('id','=',session('users'))->first()];
         return view('admin.member_details',$data);
     }
+    public function redirect_member()
+    {
+        $data = ['user'=>User::where('id','=',session('users'))->first()];
+        return redirect('/admin/member_search');
+    }
 
     // Search
     public function member_action(Request $request)
     {
             if($request->ajax())
             {
-            $output = '';
-            $query = $request->get('query');
+                $output = '';
+                $query = $request->get('query');
             if($query != '')
             {
-            $data = DB::table('members')
-                ->where('id', 'like', '%'.$query.'%')
-                ->orwhere('first_name', 'like', '%'.$query.'%')
-                ->orWhere('last_name', 'like', '%'.$query.'%')
-                ->orWhere('email', 'like', '%'.$query.'%')
-                ->orderBy('id', 'desc')
-                ->get();
+                $data = DB::table('members')
+                    ->where('id', 'like', '%'.$query.'%')
+                    ->orwhere('first_name', 'like', '%'.$query.'%')
+                    ->orWhere('last_name', 'like', '%'.$query.'%')
+                    ->orWhere('email', 'like', '%'.$query.'%')
+                    ->orderBy('id', 'desc')
+                    ->get();
             }
             else
             {
-            $data = DB::table('members')
-                ->orderBy('id', 'desc')
-                ->get();
+                $data = DB::table('members')
+                    ->orderBy('id', 'desc')
+                    ->get();
             }
             $total_row = $data->count();
             if($total_row > 0)
@@ -111,7 +116,7 @@ class AdminController extends Controller
                     <td>'.$row->last_name.'</td>
                     <td>'.$row->email.'</td>
                     <td><a href="/admin/editmember/'.$row->id.'" style="color: #fff" class="btn btn-sm btn-success btn-app"><i class="fas fa-edit"></i></a></td>
-                    <td><a href="/admin/deleteMember/'.$row->id.'" style="color: #fff" class="btn btn-sm btn-danger deletebtn btn-app"><i class="fas fa-trash"></i></a></td>
+                    <td><a href="/admin/deleteMember/'.$row->id.'" style="color: #fff" class="btn btn-sm btn-danger btn-app"><i class="fas fa-trash"></i></a></td>
                     </tr>'
                     ;
                 }
@@ -144,7 +149,7 @@ class AdminController extends Controller
         $validation = Validator::make($request->all(), [
             'first_name'=> 'required',
             'last_name'=> 'required',
-            'email'=> 'required|email|unique:users',
+            'email'=> 'required|email|unique:members|unique:users',
             'phone'=> 'required|max:11',
             // 'first_name'=> ['required'],
             // 'last_name'=> ['required'],
@@ -160,11 +165,11 @@ class AdminController extends Controller
         // }
         if($validation->fails()){
             // return response()->json(['status'=>400, 'errors'=>$validation->errors()->toArray()]);
-            return response()->json(['status'=>400, 'errors'=>$validation->errors()->toArray()]);
-            // return response()->json([
-            //     'status'=>400,
-            //     'errors'=>$validator->messages()
-            // ]);
+            // return response()->json(['status'=>400, 'errors'=>$validation->errors()->toArray()]);
+            return response()->json([
+                'status'=>400,
+                'errors'=>$validation->messages()
+            ]);
         }
         else {
             $member_user = new Member;
@@ -173,11 +178,18 @@ class AdminController extends Controller
             $member_user->email = $request->input('email');
             $member_user->phone = $request->input('phone');
             $member_user->password = Hash::make("orbitech") ;
-            $member_save = $member_user->save();
-            if($member_save)
-            {
-                return redirect('/admin/member_search')->with('success',''.$request->first_name.' Added successfully');
-            }
+            $member_user->save();
+            return response()->json([
+                'status'=>200,
+                'message'=>'Member Added Successfully.'
+            ]);
+            return redirect('/admin/member_search');
+            // return redirect('/admin/member_search')->with('success',''.$request->first_name.' Added successfully');
+            // $member_save = ;
+            // if($member_save)
+            // {
+            //     return redirect('/admin/member_search')->with('success',''.$request->first_name.' Added successfully');
+            // }
         }
     }
 
@@ -294,10 +306,8 @@ class AdminController extends Controller
     }
 
     public function delete_member($id){
-
-
         $member_user = Member::find($id);
-        return view('admin.member_details')->with('member_user',$member_user);
+        return view('admin.delete_member')->with('member_user',$member_user);
     }
 
     // public function destroy_member(Request $req, $id){
@@ -310,22 +320,30 @@ class AdminController extends Controller
     // }
     public function destroy_member($id)
     {
-        $member_user = Member::find($id);
-        if($member_user)
+        $destroy_member =  Member::destroy($id);
+        // $member_user = new Member ;
+        // $member_user->first_name = $req->first_name ;
+        if($destroy_member)
         {
-            $member_user->delete();
-            return response()->json([
-                'status'=>200,
-                'message'=>'Student Deleted Successfully.'
-            ]);
+            return redirect('/admin/member_search')->with('fail','Member has been Deleted');
+
         }
-        else
-        {
-            return response()->json([
-                'status'=>404,
-                'message'=>'No Student Found.'
-            ]);
-        }
+        // $member_user = Member::find($id);
+        // if($member_user)
+        // {
+        //     $member_user->delete();
+        //     return response()->json([
+        //         'status'=>200,
+        //         'message'=>'Student Deleted Successfully.'
+        //     ]);
+        // }
+        // else
+        // {
+        //     return response()->json([
+        //         'status'=>404,
+        //         'message'=>'No Student Found.'
+        //     ]);
+        // }
     }
 
 

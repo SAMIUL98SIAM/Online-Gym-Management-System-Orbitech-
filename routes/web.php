@@ -50,8 +50,8 @@ Route::group(['middleware'=>['AuthCheck']] , function(){
     Route::post('/admin/editmember/{id}', [AdminController::class,'member_update'])->name('admin.member_update');
     // Route::get('/member_search/{id}', [AdminController::class,'member_details'])->name('search.live_search');
     // Route::post('/member_search/{id}', [AdminController::class,'member_details'])->name('search.live_search');
-    Route::delete('delete-student/{id}', [AdminController::class, 'destroy_member']);
-
+    Route::get('/admin/deleteMember/{id}', [AdminController::class, 'delete_member'])->name('admin.delete_member');
+    Route::post('/admin/deleteMember/{id}', [AdminController::class, 'destroy_member'])->name('admin.destroy_member');
 
     Route::get('/admin/addTrainer', [AdminController::class,'trainers_details'])->name('admin.trainers_details');
     Route::post('/admin/addTrainer', [AdminController::class,'save_trainer'])->name('admin.save_trainer');

@@ -14,7 +14,7 @@
                     {{--Member List Item--}}
                     <hr/>
                 </div>
-
+                
                 {{--New member registration form--}}
                 <div class="col-md-9">
                     <div class="card">
@@ -40,16 +40,18 @@
                                                     <div class="modal-content">
                                                       <div class="modal-header" id="AddStudentModalLabel">
                                                         <h3 class="" style="color: #000" >Register new members</h3>
-                                                        <h5 class="modal-title" style="color: #000"  id="AddStudentModalLabel">Add Student Data</h5>
-                                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                        {{-- <h5 class="modal-title" style="color: #000"  id="AddStudentModalLabel">Add Student Data</h5>
+                                                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> --}}
+
                                                       </div>
                                                       <div class="modal-body">
                                                         <form id="contact-frm" action="{{ route('admin.add_member') }}">
                                                             <input type="hidden" id="token">
-                                                            @csrf
+                                                            {{-- @csrf --}}
                                                             {{-- value="{{ @csrf_token() }} --}}
                                                             {{-- {{ csrf_field() }} --}}
-                                                              <ul id="save_msgList"></ul>
+                                                             <ul id="save_msgList"></ul>
+                                                              <div id="success_message"></div>
                                                                 <div class="input-group mb-3">
                                                                  <input type="text" id="first_name" name="first_name" value="{{old('first_name')}}" required class="first_name form-control" placeholder="First Name">
                                                                  <div class="input-group-append">
@@ -103,7 +105,6 @@
                                         </div>
                                     </form>
 
-
                                      {{-- Delete Modal --}}
                                       <div class="modal fade" id="DeleteModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                           <div class="modal-dialog">
@@ -123,9 +124,6 @@
                                               </div>
                                           </div>
                                       </div>
-                                    
-
-
                                 </div>
                             </div>
                             <div class="row">
@@ -135,6 +133,13 @@
                                             <div class="alert alert-success">
                                                 {{ Session::get('success') }}
                                                 {{ Session::put('success',null) }}
+                                            </div>
+                                         @endif
+
+                                         @if(Session::get('fail'))
+                                            <div class="alert alert-danger">
+                                                {{ Session::get('fail') }}
+                                                {{ Session::put('fail',null) }}
                                             </div>
                                          @endif
                                         <thead>
@@ -166,7 +171,7 @@
          $(document).on('click', '.add_student', function (e) {
             e.preventDefault();
 
-            $(this).text('Sending..');
+            $(this).text('Sending...');
 
             var data = {
                 'first_name': $('.first_name').val(),
@@ -201,14 +206,17 @@
                        $('#save_msgList').html("");  
                         redirect('/admin/member_search');
                     } */
-                    else {
-                      
-                      /* $('#success_message').addClass('alert alert-success');
-                       $('#success_message').text(response.message);
-                       $('#AddStudentModal').find('input').val('');
-                       $('.add_student').text('Save');
-                       $('#AddStudentModal').modal('hide');*/
-                       member_details();
+                    else 
+                    {
+                        $('#save_msgList').html("");
+                        $('#save_msgList').addClass('alert alert-light');
+                        $('#success_message').addClass('alert alert-success');
+                        $('#success_message').text(response.message);
+                        $('#AddStudentModal').find('input').val('');
+                        $('.add_student').text('Member Saved');
+                       // $('#AddStudentModal').modal('hide');
+                        //edirect_member();
+                        //fetchstudent();
                        // fetchstudent();
                    }
                 }
@@ -218,7 +226,7 @@
   </script>
  
   <script>
-        $(document).on('click', '.deletebtn', function () {
+        /*$(document).on('click', '.deletebtn', function () {
             var stud_id = $(this).val();
             $('#DeleteModal').modal('show');
             $('#deleteing_id').val(stud_id);
@@ -256,11 +264,8 @@
                     }
                 }
             });
-        });
+        });*/
   </script>
-
-
-      
 
         {{-- <script>
             $(function(){
@@ -351,119 +356,9 @@
                     })
                 </script> --}}
                 {{--Form Validation--}}
-
      @endsection
 
 
 
 
 
-
-
-{{--
-
-<div class="modal fade" id="AddStudentModal" tabindex="-1" aria-labelledby="AddStudentModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="AddStudentModalLabel">Add Student Data</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-
-                <ul id="save_msgList"></ul>
-
-                <div class="form-group mb-3">
-                    <label for="">Full Name</label>
-                    <input type="text" required class="name form-control">
-                </div>
-                <div class="form-group mb-3">
-                    <label for="">Course</label>
-                    <input type="text" required class="course form-control">
-                </div>
-                <div class="form-group mb-3">
-                    <label for="">Email</label>
-                    <input type="text" required class="email form-control">
-                </div>
-                <div class="form-group mb-3">
-                    <label for="">Phone No</label>
-                    <input type="text" required class="phone form-control">
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary add_student">Save</button>
-            </div>
-
-        </div>
-    </div>
-</div>
- --}}
-
-
-
-
-
-
-
-{{--<div style="color: #000" class="modal fade" id="modal-default">
-                                                    <div class="modal-dialog">
-                                                      <div class="modal-content">
-                                                        <div class="modal-header">
-                                                          <h3 class="modal-title card-title1">Register new members</h3>
-                                                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                            <span aria-hidden="true">&times;</span>
-                                                          </button>
-                                                        </div>
-                                                        <div class="modal-body">
-                                                            <form action="{{ Route('admin.add_member') }}" method="post" id="add_member" enctype="multipart/form-data">
-                                                                  @csrf
-                                                                  <div class="input-group mb-3">
-                                                                   <input type="text" name="first_name" value="{{old('first_name')}}" class="form-control" placeholder="First Name">
-                                                                   <div class="input-group-append">
-                                                                     <div class="input-group-text">
-                                                                       <span class="fas fa-user"></span>
-                                                                     </div>
-                                                                   </div>
-                                                                   <span class="text-danger error-text first_name_error"></span>
-                                                                 </div>
-                                                                 <div class="input-group mb-3">
-                                                                   <input type="text" name="last_name" value="{{old('last_name')}}" class="form-control" placeholder="Last Name">
-                                                                   <div class="input-group-append">
-                                                                     <div class="input-group-text">
-                                                                       <span class="fas fa-user"></span>
-                                                                     </div>
-                                                                    </div>
-                                                                    <span class="text-danger error-text last_name_error"></span>
-                                                                 </div>
-                                                                 <div class="input-group mb-3">
-                                                                   <input type="email" name="email" value="{{old('email')}}" class="form-control" placeholder="Email">
-                                                                   <div class="input-group-append">
-                                                                     <div class="input-group-text">
-                                                                       <span class="fas fa-envelope"></span>
-                                                                     </div>
-                                                                   </div>
-                                                                   <span class="text-danger error-text email_error"></span>
-                                                                 </div>
-                                                                 <div class="input-group mb-3">
-                                                                   <input type="number" name="phone" value="{{old('phone')}}" class="form-control" placeholder="Phone">
-                                                                   <div class="input-group-append">
-                                                                     <div class="input-group-text">
-                                                                       <span class="fas fa-phone"></span>
-                                                                     </div>
-                                                                   </div>
-                                                                   <span class="text-danger error-text phone_error"></span>
-                                                                 </div>
-                                                                 <div class="row">
-                                                                   <div class="col-5">
-                                                                     <button style="color: white" type="submit" class="btn btn-primary btn-block">Add Member</button>
-                                                                   </div>
-                                                                 </div>
-                                                               </form>
-                                                        </div>
-                                                        <div class="modal-footer justify-content-between">
-                                                          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                                        </div>
-                                                      </div>
-                                                    </div>
-                                                  </div>---}}

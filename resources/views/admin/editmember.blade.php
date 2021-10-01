@@ -6,9 +6,10 @@
                 <div class="col-md-3">
                     {{--Trainer List Item--}}
                     <div class="list-group">
-                        <a href="/admin/adminPanel" class="list-group-item list-group-item-secondary">Trainer</a>
-                        <a href="/admin/member_search" class="list-group-item list-group-item-secondary">Trainer Details</a>
-                        <a href="/admin/admin/add_trainer" class="list-group-item list-group-item-secondary active">Add new Trainer</a>
+                        <a href="/admin/adminPanel" class="list-group-item list-group-item-action">Members</a>
+                        <a href="/admin/member_search" class="list-group-item list-group-item-action  active">Members Details</a>
+                        <a href="/admin/package" class="list-group-item list-group-item-action">Package Details</a>
+                        <a href="/admin/payment" class="list-group-item list-group-item-action">Payments</a>
                     </div>
                     {{--Member List Item--}}
                 </div>
