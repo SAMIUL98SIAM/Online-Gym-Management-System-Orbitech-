@@ -1,14 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
-use App\Models\User;
-use App\Models\Member;
+namespace App\Http\Controllers\Trainer;
+
+use App\Http\Controllers\Controller;
+
 use App\Models\Trainer;
-use App\Models\Package;
-use App\Models\Payment;
-use Illuminate\Support\Facades\Hash;
 use RealRashid\SweetAlert\Facades\Alert ;
-use DB ;
 use Illuminate\Http\Request;
 
 class TrainerController extends Controller

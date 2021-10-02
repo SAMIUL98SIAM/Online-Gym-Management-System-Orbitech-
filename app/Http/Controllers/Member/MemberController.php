@@ -1,6 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Member;
+
+use App\Http\Controllers\Controller;
 use App\Models\User;
 use App\Models\Member;
 use App\Models\Trainer;
@@ -73,7 +75,7 @@ class MemberController extends Controller
     {
         $data = ['member'=>Member::where('id','=',session('members'))->first()];
         $packages = Package::all();
-        return view('member.member_package',$data)->with('packages',$packages);
+        return view('member.package.member_package',$data)->with('packages',$packages);
     }
 
      public function setPackage(Request $req)
@@ -105,7 +107,7 @@ class MemberController extends Controller
    {
     $data = ['member'=>Member::where('id','=',session('members'))->first()];
     $members = Member::all();
-    return view('member.member_payment',$data)->with('members',$members);
+    return view('member.payment.member_payment',$data)->with('members',$members);
    }
 
     public function setPayment(Request $req)

@@ -13,7 +13,7 @@ class SiamController extends Controller
 {
     public function test()
     {
-        $trainer_users = Trainer::all();  
+        $trainer_users = Trainer::all();
         return view('admin.edit_trainer')->with('trainer_users',$trainer_users);
     }
 

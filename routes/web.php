@@ -1,13 +1,23 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\AdminController;
-use App\Http\Controllers\MemberController;
-use App\Http\Controllers\TrainerController;
+// Admin Controller
+use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Admin\MemberCrudController;
+use App\Http\Controllers\Admin\TrainerCrudController;
+use App\Http\Controllers\Admin\PaymentController;
+use App\Http\Controllers\Admin\PackageController;
+// Admin Controller
+
+// Member Controller
+use App\Http\Controllers\Member\MemberController;
+// Member Controller
+
+// Trainer Controller
+use App\Http\Controllers\Trainer\TrainerController;
+// Trainer Controller
+
 use App\Http\Controllers\RegistrationController;
-use App\Http\Controllers\PaymentController;
-use App\Http\Controllers\PackageController;
-use App\Http\Controllers\SiamController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\LogoutController;
 
@@ -41,25 +51,24 @@ Route::group(['middleware'=>['AuthCheck']] , function(){
     Route::get('/admin/adminPanel', [AdminController::class,'index']);
     // Route::post('/admin/adminPanel', [AdminController::class,'save_member']);
 
-    Route::get('/admin/member_search', [AdminController::class,'member_details'])->name('search.live_search');
-    Route::post('/admin/member_search', [AdminController::class,'save_member'])->name('admin.add_member');
-    Route::get('/member_search/action', [AdminController::class,'member_action'])->name('admin.memberaction');
+    Route::get('/admin/member_search', [MemberCrudController::class,'member_details'])->name('search.live_search');
+    Route::post('/admin/member_search', [MemberCrudController::class,'save_member'])->name('admin.add_member');
+    Route::get('/member_search/action', [MemberCrudController::class,'member_action'])->name('admin.memberaction');
 
-
-    Route::get('/admin/editmember/{id}', [AdminController::class,'editmember'])->name('admin.editmember');
-    Route::post('/admin/editmember/{id}', [AdminController::class,'member_update'])->name('admin.member_update');
+    Route::get('/admin/editmember/{id}', [MemberCrudController::class,'editmember'])->name('admin.editmember');
+    Route::post('/admin/editmember/{id}', [MemberCrudController::class,'member_update'])->name('admin.member_update');
     // Route::get('/member_search/{id}', [AdminController::class,'member_details'])->name('search.live_search');
     // Route::post('/member_search/{id}', [AdminController::class,'member_details'])->name('search.live_search');
-    Route::get('/admin/deleteMember/{id}', [AdminController::class, 'delete_member'])->name('admin.delete_member');
-    Route::post('/admin/deleteMember/{id}', [AdminController::class, 'destroy_member'])->name('admin.destroy_member');
+    Route::get('/admin/deleteMember/{id}', [MemberCrudController::class, 'delete_member'])->name('admin.delete_member');
+    Route::post('/admin/deleteMember/{id}', [MemberCrudController::class, 'destroy_member'])->name('admin.destroy_member');
 
-    Route::get('/admin/addTrainer', [AdminController::class,'trainers_details'])->name('admin.trainers_details');
-    Route::post('/admin/addTrainer', [AdminController::class,'save_trainer'])->name('admin.save_trainer');
-    Route::get('/admin/edittrainer/{id}',[AdminController::class,'edit_trainer'])->name('admin.edit_trainer');
-    Route::post('/admin/edittrainer/{id}', [AdminController::class,'trainer_update'])->name('admin.trainer_update');
+    Route::get('/admin/addTrainer', [TrainerCrudController::class,'trainers_details'])->name('admin.trainers_details');
+    Route::post('/admin/addTrainer', [TrainerCrudController::class,'save_trainer'])->name('admin.save_trainer');
+    Route::get('/admin/edittrainer/{id}',[TrainerCrudController::class,'edit_trainer'])->name('admin.edit_trainer');
+    Route::post('/admin/edittrainer/{id}', [TrainerCrudController::class,'trainer_update'])->name('admin.trainer_update');
 
-    Route::get('/admin/deleteTrainer/{id}', [AdminController::class,'delete_trainer'])->name('admin.delete_trainer');
-    Route::post('/admin/deleteTrainer/{id}', [AdminController::class,'destroy_trainer'])->name('admin.destroy_trainer');
+    Route::get('/admin/deleteTrainer/{id}', [TrainerCrudController::class,'delete_trainer'])->name('admin.delete_trainer');
+    Route::post('/admin/deleteTrainer/{id}', [TrainerCrudController::class,'destroy_trainer'])->name('admin.destroy_trainer');
 
     Route::get('/admin/payment', [PaymentController::class,'index']);
     Route::post('/admin/payment', [PaymentController::class,'payment']);

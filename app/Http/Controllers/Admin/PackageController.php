@@ -1,6 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
+
+use App\Http\Controllers\Controller;
 use App\Models\Package;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -11,8 +13,8 @@ class PackageController extends Controller
     {
        // return view('');
         $data = ['user'=>User::where('id','=',session('users'))->first()];
-        $packages = Package::all();  
-        return view('package.index',$data)->with('packages',$packages);
+        $packages = Package::all();
+        return view('admin.package.index',$data)->with('packages',$packages);
     }
 
     public function package(Request $req)
@@ -29,20 +31,20 @@ class PackageController extends Controller
         {
             return back()->with('success','Package Added successfully');
         }
-        else 
+        else
         {
             return back()->with('fail','try again');
-        }    
+        }
     }
 
     public function edit_package($id)
     {
        // return view('');
         $data = ['user'=>User::where('id','=',session('users'))->first()];
-        $package = Package::find($id);  
-        return view('package.edit_package',$data)->with('package',$package);
+        $package = Package::find($id);
+        return view('admin.package.edit_package',$data)->with('package',$package);
     }
-     
+
     public function update_package(Request $req,$id)
     {
         $req->validate([
@@ -57,18 +59,18 @@ class PackageController extends Controller
         {
             return back()->with('success','Package Modified');
         }
-        else 
+        else
         {
             return back()->with('fail','try again');
-        } 
-        
-        
+        }
+
+
     }
 
-         
+
     public function delete_package($id){
         $package = Package::find($id);
-        return view('package.index')->with('package',$package);
+        return view('admin.package.index')->with('package',$package);
     }
 
     public function destroy_package(Request $req, $id){
@@ -78,6 +80,6 @@ class PackageController extends Controller
             return redirect('/package')->with('fail',''.$req->package_name.' Package has been Deleted');
 
         }
-    } 
-    
+    }
+
 }
