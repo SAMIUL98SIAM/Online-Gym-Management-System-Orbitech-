@@ -183,7 +183,6 @@ class AdminController extends Controller
                 'status'=>200,
                 'message'=>'Member Added Successfully.'
             ]);
-            return redirect('/admin/member_search');
             // return redirect('/admin/member_search')->with('success',''.$request->first_name.' Added successfully');
             // $member_save = ;
             // if($member_save)

@@ -61,14 +61,11 @@ Route::group(['middleware'=>['AuthCheck']] , function(){
     Route::get('/admin/deleteTrainer/{id}', [AdminController::class,'delete_trainer'])->name('admin.delete_trainer');
     Route::post('/admin/deleteTrainer/{id}', [AdminController::class,'destroy_trainer'])->name('admin.destroy_trainer');
 
-
     Route::get('/admin/payment', [PaymentController::class,'index']);
     Route::post('/admin/payment', [PaymentController::class,'payment']);
 
-
-
     Route::get('/admin/package', [PackageController::class,'index'])->name('package.index');
-    Route::post('/admin/admin/package', [PackageController::class,'package'])->name('package.add_package');
+    Route::post('/admin/package', [PackageController::class,'package'])->name('package.add_package');
 
     Route::get('/admin/package/{id}', [PackageController::class,'delete_package'])->name('package.delete_package');
     // Route::post('/package/{id}', [PackageController::class,'destroy_package'])->name('package.destroy_package');
