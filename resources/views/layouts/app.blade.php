@@ -18,6 +18,8 @@
     <link rel="stylesheet" href="{{asset('/css/sweetalert.css')}}"/>
     <link rel="stylesheet" href="{{asset('/css/toastr.css')}}"/>
     <link rel="stylesheet" href="{{asset('/css/toastr.min.css')}}"/>
+    <link href="{{ asset('admin/css/style.css') }}" rel="stylesheet">
+    <link href="{{ asset('admin/css/toastr.min.css') }}" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 </head>
 	<body>
@@ -61,6 +63,39 @@
          <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.js" integrity="sha512-n/4gHW3atM3QqRcbCn6ewmpxcLAHGaDjpEBu4xZd47N0W2oQ+6q7oc3PXstrJYXcbNU1OHdQ1T7pAP+gi5Yu8g==" crossorigin="anonymous"></script>
          <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.min.js" integrity="sha512-XKa9Hemdy1Ui3KSGgJdgMyYlUg1gM+QhL6cnlyTe2qzMCYm4nAZ1PsVerQzTTXzonUR+dmswHqgJPuwCq1MaAg==" crossorigin="anonymous"></script>
          @yield('scripts')
+         <!--**********************************
+        Scripts
+        ***********************************-->
+        <script src="{{ asset('admin/plugins/common/common.min.js') }}"></script>
+        <script src="{{ asset('admin/js/custom.min.js') }}"></script>
+        <script src="{{ asset('admin/js/settings.js') }}"></script>
+        <script src="{{ asset('admin/js/gleek.js') }}"></script>
+        <script src="{{ asset('admin/js/styleSwitcher.js') }}"></script>
+        <script src="{{ asset('admin/js/bootbox.min.js') }}"></script>
+        <script src="{{ asset('admin/js/toastr.min.js') }}"></script>
+        @if(Session::has('message'))
+        <script>
+
+          var type = "{{ Session::get('alert-type', 'info') }}";
+          switch(type){
+            case 'info':
+            toastr.info("{{ Session::get('message') }}");
+            break;
+
+            case 'warning':
+            toastr.warning("{{ Session::get('message') }}");
+            break;
+
+            case 'success':
+            toastr.success("{{ Session::get('message') }}");
+            break;
+
+            case 'error':
+            toastr.error("{{ Session::get('message') }}");
+            break;
+        }
+    </script>
+    @endif
         {{--Js & Jquery--}}
 	</body>
 </html>

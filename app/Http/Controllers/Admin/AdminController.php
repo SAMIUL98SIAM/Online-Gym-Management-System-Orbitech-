@@ -6,14 +6,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 //use Validator ;
 //use Illuminate\Validation\Validator;
-use App\Mail\ContactMail;
-use Illuminate\Support\Facades\Mail;
-use Illuminate\Support\Facades\Validator;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Hash;
 use App\Models\User;
 use App\Models\Member;
-use App\Models\Trainer;
 use RealRashid\SweetAlert\Facades\Alert ;
 
 

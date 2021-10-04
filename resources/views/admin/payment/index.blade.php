@@ -73,7 +73,7 @@
                                                     <span class="fas fa-user"></span>
                                                   </div>
                                                 </div>
-                                                <span class="text-danger">@error('member_id'){{ $message }}@enderror</span>
+                                                <span class="text-danger">@error('package_id'){{ $message }}@enderror</span>
                                               </div>
                                               <div class="input-group  mb-3">
                                                 <select name="payment_type" id="payment_type" class="form-control">
@@ -109,5 +109,3 @@
         </div>
     </div>
     @endsection
-
-
