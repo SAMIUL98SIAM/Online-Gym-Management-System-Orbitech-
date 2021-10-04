@@ -64,7 +64,7 @@ Route::group(['middleware'=>['AuthCheck']] , function(){
 
     Route::resource('/admin/trainer', TrainerCrudController::class);
     Route::get('/admin/trainer/create', [TrainerCrudController::class,'index'])->name('admin.trainers_details');
-    Route::post('/admin//trainer/create', [TrainerCrudController::class,'store'])->name('admin.save_trainer');
+    Route::post('/admin/trainer/create', [TrainerCrudController::class,'store'])->name('admin.save_trainer');
     Route::get('/admin/trainer/edit/{id}',[TrainerCrudController::class,'edit'])->name('admin.edit_trainer');
     Route::post('/admin/trainer/edit/{id}', [TrainerCrudController::class,'update'])->name('admin.trainer_update');
     Route::get('/admin/trainer/delete/{id}', [TrainerCrudController::class,'delete'])->name('admin.delete_trainer');

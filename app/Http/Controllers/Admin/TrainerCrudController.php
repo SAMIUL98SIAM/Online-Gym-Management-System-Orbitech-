@@ -9,8 +9,6 @@ use App\Models\Trainer;
 
 class TrainerCrudController extends Controller
 {
-
-
     /**
      * Display a listing of the resource.
      *
@@ -38,6 +36,7 @@ class TrainerCrudController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+
     public function store(Request $request)
     {
         $data = ['user'=>User::where('id','=',session('users'))->first()];
@@ -46,6 +45,7 @@ class TrainerCrudController extends Controller
              'email'=> 'required|email',
              'phone'=> 'required|max:11'
          ]);
+         $notifications = array('message'=>'You added '.$request->trainer_name.'','alert-type'=>'success');
          $trainer_user = new Trainer ;
          $trainer_user->trainer_name = $request->trainer_name ;
          $trainer_user->email = $request->email ;
@@ -55,7 +55,8 @@ class TrainerCrudController extends Controller
          // $trainer_save->type = 'trainer';
          if($trainer_save)
          {
-            return back()->with('success','Trainer '.$request->trainer_name.' Added successfully',$data);
+            // return back()->with('success','Trainer '.$request->trainer_name.' Added successfully',$data);
+            return back()->with($notifications);
             // redirect('/');
          }
     }
@@ -97,6 +98,7 @@ class TrainerCrudController extends Controller
              'trainer_name'=> 'required',
              'phone'=> 'required|max:11'
          ]);
+         $notifications = array('message'=>'You Updated '.$req->trainer_name.' profile','alert-type'=>'info');
          $trainer_user = Trainer::find($id);
          $trainer_user->trainer_name = $req->trainer_name ;
          $trainer_user->email = $req->email ;
@@ -107,7 +109,8 @@ class TrainerCrudController extends Controller
          $trainer_save = $trainer_user->save();
          if($trainer_save)
          {
-             return back()->with('success',''.$req->trainer_name.' Updated successfully');
+            //  return back()->with('success',''.$req->trainer_name.' Updated successfully');
+            return redirect('/admin/trainer/create')->with($notifications);
          }
          else
          {
@@ -142,12 +145,12 @@ class TrainerCrudController extends Controller
     {
          // $trainer_user = Trainer::find($id);
          // $trainer_user->trainer_name = $req->trainer_name ;
-
+         $notifications = array('message'=>'Trainer has been deleted','alert-type'=>'error');
          $destroy_trainer =  Trainer::destroy($id);
          //$trainer_user->trainer_name = $req->trainer_name ;
          if($destroy_trainer)
          {
-             return redirect('/admin/trainer')->with('fail','Trainer has been Deleted');
+             return redirect('/admin/trainer')->with($notifications);
 
          }
          // Session::put('success', ''.$req->trainer_name.' has been updated sucessfully');

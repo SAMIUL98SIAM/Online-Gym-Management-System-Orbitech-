@@ -27,7 +27,7 @@ class LoginController extends Controller
         $userInfo = User::where('email','=',$req->email)->first();
         $memberInfo = Member::where('email','=',$req->email)->first();
         $trainerInfo = Trainer::where('email','=',$req->email)->first();
-
+        $notifications = array('message'=>'You are logged in','alert-type'=>'success');
         if(!$userInfo && !$memberInfo && !$trainerInfo)
         {
             return back()->with('fail','We do not recognize your email address');
@@ -39,7 +39,7 @@ class LoginController extends Controller
                 if((Hash::check($req->password,$userInfo->password)))
                 {
                     $req->session()->put('users',$userInfo->id);
-                    return redirect('/Admin');
+                    return redirect('/admin/adminPanel')->with($notifications);;
                 }
                 else
                 {
@@ -50,7 +50,7 @@ class LoginController extends Controller
                 if((Hash::check($req->password,$memberInfo->password)))
                 {
                     $req->session()->put('members',$memberInfo->id);
-                    return redirect('/memberPanel');
+                    return redirect('/memberPanel')->with($notifications);;
                 }
                 else
                 {
@@ -60,8 +60,11 @@ class LoginController extends Controller
             elseif($trainerInfo){
                 if((Hash::check($req->password,$trainerInfo->password)))
                 {
+
+                 // return redirect()->route('auth.login')->with($notifications);
                     $req->session()->put('trainers',$trainerInfo->id);
-                    return redirect('/Trainer');
+                    return redirect('/Trainer')->with($notifications);;
+
                 }
                 else
                 {

@@ -1,32 +1,7 @@
-<!doctype html>
-<html class="no-js" lang="">
-	<head>
-        <meta charset="utf-8">
-        <meta name="description" content="">
-        <title></title>
-        <link rel="manifest" href="/site.webmanifest">
-        <link rel="apple-touch-icon" href="{{asset('/icon.png')}}">
-        <!-- Place favicon.ico in the root directory -->
-        <link rel="stylesheet" href="{{asset('/css/normalize.css')}}">
-        <link rel="stylesheet" href="{{asset('/css/responsive.css')}}">
-        <link rel="stylesheet" href="/https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-        <link rel="stylesheet" href="{{asset('/css/all.min.css')}}">
-        <link rel="stylesheet" type="text/css" href="{{asset('/css/bootstrap.min.css')}}">
-        <link rel="stylesheet" href="{{asset('/css/main.css')}}">
-        <link rel="stylesheet" href="{{asset('/css/style.css')}}"/>
-        <link rel="stylesheet" href="{{asset('/css/sweetalert.css')}}"/>
-        <link rel="stylesheet" href="{{asset('/css/toastr.css')}}"/>
-         <link rel="stylesheet" href="{{asset('/css/toastr.min.css')}}"/>
-        <!-- SweetAlert2 -->
-        <link rel="stylesheet" href="{{ asset('/plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css') }}">
-        <!-- Toastr -->
-        <link rel="stylesheet" href="{{ asset('/plugins/toastr/toastr.min.css') }} ">
-        <!-- Theme style -->
-        <link rel="stylesheet" href="{{ asset('/dist/css/adminlte.min.css') }} ">
-	</head>
-	<title></title>
-	<body>
-		<div class="jumbotron" style="background: url('/img/gym2.jpg');background-size:cover;height:200px;backgorund-repeat:no-repeat;"></div>
+@extends('layouts.app')
+    @section('content')
+        <div class="jumbotron" style=" background: url('/img/gym2.jpg');background-size:cover;height:200px;backgorund-repeat:no-repeat; height:300px;"></div>
+    <div class="container">
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-2">
@@ -63,7 +38,6 @@
                       <a href="/logout" id="logout" class="list-group-item list-group-item-secondary">Logout</a>
                       {{-- <a href="/trainer_details" class="list-group-item list-group-item-secondary">Trainer Details</a> --}}
                     </div>
-
                 </div>
 
 
@@ -296,43 +270,5 @@
                 </div> --}}
             </div>
         </div>
-   <!-- Content Wrapper. Contains page content -->
-
-
-                  @if(Session::has('messege'))
-                  <script>
-                     var type="{{Session::get('alert-type','info')}}"
-                     switch(type)
-                     {
-                         case 'info':
-                               toastr.info("{{ Session::get('messege') }}");
-                               break;
-                         case 'success':
-                             toastr.success("{{ Session::get('messege') }}");
-                             break;
-                         case 'warning':
-                             toastr.warning("{{ Session::get('messege') }}");
-                             break;
-                         case 'error':
-                             toastr.error("{{ Session::get('messege') }}");
-                             break;
-                     }
-                   </script>
-                   @endif
-
-
-
-
-	{{-- {{ asset('') }} --}}
-    <script src="{{ asset('/js/vendor/modernizr-3.11.2.min.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('/js/jquery-3.4.1.min.js') }}"></script>
-    <script src="{{ asset('/js/plugins.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('/js/popper.min.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('/js/bootstrap.min.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('/js/bootstrap.min.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('/js/sweetalert.min.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('/js/sweetalert.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('/js/toastr.min.js') }}"></script>
-    <script src="{{ asset('/js/main.js') }}"></script>
-	</body>
-</html>
+    </div>
+    @endsection
