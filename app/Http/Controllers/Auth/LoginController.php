@@ -14,7 +14,10 @@ class LoginController extends Controller
     {
         return view('auth.login');
     }
+<<<<<<< HEAD
 
+=======
+>>>>>>> Laptop
     public function login(Request $req)
     {
         $req->validate([
@@ -23,6 +26,11 @@ class LoginController extends Controller
         ]);
 
         //Admin Authentication
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> Laptop
         $userInfo = User::where('email','=',$req->email)->first();
         $memberInfo = Member::where('email','=',$req->email)->first();
         $trainerInfo = Trainer::where('email','=',$req->email)->first();
