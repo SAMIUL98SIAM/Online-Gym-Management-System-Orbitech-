@@ -47,7 +47,7 @@ Route::get('/trainerLogout',[LogoutController::class,'trainer_logout'])->name('t
 
 Route::group(['middleware'=>['AuthCheck']] , function(){
 
-    Route::resource('/Admin', AdminController::class);
+    // Route::resource('/Admin', AdminController::class);
     Route::get('/admin/adminPanel', [AdminController::class,'index']);
     // Route::post('/admin/adminPanel', [AdminController::class,'save_member']);
     // Route::resource('/admin/memberList',MemberCrudController::class);
@@ -57,8 +57,8 @@ Route::group(['middleware'=>['AuthCheck']] , function(){
     Route::post('/admin/member/create', [MemberCrudController::class,'store'])->name('admin.member.store');
     Route::get('/admin/member/edit/{id}', [MemberCrudController::class,'edit'])->name('admin.member.edit');
     Route::post('/admin/member/edit/{id}', [MemberCrudController::class,'update'])->name('admin.member_update');
-    Route::get('/admin/member/delete/{id}', [MemberCrudController::class, 'delete'])->name('admin.member.delete');
-    Route::post('/admin/member/delete/{id}', [MemberCrudController::class, 'destroy'])->name('admin.member.destroy');
+    //Route::get('/admin/member/delete/{id}', [MemberCrudController::class, 'delete'])->name('admin.member.delete');
+    Route::get('/admin/member/delete/{id}', [MemberCrudController::class, 'destroy'])->name('admin.member.delete');
     Route::get('/member_search/action', [MemberCrudController::class,'member_action'])->name('admin.memberaction');
 
 
@@ -73,10 +73,13 @@ Route::group(['middleware'=>['AuthCheck']] , function(){
     Route::get('/admin/payment', [PaymentController::class,'index']);
     Route::post('/admin/payment', [PaymentController::class,'payment']);
 
-    Route::get('/admin/package', [PackageController::class,'index'])->name('package.index');
-    Route::post('/admin/package', [PackageController::class,'package'])->name('package.add_package');
-
-    Route::get('/admin/package/{id}', [PackageController::class,'delete_package'])->name('package.delete_package');
+    Route::resource('/admin/package',PackageController::class);
+    Route::get('/admin/package/create', [PackageController::class,'create']);
+    Route::post('/admin/package/create', [PackageController::class,'store']);
+    Route::get('/admin/edit/package/{id}', [PackageController::class,'edit']);
+    Route::post('/admin/edit/package/{id}', [PackageController::class,'update']);
+    // Route::get('/admin/delete/package/{id}', [PackageController::class,'delete']);
+    Route::get('/admin/delete/package/{id}', [PackageController::class,'destroy'])->name('admin.package.delete');
     // Route::post('/package/{id}', [PackageController::class,'destroy_package'])->name('package.destroy_package');
 
     Route::get('/admin/editpackage/{id}', [PackageController::class,'edit_package'])->name('package.edit_package');

@@ -125,9 +125,10 @@ class MemberCrudController extends Controller
         $member_user->email = $req->email ;
         $member_user->phone = $req->phone;
         $member_save = $member_user->save();
+        $notifications = array('message'=>'You Updated '.$req->first_name.' profile','alert-type'=>'info');
         if($member_save)
         {
-            return redirect('/admin/member')->with('success',''.$req->first_name.' Updated successfully');
+            return redirect('/admin/member')->with($notifications);
         }
         else
         {
@@ -154,14 +155,15 @@ class MemberCrudController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($id,Request $req)
     {
         $destroy_member =  Member::destroy($id);
-        // $member_user = new Member ;
-        // $member_user->first_name = $req->first_name ;
+        $member_user = new Member ;
+        $member_user->first_name = $req->first_name ;
+        $notifications = array('message'=>'You Deleted '.$req->first_name.' member"s profile','alert-type'=>'error');
         if($destroy_member)
         {
-            return redirect('/admin/member')->with('fail','Member has been Deleted');
+            return redirect('/admin/member')->with($notifications);
 
         }
     }
@@ -203,7 +205,7 @@ class MemberCrudController extends Controller
                     <td>'.$row->last_name.'</td>
                     <td>'.$row->email.'</td>
                     <td><a href="/admin/member/edit/'.$row->id.'" style="color: #fff" class="btn btn-sm btn-success btn-app"><i class="fas fa-edit"></i></a></td>
-                    <td><a href="/admin/member/delete/'.$row->id.'" style="color: #fff" class="btn btn-sm btn-danger btn-app"><i class="fas fa-trash"></i></a></td>
+                    <td><a href="/admin/member/delete/'.$row->id.'" id="delete" style="color: #fff" class="btn btn-sm btn-danger btn-app"><i class="fas fa-trash"></i></a></td>
                     </tr>'
                     ;
                 }

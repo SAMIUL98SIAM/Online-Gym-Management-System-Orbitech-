@@ -35,49 +35,9 @@
                                                   <td>{{$package['id']}}</td>
                                                   <td>{{$package['package_name']}}</td>
                                                   <td>{{$package['amount']}}</td>
-                                                  <td><a href="/admin/editpackage/{{$package['id']}}" style="color: #fff" class="btn btn-success btn-app"><i class="fas fa-edit"></i></a></td>
-                                                  <td><a type="submit" href="/delete/package/{{$package->id}}" style="color: #fff" data-toggle="modal" data-target="#modal-danger" class="btn btn-danger btn-app"><i class="fas fa-trash"></i></a>
-                                                    <div class="modal fade" id="modal-danger">
-                                                      <div class="modal-dialog">
-                                                        <div class="modal-content bg-danger">
-                                                          <div class="modal-header">
-                                                            <h4 class="modal-title">Danger Modal</h4>
-                                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                              <span aria-hidden="true">&times;</span>
-                                                            </button>
-                                                          </div>
-                                                          <div class="modal-body">
-                                                            <form method="post" enctype="multipart/form-data">
-                                                              <input type="hidden" name="_token" value="{{csrf_token()}}">
-                                                              @if (Session::get('success'))
-                                                                    <div class="alert alert-success">
-                                                                        {{ Session::get('success') }}
-                                                                        {{ Session::put('success',null) }}
-                                                                    </div>
-                                                              @endif
-                                                               <div class="input-group mb-3">
-                                                                <input type="text" name="package_name" value="{{$package['package_name']}}" class="form-control" placeholder="Trainer Name">
-                                                                <div class="input-group-append">
-                                                                  <div class="input-group-text">
-                                                                    <span class="fas fa-user"></span>
-                                                                  </div>
-                                                                </div>
-                                                                <span class="text-danger">@error('package_name'){{ $message }}@enderror</span>
-                                                              </div>
-                                                              <div class="row">
-                                                                <!-- /.col -->
-                                                                <div class="col-5">
-                                                                  <button style="color: white" type="submit" class="btn btn-primary btn-block">Delete Trainer</button>
-                                                                </div>
-                                                              </div>
-                                                            </form>
-                                                          </div>
-                                                          <div class="modal-footer justify-content-between">
-                                                            <button style="color: black;background:white" type="button" class="btn btn-outline-light" data-dismiss="modal">Close</button>
-                                                          </div>
-                                                        </div>
-                                                      </div>
-                                                    </div>
+                                                  <td><a href="/admin/edit/package/{{$package['id']}}" style="color: #fff" class="btn btn-success btn-app"><i class="fas fa-edit"></i></a></td>
+                                                  <td>
+                                                    <a href="{{route('admin.package.delete',$package->id)}}" class="btn btn-danger btn-app" id="delete"><i class="fas fa-trash"></i></a>
                                                   </td>
                                                   </tr>
                                                   </tbody>
