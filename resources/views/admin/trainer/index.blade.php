@@ -35,6 +35,8 @@
                                             <table class="table table-hover">
                                                 <thead>
                                                     <tr>
+                                                        <th>ID</th>
+                                                        <th>Counter</th>
                                                         <th>Name</th>
                                                         <th>Email</th>
                                                         <th>Phone</th>
@@ -44,9 +46,11 @@
                                                 </thead>
                                                 <tbody>
                                                     <tr>
-                                                        @foreach($trainer_users as $trainer_user)
+                                                        @foreach($trainer_users as $flag => $trainer_user)
                                                         <tbody>
                                                             <tr>
+                                                            <td>{{$trainer_user->id}}</td>
+                                                            <td>{{$flag+1}}</td>
                                                             <td>{{$trainer_user['trainer_name']}}</td>
                                                             <td>{{$trainer_user['email']}}</td>
                                                             <td>{{$trainer_user['phone']}}</td>

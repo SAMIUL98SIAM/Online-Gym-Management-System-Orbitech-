@@ -35,7 +35,7 @@
                                                   <td>{{$package['id']}}</td>
                                                   <td>{{$package['package_name']}}</td>
                                                   <td>{{$package['amount']}}</td>
-                                                  <td><a href="/admin/edit/package/{{$package['id']}}" style="color: #fff" class="btn btn-success btn-app"><i class="fas fa-edit"></i></a></td>
+                                                  <td><a href="/admin/edit/package/{{$package['id']}}" style="color: #fff" class="btn btn-sm btn-success btn-app"><i class="fas fa-edit"></i></a></td>
                                                   <td>
                                                     <a href="{{route('admin.package.delete',$package->id)}}" class="btn btn-danger btn-app" id="delete"><i class="fas fa-trash"></i></a>
                                                   </td>
