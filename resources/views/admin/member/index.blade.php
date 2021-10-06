@@ -40,9 +40,6 @@
                                                     <div class="modal-content">
                                                       <div class="modal-header" id="AddStudentModalLabel">
                                                         <h3 class="" style="color: #000" >Register new members</h3>
-                                                        {{-- <h5 class="modal-title" style="color: #000"  id="AddStudentModalLabel">Add Student Data</h5>
-                                                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> --}}
-
                                                       </div>
                                                       <div class="modal-body">
                                                         <form id="contact-frm" action="{{ route('admin.member.store') }}">
@@ -145,6 +142,7 @@
                                         <thead>
                                             <tr>
                                                 <th>Member ID</th>
+                                                {{-- <th>Counter</th> --}}
                                                 <th>First Name</th>
                                                 <th>Last Name</th>
                                                 <th>Email</th>
