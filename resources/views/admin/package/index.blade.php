@@ -13,76 +13,105 @@
                                 <div class="col-md-3">
                                     <h4>Packagess Details</h4>
                                 </div>
-                            </div>
-                            <div class="card-body">
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <table class="table table-hover">
-                                            <thead>
-                                                <tr>
-                                                    <th>ID</th>
-                                                    <th>Package Name</th>
-                                                    <th>Amount</th>
-                                                    <th>Edit</th>
-                                                    <th>Delete</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr>
-                                                  @foreach($packages as $package)
-                                                  <tbody>
-                                                  <tr>
-                                                  <td>{{$package['id']}}</td>
-                                                  <td>{{$package['package_name']}}</td>
-                                                  <td>{{$package['amount']}}</td>
-                                                  <td><a href="/admin/edit/package/{{$package['id']}}" style="color: #fff" class="btn btn-sm btn-success btn-app"><i class="fas fa-edit"></i></a></td>
-                                                  <td>
-                                                    <a href="{{route('admin.package.delete',$package->id)}}" class="btn btn-danger btn-app" id="delete"><i class="fas fa-trash"></i></a>
-                                                  </td>
-                                                  </tr>
-                                                  </tbody>
-                                                  @endforeach
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                        <div class="card-body" >
-                                            <h3>Packages</h3>
-                                        </div>
-                                        <div class="card-body" style="border: 1px solid rgba(216, 207, 86, 0.952)">
-                                          <form method="post" enctype="multipart/form-data">
-                                            <input type="hidden" name="_token" value="{{csrf_token()}}">
-                                            @if (Session::get('success'))
-                                                  <div class="alert alert-success">
-                                                      {{ Session::get('success') }}
-                                                  </div>
-                                              @endif
-                                              <div class="input-group  mb-3">
-                                                <input type="text" name="package_name" value="{{old('package_name')}}" class="form-control" placeholder="Package Name">
-                                                <div class="input-group-append">
-                                                  <div class="input-group-text">
-                                                    <span class="fas fa-user"></span>
-                                                  </div>
-                                                </div>
-                                                <span class="text-danger">@error('package_name'){{ $message }}@enderror</span>
-                                              </div>
-                                              <div class="input-group  mb-3">
-                                                <input type="number" name="amount" value="{{old('amount')}}" class="form-control" placeholder="Amount">
-                                                <div class="input-group-append">
-                                                  <div class="input-group-text">
-                                                    <span class="fas fa-price"></span>
-                                                  </div>
-                                                </div>
-                                                <span class="text-danger">@error('amount'){{ $message }}@enderror</span>
-                                              </div>
+                                <div class="col-md-5">
+                                    <button type="button" class="btn btn-primary float-right" data-toggle="modal" data-target="#basicModal">Create Package</button>
 
-                                            <div class="row">
-                                              <!-- /.col -->
-                                              <div class="col-5">
-                                                <button style="color: white" type="submit" class="btn btn-primary btn-block">Payment</button>
-                                              </div>
+                                    <!-- Modal -->
+                                        <div class="modal fade" id="basicModal">
+                                            <div style="color: #000" class="modal-dialog" role="document">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title">Create Package</h5>
+                                                        <button type="button" class="close" data-dismiss="modal"><span>&times;</span>
+                                                        </button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <form method="post" action="{{ route('admin.package.store') }}">
+                                                            @csrf
+                                                            <div class="form-group">
+                                                                <label class="name">Package Name</label>
+                                                                <input type="text" name="package_name" class="form-control" required="" placeholder="Package Name">
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label class="percent">Amount</label>
+                                                                <input type="number" name="amount" class="form-control" required="" placeholder="Amount">
+                                                            </div>
+                                                            <div class="modal-footer">
+                                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                                <button type="submit" class="btn btn-primary">Add</button>
+                                                            </div>
+                                                        </form>
+                                                    </div>
+                                                </div>
                                             </div>
-                                          </form>
                                         </div>
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <table class="table table-hover">
+                                                <thead>
+                                                    <tr>
+                                                        <th>ID</th>
+                                                        <th>Package Name</th>
+                                                        <th>Amount</th>
+                                                        <th>Edit</th>
+                                                        <th>Delete</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                    @foreach(App\Models\Package::latest()->get() as $key=>$package)
+                                                    <tbody>
+                                                    <tr>
+                                                    <td>{{$package['id']}}</td>
+                                                    <td>{{$package['package_name']}}</td>
+                                                    <td>{{$package['amount']}}</td>
+                                                    <td>{{--<a href="/admin/edit/package/{{$package['id']}}" style="color: #fff" class="btn btn-sm btn-success btn-app"><i class="fas fa-edit"></i></a> --}}
+                                                        <button type="button" class="btn btn-success text-white" data-toggle="modal" data-target="#basicModal{{ $key }}"><i class="fa fa-edit"></i> </button>
+                                                    </td>
+
+                                                    {{--Edit Modal--}}
+                                                    <div style="color: #000" class="modal fade" id="basicModal{{ $key }}">
+                                                        <div class="modal-dialog" role="document">
+                                                            <div class="modal-content">
+                                                                <div class="modal-header">
+                                                                    <h5 class="modal-title">Edit Package</h5>
+                                                                    <button type="button" class="close" data-dismiss="modal"><span>&times;</span>
+                                                                    </button>
+                                                                </div>
+                                                                <div class="modal-body">
+                                                                    <form method="post" action="{{ route('admin.package.update',$package->id) }}">
+                                                                        @csrf
+                                                                        @method('PUT')
+                                                                        <div class="form-group">
+                                                                            <label class="package_name">Package Name</label>
+                                                                            <input type="text" name="package_name" class="form-control" required="" value="{{ $package->package_name }}">
+                                                                        </div>
+                                                                        <div class="form-group">
+                                                                            <label class="amount">Percent</label>
+                                                                            <input type="number" name="amount" class="form-control" required="" value="{{ $package->amount }}">
+                                                                        </div>
+                                                                        <div class="modal-footer">
+                                                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                                            <button type="submit" class="btn btn-primary">Save Changes</button>
+                                                                        </div>
+                                                                    </form>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    {{--Edit Modal--}}
+                                                    <td>
+                                                        <a href="{{route('admin.package.delete',$package->id)}}" class="btn btn-danger" id="delete"><i class="fas fa-trash"></i></a>
+                                                    </td>
+                                                    </tr>
+                                                </tbody>
+                                                @endforeach
+                                            </tr>
+                                        </tbody>
+                                    </table>
                                     </div>
                                 </div>
                             </div>
@@ -91,5 +120,4 @@
                 </div>
             </div>
         </div>
-    </div>
-    @endsection
+ @endsection

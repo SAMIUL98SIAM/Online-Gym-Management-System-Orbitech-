@@ -34,7 +34,7 @@
                                                 <h3 align="center">Total Member : <span style="color: rgb(0, 255, 149)" id="total_records"></span></h3>
                                             </div>
                                             <div class="col-md-4">
-                                                <button style="color: #fff" type="button" class="btn btn-success btn-app" data-toggle="modal" data-target="#AddStudentModal">Add <i class="fas fa-user"></i></button>
+                                                <button style="color: #fff" type="button" class="btn btn-success" data-toggle="modal" data-target="#AddStudentModal">Add <i class="fas fa-user"></i></button>
                                                 <div class="modal fade" id="AddStudentModal" tabindex="-1" aria-labelledby="AddStudentModalLabel" aria-hidden="true">
                                                   <div class="modal-dialog">
                                                     <div class="modal-content">

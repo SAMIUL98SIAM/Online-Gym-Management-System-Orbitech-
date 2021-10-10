@@ -35,8 +35,8 @@
                                             <table class="table table-hover">
                                                 <thead>
                                                     <tr>
-                                                        <th>ID</th>
-                                                        <th>Counter</th>
+                                                        {{-- <th>ID</th> --}}
+                                                        <th>Serial</th>
                                                         <th>Name</th>
                                                         <th>Email</th>
                                                         <th>Phone</th>
@@ -46,16 +46,51 @@
                                                 </thead>
                                                 <tbody>
                                                     <tr>
-                                                        @foreach($trainer_users as $flag => $trainer_user)
+                                                        @foreach(App\Models\Trainer::latest()->get() as $flag => $trainer_user)
                                                         <tbody>
                                                             <tr>
-                                                            <td>{{$trainer_user->id}}</td>
+                                                            {{-- <td>{{$trainer_user->id}}</td> --}}
                                                             <td>{{$flag+1}}</td>
                                                             <td>{{$trainer_user['trainer_name']}}</td>
                                                             <td>{{$trainer_user['email']}}</td>
                                                             <td>{{$trainer_user['phone']}}</td>
-                                                            <td><a style="color:#fff" class="btn btn-success btn-app" href="/admin/trainer/edit/{{$trainer_user['id']}}"><i class="fas fa-edit"></i></a></td>
-                                                            <td><a style="color:#fff" class="btn btn-danger  btn-app" href="/admin/trainer/delete/{{$trainer_user->id}}"><i class="fas fa-trash"></i>
+                                                            <td><button type="button" class="btn btn-success text-white" data-toggle="modal" data-target="#basicModal{{ $flag }}"><i class="fa fa-edit"></i> </button></td>
+                                                            {{--Edit Modal--}}
+                                                            <div style="color: #000" class="modal fade" id="basicModal{{ $flag }}">
+                                                                <div class="modal-dialog" role="document">
+                                                                    <div class="modal-content">
+                                                                        <div class="modal-header">
+                                                                            <h5 class="modal-title">Edit Package</h5>
+                                                                            <button type="button" class="close" data-dismiss="modal"><span>&times;</span>
+                                                                            </button>
+                                                                        </div>
+                                                                        <div class="modal-body">
+                                                                            <form method="post" action="{{ route('admin.trainer.update',$trainer_user->id) }}">
+                                                                                @csrf
+                                                                                @method('PUT')
+                                                                                <div class="form-group">
+                                                                                    <label class="trainer_name">Package Name</label>
+                                                                                    <input type="text" name="trainer_name" class="form-control" required="" value="{{ $trainer_user->trainer_name }}">
+                                                                                </div>
+                                                                                <div class="form-group">
+                                                                                    <label class="Email">Email</label>
+                                                                                    <input type="email" name="email" class="form-control" required="" value="{{ $trainer_user->email }}">
+                                                                                </div>
+                                                                                <div class="form-group">
+                                                                                    <label class="phone">Phone</label>
+                                                                                    <input type="text" name="phone" class="form-control" required="" value="{{ $trainer_user->phone }}">
+                                                                                </div>
+                                                                                <div class="modal-footer">
+                                                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                                                    <button type="submit" class="btn btn-primary">Save Changes</button>
+                                                                                </div>
+                                                                            </form>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                    {{--Edit Modal--}}
+                                                            <td><a style="color:#fff" class="btn btn-danger" href="/admin/trainer/delete/{{$trainer_user->id}}"><i class="fas fa-trash"></i>
                                                             </a>
                                                             </td>
                                                             </tr>
@@ -64,7 +99,8 @@
                                                     </tr>
                                                 </tbody>
                                             </table>
-                                            <div class="card-body" >
+
+                                            {{-- <div class="card-body" >
                                                 <h3>Register New Trainer</h3>
                                             </div>
                                             <div class="card-body" style="border: 1px solid rgba(181, 207, 207, 0.952)">
@@ -109,7 +145,7 @@
                                                     </div>
                                                     </div>
                                                 </form>
-                                            </div>
+                                            </div> --}}
                                         </div>
                                     </div>
                                 </div>

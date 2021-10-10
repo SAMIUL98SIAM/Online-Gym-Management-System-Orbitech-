@@ -80,8 +80,7 @@ class TrainerCrudController extends Controller
      */
     public function edit($id)
     {
-        $trainer_user = Trainer::find($id);
-        return view('admin.trainer.edit')->with('trainer_user',$trainer_user);
+
     }
 
     /**

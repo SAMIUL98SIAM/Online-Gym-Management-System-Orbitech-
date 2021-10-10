@@ -8,7 +8,7 @@
     }
 .jumbotron
     {
-       
+
         background-repeat: no-repeat;
     }
 .card-title1
@@ -16,13 +16,17 @@
         text-align: center;
         background-color:#3498DB;
         height:40px;
-        padding:3px; 
-        border-radius: 12px; 
+        padding:3px;
+        border-radius: 12px;
     }
 .card-body{
     color: #fff;
     background-color:#3498DB;
-} 
+}
+.card-body1{
+    color: #fff;
+
+}
 .card-body table{
     color: #fff;
-}             
+}

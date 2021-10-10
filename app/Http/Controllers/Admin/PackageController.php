@@ -18,8 +18,8 @@ class PackageController extends Controller
     {
         // return view('');
         $data = ['user'=>User::where('id','=',session('users'))->first()];
-        $packages = Package::all();
-        return view('admin.package.index',$data)->with('packages',$packages);
+        $packages = Package::latest()->get();
+        return view('admin.package.index',$data);
     }
 
     /**
@@ -29,8 +29,7 @@ class PackageController extends Controller
      */
     public function create()
     {
-        $data = ['user'=>User::where('id','=',session('users'))->first()];
-        return view('admin.package.index',$data);
+
     }
 
     /**
@@ -41,7 +40,7 @@ class PackageController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
+        $validatedData = $request->validate([
             'package_name'=> 'required',
             'amount'=> 'required'
         ]);
@@ -49,16 +48,21 @@ class PackageController extends Controller
         $package = new Package ;
         $package->package_name = $request->package_name ;
         $package->amount = $request->amount  ;
-        $package_save = $package->save();
-        $notifications = array('message'=>'You Added '.$request->package_name.'package','alert-type'=>'success');
-        if($package_save)
-        {
-            return back()->with($notifications);
-        }
-        else
-        {
-            return back()->with('fail','try again');
-        }
+        // $package_save = $package->save();
+        $package->save();
+        $notifications = array(
+                               'message'=>'You Added '.$request->package_name.'package',
+                               'alert-type'=>'success'
+                            );
+        return redirect()->back()->with($notifications);
+        // if($package_save)
+        // {
+        //     return redirect()->back()->with($notifications);
+        // }
+        // else
+        // {
+        //     return back()->with('fail','try again');
+        // }
     }
 
     /**
@@ -95,7 +99,7 @@ class PackageController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $request->validate([
+        $validatedData = $request->validate([
             'package_name'=> 'required',
             'amount'=> 'required'
         ]);
@@ -106,7 +110,7 @@ class PackageController extends Controller
         $notifications = array('message'=>'You Updated '.$request->package_name.' package','alert-type'=>'success');
         if($package_save)
         {
-            return redirect('/admin/package')->with($notifications);
+            return redirect('/admin/package/create')->with($notifications);
         }
         else
         {

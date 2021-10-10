@@ -204,8 +204,8 @@ class MemberCrudController extends Controller
                     <td>'.$row->first_name.'</td>
                     <td>'.$row->last_name.'</td>
                     <td>'.$row->email.'</td>
-                    <td><a href="/admin/member/edit/'.$row->id.'" style="color: #fff" class="btn btn-sm btn-success btn-app"><i class="fas fa-edit"></i></a></td>
-                    <td><a href="/admin/member/delete/'.$row->id.'" id="delete" style="color: #fff" class="btn btn-sm btn-danger btn-app"><i class="fas fa-trash"></i></a></td>
+                    <td><a href="/admin/member/edit/'.$row->id.'" style="color: #fff" class="btn btn-success"><i class="fas fa-edit"></i></a></td>
+                    <td><a href="/admin/member/delete/'.$row->id.'" id="delete" style="color: #fff" class="btn btn-danger"><i class="fas fa-trash"></i></a></td>
                     </tr>'
                     ;
                 }

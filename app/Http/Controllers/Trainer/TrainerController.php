@@ -39,6 +39,7 @@ class TrainerController extends Controller
             'email'=> 'required|email',
             'phone'=> 'required|max:11'
         ]);
+        $notifications = array('message'=>'You updated your profile!!','alert-type'=>'success');
         // $members = Member::find('id');
         $data = ['trainer'=>Trainer::where('id','=',session('trainers'))->first()];
         $data['trainer'] ->trainer_name = $req->trainer_name ;
@@ -54,7 +55,7 @@ class TrainerController extends Controller
         //$memberProfile = $member->save();
         if($trainerProfile)
         {
-            return back()->with('success','Hey '.$req->trainer_name.', Your Profile is Updated successfully');
+            return redirect('/trainer/trainerPanel')->with($notifications);
         }
         else
         {

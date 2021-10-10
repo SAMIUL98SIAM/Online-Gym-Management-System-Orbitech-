@@ -1,7 +1,7 @@
 @extends('layouts.app')
     @section('content')
 	<body style="background: url('/img/gym1.jpg');background-size:cover;">
-		<div>
+	 <div>
 		<!-- menu-start -->
 		<div class="container-fluid" style="margin-top: 46px;">
         <div class="row">
@@ -39,7 +39,7 @@
                     <div class="row">
                       <!-- /.col -->
                       <div class="col-4">
-                        <button type="submit" class="btn btn-outline-success btn-block">Sign In</button>
+                        <button type="submit" class="btn btn-success btn-block">Sign In</button>
                       </div>
                       <div class="col-4">
                         <a type="button" href="/register" class="btn btn-warning btn-block">SignUP</a>
@@ -82,7 +82,7 @@
         </script>
         @endif
 
-         <script>
+         {{-- <script>
             $(document).on("click", "#delete", function(e){
                 e.preventDefault();
                   var link = $(this).attr("href");
@@ -104,5 +104,5 @@
                   }
                 });
                 });
-        </script>
+        </script> --}}
     @endsection

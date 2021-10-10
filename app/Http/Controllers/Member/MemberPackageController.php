@@ -1,19 +1,22 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Member;
+
+namespace App\Http\Controllers\Member;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
-//use Validator ;
-//use Illuminate\Validation\Validator;
 use App\Models\User;
 use App\Models\Member;
+use App\Models\Trainer;
+use App\Models\Package;
+use App\Models\Payment;
+use Illuminate\Support\Facades\Hash;
 use RealRashid\SweetAlert\Facades\Alert ;
+use DB ;
+use Illuminate\Http\Request;
 
-
-class AdminController extends Controller
+class MemberPackageController extends Controller
 {
-
 
 
     /**
@@ -23,9 +26,9 @@ class AdminController extends Controller
      */
     public function index()
     {
-        $data = ['user'=>User::where('id','=',session('users'))->first()];
-        Alert::success('You Successfully logged in','Success Message');
-        return view('admin.admin_panel',$data);
+        $data = ['member'=>Member::where('id','=',session('members'))->first()];
+        $packages = Package::all();
+        return view('member.package.index',$data)->with('packages',$packages);
     }
 
     /**
@@ -46,8 +49,27 @@ class AdminController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'package_id'=> 'required'
+        ]);
+        $data = ['member'=>Member::where('id','=',session('members'))->first()];
+        // $data['member'] ->id = $request->id ;
+        $package = new Package;
+        $data['member'] ->package_id = $request->package_id ;
+        // $data['member'] ->package_name = $request->package_name ;
+        $data['member'] ->package_counter = "1" ;
+        $package = $data['member']->save();
+        $notifications = array('message'=>'You get these package','alert-type'=>'success');
+        if($package)
+        {
+            return back()->with($notifications);
+        }
+        else
+        {
+            return back()->with('fail','try again');
+        }
+     }
 
-    }
 
     /**
      * Display the specified resource.
@@ -105,6 +127,8 @@ class AdminController extends Controller
     {
 
     }
+
+
 
 
 

@@ -50,7 +50,7 @@ class LoginController extends Controller
                 if((Hash::check($req->password,$memberInfo->password)))
                 {
                     $req->session()->put('members',$memberInfo->id);
-                    return redirect('/memberPanel')->with($notifications);;
+                    return redirect('/Member')->with($notifications);;
                 }
                 else
                 {

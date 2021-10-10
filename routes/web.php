@@ -11,6 +11,9 @@ use App\Http\Controllers\Admin\PackageController;
 
 // Member Controller
 use App\Http\Controllers\Member\MemberController;
+use App\Http\Controllers\Member\MemberProfileController;
+use App\Http\Controllers\Member\MemberPackageController;
+use App\Http\Controllers\Member\MemberPaymentController;
 // Member Controller
 
 // Trainer Controller
@@ -47,56 +50,63 @@ Route::get('/trainerLogout',[LogoutController::class,'trainer_logout'])->name('t
 
 Route::group(['middleware'=>['AuthCheck']] , function(){
 
-    // Route::resource('/Admin', AdminController::class);
+    //Route::resource('Admin', AdminController::class);
     Route::get('/admin/adminPanel', [AdminController::class,'index']);
-    // Route::post('/admin/adminPanel', [AdminController::class,'save_member']);
-    // Route::resource('/admin/memberList',MemberCrudController::class);
 
     Route::resource('/admin/member', MemberCrudController::class);
-    Route::get('/admin/member/create', [MemberCrudController::class,'create'])->name('admin.member.create');
+    Route::get('/admin/member/create', [MemberCrudController::class,'index'])->name('admin.member.create');
     Route::post('/admin/member/create', [MemberCrudController::class,'store'])->name('admin.member.store');
-    Route::get('/admin/member/edit/{id}', [MemberCrudController::class,'edit'])->name('admin.member.edit');
+    Route::get('/admin/member/edit/{id}', [MemberCrudController::class,'edit']);
     Route::post('/admin/member/edit/{id}', [MemberCrudController::class,'update'])->name('admin.member_update');
-    //Route::get('/admin/member/delete/{id}', [MemberCrudController::class, 'delete'])->name('admin.member.delete');
     Route::get('/admin/member/delete/{id}', [MemberCrudController::class, 'destroy'])->name('admin.member.delete');
     Route::get('/member_search/action', [MemberCrudController::class,'member_action'])->name('admin.memberaction');
 
 
     Route::resource('/admin/trainer', TrainerCrudController::class);
+
     Route::get('/admin/trainer/create', [TrainerCrudController::class,'index'])->name('admin.trainers_details');
     Route::post('/admin/trainer/create', [TrainerCrudController::class,'store'])->name('admin.save_trainer');
-    Route::get('/admin/trainer/edit/{id}',[TrainerCrudController::class,'edit'])->name('admin.edit_trainer');
-    Route::post('/admin/trainer/edit/{id}', [TrainerCrudController::class,'update'])->name('admin.trainer_update');
+
+    //Route::get('/admin/trainer/edit/{id}',[TrainerCrudController::class,'edit'])->name('admin.edit_trainer');
+    Route::put('/admin/trainer/edit/{id}', [TrainerCrudController::class,'update'])->name('admin.trainer.update');
+
     Route::get('/admin/trainer/delete/{id}', [TrainerCrudController::class,'delete'])->name('admin.delete_trainer');
     Route::post('/admin/trainer/delete/{id}', [TrainerCrudController::class,'destroy'])->name('admin.destroy_trainer');
 
     Route::get('/admin/payment', [PaymentController::class,'index']);
     Route::post('/admin/payment', [PaymentController::class,'payment']);
+    // Route::post('/admin/payment', [PaymentController::class,'package']);
+
+
+
 
     Route::resource('/admin/package',PackageController::class);
-    Route::get('/admin/package/create', [PackageController::class,'create']);
-    Route::post('/admin/package/create', [PackageController::class,'store']);
-    Route::get('/admin/edit/package/{id}', [PackageController::class,'edit']);
-    Route::post('/admin/edit/package/{id}', [PackageController::class,'update']);
+    Route::get('/admin/package/create', [PackageController::class,'index']);
+    Route::post('/admin/package/create', [PackageController::class,'store'])->name('admin.package.store');
+    // Route::get('/admin/edit/package/{id}', [PackageController::class,'edit']);
+    Route::put('/admin/package/create/{id}', [PackageController::class,'update'])->name('admin.package.update');
     // Route::get('/admin/delete/package/{id}', [PackageController::class,'delete']);
     Route::get('/admin/delete/package/{id}', [PackageController::class,'destroy'])->name('admin.package.delete');
-    // Route::post('/package/{id}', [PackageController::class,'destroy_package'])->name('package.destroy_package');
 
-    Route::get('/admin/editpackage/{id}', [PackageController::class,'edit_package'])->name('package.edit_package');
-    Route::post('/admin/editpackage/{id}', [PackageController::class,'update_package'])->name('package.update_package');
 });
+
 
 /*Member Part*/
 Route::group(['middleware'=>['MemberCheck']],function(){
-    Route::get('/memberPanel', [MemberController::class,'index'])->name('member.index');
-    Route::get('/memberProfile', [MemberController::class,'profile'])->name('member.profile');
-    Route::post('/memberProfile', [MemberController::class,'update_profile'])->name('member.update_profile');
-    Route::get('/memberPackage', [MemberController::class,'getPackage'])->name('member.get_package');
-    Route::post('/memberPackage', [MemberController::class,'setPackage'])->name('member.set_package');
-    Route::get('/memberPayment', [MemberController::class,'getPayment'])->name('member.member_getPayment');
-    Route::post('/memberPayment', [MemberController::class,'setPayment'])->name('member.member_postPayment');
+    Route::resource('/Member', MemberController::class);
+    Route::get('/member/memberPanel', [MemberController::class,'index'])->name('member.index');
+
+    Route::get('/member/profile', [MemberProfileController::class,'index'])->name('member.profile');
+    Route::post('/member/profile', [MemberProfileController::class,'update'])->name('member.update_profile');
+
+    Route::get('/member/package', [MemberPackageController::class,'index'])->name('member.get_package');
+    Route::post('/member/package', [MemberPackageController::class,'store'])->name('member.set_package');
+
+    Route::get('/member/payment', [MemberPaymentController::class,'index'])->name('member.member_getPayment');
+    Route::post('/member/payment', [MemberPaymentController::class,'store'])->name('member.member_postPayment');
 });
 /*Member Part*/
+
 
 /*Trainer Part*/
 Route::group(['middleware'=>['TrainerCheck']],function(){

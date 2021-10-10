@@ -1,31 +1,24 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Member;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
-//use Validator ;
-//use Illuminate\Validation\Validator;
-use App\Models\User;
+
 use App\Models\Member;
-use RealRashid\SweetAlert\Facades\Alert ;
-
-
-class AdminController extends Controller
+use App\Models\Payment;
+use Illuminate\Http\Request;
+class MemberPaymentController extends Controller
 {
-
-
-
-    /**
+        /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        $data = ['user'=>User::where('id','=',session('users'))->first()];
-        Alert::success('You Successfully logged in','Success Message');
-        return view('admin.admin_panel',$data);
+        $data = ['member'=>Member::where('id','=',session('members'))->first()];
+        $members = Member::all();
+        return view('member.payment.index',$data)->with('members',$members);
     }
 
     /**
@@ -46,7 +39,28 @@ class AdminController extends Controller
      */
     public function store(Request $request)
     {
-
+        $request->validate([
+            // 'trainer_id'=> 'required',
+            // 'package_id'=> 'required',
+            // 'member_id'=> 'required',
+            //'customer_name'=> 'required',
+            'payment_type'=> 'required'
+        ]);
+        $data = ['member'=>Member::where('id','=',session('members'))->first()];
+        $payment = new Payment;
+        $payment->member_id = $request->member_id  ;
+        $payment->payment_type = $request->payment_type  ;
+        $payment->payment_counter = '1';
+        $payment_save = $payment->save();
+        $notifications = array('message'=>'You have payment successfully','alert-type'=>'success');
+        if($payment_save)
+        {
+            return back()->with($notifications);
+        }
+        else
+        {
+            return back()->with('fail','try again');
+        }
     }
 
     /**
@@ -105,8 +119,4 @@ class AdminController extends Controller
     {
 
     }
-
-
-
-
 }
