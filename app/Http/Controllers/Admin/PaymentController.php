@@ -50,9 +50,12 @@ class PaymentController extends Controller
         $payment->payment_type = $req->payment_type  ;
         $payment_save = $payment->save();
 
+        // $member = new Member;
+        // $member->payment_counter = '1';
+        // $member_save = $member->save();
 
         $notifications = array('message'=>'Payment successfully','alert-type'=>'success');
-        if($payment_save)
+        if($payment_save )
         {
             return back()->with($notifications);
         }

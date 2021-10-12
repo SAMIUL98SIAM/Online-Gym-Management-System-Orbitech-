@@ -11,13 +11,9 @@
                   </div>
                   <hr/>
                   <hr/>
-                {{--Member List Item--}}
+                    {{--Member List Item--}}
                      {{--Member List Item--}}
                     <div class="list-group">
-
-                        {{--<a href="/admin/adminPanel" class="list-group-item list-group-item-action active">
-                            Members
-                        </a>--}}
                         <a href="/admin/adminPanel" class="list-group-item list-group-item-action active">
                             Members
                           </a>
@@ -40,8 +36,6 @@
                       {{-- <a href="/trainer_details" class="list-group-item list-group-item-secondary">Trainer Details</a> --}}
                     </div>
                 </div>
-
-
                 <div class="col-md-10">
                     <div class="card card1">
                       <div class="card-header p-2">
@@ -89,7 +83,6 @@
                                               <!-- small box -->
                                               <div class="small-box bg-warning">
                                                 <div class="inner">
-                                                    {{-- {{$trainer_counter = App\Models\Trainer::count()}} --}}
                                                   <h3>{{App\Models\Trainer::count()}}</h3>
                                                   <p>Total Trainer</p>
                                                 </div>
@@ -104,8 +97,9 @@
                                               <!-- small box -->
                                               <div class="small-box bg-danger">
                                                 <div class="inner">
-                                                  <h3>65</h3>
+                                                  @php
 
+                                                  @endphp
                                                   <p>Total Amount</p>
                                                 </div>
                                                 <div class="icon">

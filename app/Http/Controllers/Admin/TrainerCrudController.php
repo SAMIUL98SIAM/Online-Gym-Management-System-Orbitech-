@@ -42,7 +42,7 @@ class TrainerCrudController extends Controller
         $data = ['user'=>User::where('id','=',session('users'))->first()];
          $request->validate([
              'trainer_name'=> 'required',
-             'email'=> 'required|email',
+             'email'=> 'required|email|unique:trainers|unique:users',
              'phone'=> 'required|max:11'
          ]);
          $notifications = array('message'=>'You added '.$request->trainer_name.'','alert-type'=>'success');
@@ -55,9 +55,7 @@ class TrainerCrudController extends Controller
          // $trainer_save->type = 'trainer';
          if($trainer_save)
          {
-            // return back()->with('success','Trainer '.$request->trainer_name.' Added successfully',$data);
             return back()->with($notifications);
-            // redirect('/');
          }
     }
 
@@ -109,7 +107,7 @@ class TrainerCrudController extends Controller
          if($trainer_save)
          {
             //  return back()->with('success',''.$req->trainer_name.' Updated successfully');
-            return redirect('/admin/trainer/create')->with($notifications);
+            return back()->with($notifications);
          }
          else
          {
@@ -129,8 +127,8 @@ class TrainerCrudController extends Controller
          //                    ->where('id',$id)
          //                    ->first();
          // return view('admin.delete_trainer')->with('trainer_user',$trainer_user);
-         $trainer_user = Trainer::find($id);
-         return view('admin.trainer.delete')->with('trainer_user',$trainer_user);
+        //  $trainer_user = Trainer::find($id);
+        //  return view('admin.trainer.delete')->with('trainer_user',$trainer_user);
     }
 
 
@@ -149,53 +147,9 @@ class TrainerCrudController extends Controller
          //$trainer_user->trainer_name = $req->trainer_name ;
          if($destroy_trainer)
          {
-             return redirect('/admin/trainer')->with($notifications);
+             return back()->with($notifications);
 
          }
-         // Session::put('success', ''.$req->trainer_name.' has been updated sucessfully');
-         // redirect('/adminPanel');
-         // return redirect()->route('admin.destroy_trainer');
     }
 
-
-
-
-
-
-
-    // Trainer Part
-     public function trainers_details()
-     {
-
-     }
-
-     public function save_trainer(Request $req)
-     {
-
-     }
-
-
-     public function edit_trainer($id)
-     {
-
-     }
-
-     public function trainer_update(Request $req, $id)
-       {
-
-       }
-
-
-
-     public function delete_trainer($id){
-
-
-     }
-
-     public function destroy_trainer(Request $req, $id){
-
-
-     }
-
-     // Trainer part
 }

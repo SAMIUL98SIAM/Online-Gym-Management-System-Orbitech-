@@ -14,7 +14,6 @@
                     {{--Member List Item--}}
                     <hr/>
                 </div>
-
                 {{--New member registration form--}}
                 <div class="col-md-9">
                     <div class="card">
@@ -126,22 +125,9 @@
                             <div class="row">
                                 <div class="col-md-12">
                                     <table class="table">
-                                        @if(Session::get('success'))
-                                            <div class="alert alert-success">
-                                                {{ Session::get('success') }}
-                                                {{ Session::put('success',null) }}
-                                            </div>
-                                         @endif
-
-                                         @if(Session::get('fail'))
-                                            <div class="alert alert-danger">
-                                                {{ Session::get('fail') }}
-                                                {{ Session::put('fail',null) }}
-                                            </div>
-                                         @endif
                                         <thead>
                                             <tr>
-                                                <th>Member ID</th>
+                                                <th>Serial No</th>
                                                 {{-- <th>Counter</th> --}}
                                                 <th>First Name</th>
                                                 <th>Last Name</th>

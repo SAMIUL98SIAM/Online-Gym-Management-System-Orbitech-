@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\MemberCrudController;
 use App\Http\Controllers\Admin\TrainerCrudController;
 use App\Http\Controllers\Admin\PaymentController;
 use App\Http\Controllers\Admin\PackageController;
+use App\Http\Controllers\Admin\Member\AdminMemberPackageController;
 // Admin Controller
 
 // Member Controller
@@ -64,17 +65,18 @@ Route::group(['middleware'=>['AuthCheck']] , function(){
 
     Route::resource('/admin/trainer', TrainerCrudController::class);
 
-    Route::get('/admin/trainer/create', [TrainerCrudController::class,'index'])->name('admin.trainers_details');
-    Route::post('/admin/trainer/create', [TrainerCrudController::class,'store'])->name('admin.save_trainer');
+    // Route::get('/admin/trainer/create', [TrainerCrudController::class,'index'])->name('admin.trainers_details');
+    Route::post('/admin/trainer/create', [TrainerCrudController::class,'store'])->name('admin.trainer.store');
 
     //Route::get('/admin/trainer/edit/{id}',[TrainerCrudController::class,'edit'])->name('admin.edit_trainer');
     Route::put('/admin/trainer/edit/{id}', [TrainerCrudController::class,'update'])->name('admin.trainer.update');
 
-    Route::get('/admin/trainer/delete/{id}', [TrainerCrudController::class,'delete'])->name('admin.delete_trainer');
-    Route::post('/admin/trainer/delete/{id}', [TrainerCrudController::class,'destroy'])->name('admin.destroy_trainer');
+    // Route::get('/admin/trainer/delete/{id}', [TrainerCrudController::class,'delete'])->name('admin.delete_trainer');
+    Route::post('/admin/trainer/delete/{id}', [TrainerCrudController::class,'destroy'])->name('admin.trainer.destroy');
 
     Route::get('/admin/payment', [PaymentController::class,'index']);
     Route::post('/admin/payment', [PaymentController::class,'payment']);
+    Route::put('/admin/paymen/{id}', [AdminMemberPackageController::class,'update'])->name('admin.member.package.store');
     // Route::post('/admin/payment', [PaymentController::class,'package']);
 
 
@@ -83,6 +85,7 @@ Route::group(['middleware'=>['AuthCheck']] , function(){
     Route::resource('/admin/package',PackageController::class);
     Route::get('/admin/package/create', [PackageController::class,'index']);
     Route::post('/admin/package/create', [PackageController::class,'store'])->name('admin.package.store');
+
     // Route::get('/admin/edit/package/{id}', [PackageController::class,'edit']);
     Route::put('/admin/package/create/{id}', [PackageController::class,'update'])->name('admin.package.update');
     // Route::get('/admin/delete/package/{id}', [PackageController::class,'delete']);

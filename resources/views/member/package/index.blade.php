@@ -49,7 +49,7 @@
                                                       </div>
                                                   @endif
                                                   @if($member->package_counter=="1")
-                                                     <h4 style="color: crimson ; margin-bottom:12px;"> You have taken these <b style="color: blanchedalmond"> "{{ $member->package['package_name'] }}" </b> packages. You have only choose 1 package</h4>
+                                                     <h4 style="color: crimson ; margin-bottom:12px;"> You have taken these <b style="color: blanchedalmond"> "{{ $member->package['package_name'] }}"</b> packages. You have only choose 1 package</h4>
                                                   @else
                                                   <h4 style="color: crimson ; margin-bottom:12px;"> You have choose no packages. You have only choose 1 package</h4>
                                                   @endif
@@ -68,7 +68,7 @@
                                                   <div class="input-group  mb-3">
                                                     <select name="package_id" id="package_id" class="form-control">
                                                       <option selected disabled>Package List</option>
-                                                      @foreach ( $packages as $package)
+                                                      @foreach ( App\Models\Package::latest()->get() as $package)
                                                         <option value="{{$package->id }}">" '{{ $package->id }}' : {{$package->package_name}}"</option>
                                                       @endforeach
                                                     </select>

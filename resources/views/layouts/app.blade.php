@@ -17,6 +17,7 @@
     <link rel="stylesheet" href="{{asset('/css/sweetalert.css')}}"/>
     <link rel="stylesheet" href="{{asset('/css/toastr.css')}}"/>
     <link rel="stylesheet" href="{{asset('/css/toastr.min.css')}}"/>
+
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
     <!-- Font Awesome -->
@@ -38,7 +39,6 @@
     <!-- summernote -->
     <link rel="stylesheet" href="{{asset('plugins/summernote/summernote-bs4.min.css')}}">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-
 
 
     <link href="{{ asset('admin/css/style.css') }}" rel="stylesheet">
@@ -137,21 +137,17 @@
 
         @if(Session::has('message'))
         <script>
-
           var type = "{{ Session::get('alert-type', 'info') }}";
           switch(type){
             case 'info':
             toastr.info("{{ Session::get('message') }}");
             break;
-
             case 'warning':
             toastr.warning("{{ Session::get('message') }}");
             break;
-
             case 'success':
             toastr.success("{{ Session::get('message') }}");
             break;
-
             case 'error':
             toastr.error("{{ Session::get('message') }}");
             break;

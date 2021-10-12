@@ -23,12 +23,45 @@
                                     <div class="col-md-3">
                                         <h4>Add Trainer</h4>
                                     </div>
+                                    <div class="col-md-5">
+                                        <button style="color: #000"; type="button" class="btn btn-primary text-white" data-toggle="modal" data-target="#basicCreateModal"><i class="fa fa-plus"></i> Create Trainer <i class="fa fa-user"></i></button>
+                                    </div>
+                                     <!--Create Modal-->
+                                     <div class="modal fade" id="basicCreateModal">
+                                        <div style="color: #000" class="modal-dialog" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title">Create Package</h5>
+                                                    <button type="button" class="close" data-dismiss="modal"><span>&times;</span>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <form method="post" action="{{ route('admin.trainer.store') }}">
+                                                        @csrf
+                                                        <div class="form-group">
+                                                            <label class="trainer_name">Trainer Name</label>
+                                                            <input type="text" name="trainer_name" class="form-control" required="" placeholder="Package Name">
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label class="email">Email</label>
+                                                            <input type="email" name="email" class="form-control" required="" placeholder="Email">
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label class="phone">Phone </label>
+                                                            <input type="number" name="phone" class="form-control" required="" placeholder="Phone Number">
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                            <button type="submit" class="btn btn-primary">Add</button>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!--Create Modal-->
                                 </div>
-                                @if (Session::get('fail'))
-                                <div class="alert alert-danger">
-                                    {{ Session::get('fail') }}
-                                </div>
-                                @endif
+
                                 <div class="card-body" style="background-color:#3498DB;">
                                     <div class="row">
                                         <div class="col-md-12">
@@ -89,63 +122,41 @@
                                                                     </div>
                                                                 </div>
                                                             </div>
-                                                    {{--Edit Modal--}}
-                                                            <td><a style="color:#fff" class="btn btn-danger" href="/admin/trainer/delete/{{$trainer_user->id}}"><i class="fas fa-trash"></i>
-                                                            </a>
-                                                            </td>
-                                                            </tr>
+                                                         {{--Edit Modal--}}
+
+                                                        <td><button type="button" class="btn btn-danger text-white" data-toggle="modal" data-target="#basicDeleteModal{{ $flag }}"><i class="fa fa-trash"></i> </button></td>
+                                                        {{--Delete Modal--}}
+                                                        <div style="color: #000" class="modal fade" id="basicDeleteModal{{ $flag }}">
+                                                            <div class="modal-dialog" role="document">
+                                                                <div class="modal-content">
+                                                                    <div class="modal-header">
+                                                                        <h5 class="modal-title">Delete Package</h5>
+                                                                        <button type="button" class="close" data-dismiss="modal"><span>&times;</span>
+                                                                        </button>
+                                                                    </div>
+                                                                    <div class="modal-body">
+                                                                        <form method="post" action="{{ route('admin.trainer.destroy',$trainer_user->id) }}">
+                                                                            @csrf
+                                                                            <div class="form-group">
+                                                                                <label class="trainer_name">Package Name</label>
+                                                                                <input type="text" name="trainer_name" class="form-control" required="" value="{{ $trainer_user->trainer_name }}" disabled>
+                                                                            </div>
+                                                                            <div class="modal-footer">
+                                                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                                                <button type="submit" class="btn btn-danger">Remove</button>
+                                                                            </div>
+                                                                        </form>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        {{--Delete Modal--}}
+                                                        </tr>
                                                         </tbody>
                                                         @endforeach
                                                     </tr>
                                                 </tbody>
                                             </table>
-
-                                            {{-- <div class="card-body" >
-                                                <h3>Register New Trainer</h3>
-                                            </div>
-                                            <div class="card-body" style="border: 1px solid rgba(181, 207, 207, 0.952)">
-                                                <form method="post" enctype="multipart/form-data">
-                                                    <input type="hidden" name="_token" value="{{csrf_token()}}">
-                                                    @if (Session::get('success'))
-                                                        <div class="alert alert-success">
-                                                            {{ Session::get('success') }}
-                                                        </div>
-                                                    @endif
-                                                    <div class="input-group mb-3">
-                                                    <input type="text" name="trainer_name" value="{{old('trainer_name')}}" class="form-control" placeholder="Trainer Name">
-                                                    <div class="input-group-append">
-                                                        <div class="input-group-text">
-                                                        <span class="fas fa-user"></span>
-                                                        </div>
-                                                    </div>
-                                                    <span class="text-danger">@error('trainer_name'){{ $message }}@enderror</span>
-                                                    </div>
-                                                    <div class="input-group mb-3">
-                                                    <input type="email" name="email" value="{{old('email')}}" class="form-control" placeholder="Email">
-                                                    <div class="input-group-append">
-                                                        <div class="input-group-text">
-                                                        <span class="fas fa-envelop"></span>
-                                                        </div>
-                                                    </div>
-                                                    <span class="text-danger">@error('email'){{ $message }}@enderror</span>
-                                                    </div>
-                                                    <div class="input-group mb-3">
-                                                    <input type="number" name="phone" value="{{old('phone')}}" class="form-control" placeholder="Phone">
-                                                    <div class="input-group-append">
-                                                        <div class="input-group-text">
-                                                        <span class="fas fa-phone"></span>
-                                                        </div>
-                                                    </div>
-                                                    <span class="text-danger">@error('phone'){{ $message }}@enderror</span>
-                                                    </div>
-                                                    <div class="row">
-                                                    <!-- /.col -->
-                                                    <div class="col-5">
-                                                        <button style="color: white" type="submit" class="btn btn-primary btn-block">Add Trainer</button>
-                                                    </div>
-                                                    </div>
-                                                </form>
-                                            </div> --}}
                                         </div>
                                     </div>
                                 </div>

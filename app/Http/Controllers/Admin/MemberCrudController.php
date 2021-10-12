@@ -47,13 +47,7 @@ class MemberCrudController extends Controller
             'last_name'=> 'required',
             'email'=> 'required|email|unique:members|unique:users',
             'phone'=> 'required|max:11',
-            // 'first_name'=> ['required'],
-            // 'last_name'=> ['required'],
-            // 'email'=> ['required','email','unique:users'],
-            // 'phone'=> ['required','max:11'],
-            // 'name' => ['required', 'string', 'max:255'],
-            // 'email' => ['required', 'email:filter', 'max:255'],
-            // 'message' => ['required', 'string']
+
         ]);
 
         if($validation->fails()){
@@ -196,11 +190,13 @@ class MemberCrudController extends Controller
             $total_row = $data->count();
             if($total_row > 0)
             {
+                // $c = 1;
                 foreach($data as $c=>$row)
                 {
+                    $c +=1;
                     $output .= '
                     <tr>
-                    <td>'.$row->id.'</td>
+                    <td>'.$c.'</td>
                     <td>'.$row->first_name.'</td>
                     <td>'.$row->last_name.'</td>
                     <td>'.$row->email.'</td>

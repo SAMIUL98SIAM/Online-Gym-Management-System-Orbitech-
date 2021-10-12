@@ -13,6 +13,7 @@
                                 <div class="col-md-3">
                                     <h4>Packagess Details</h4>
                                 </div>
+
                                 <div class="col-md-5">
                                     <button type="button" class="btn btn-primary float-right" data-toggle="modal" data-target="#basicModal">Create Package</button>
 
@@ -68,7 +69,7 @@
                                                     <td>{{$package['id']}}</td>
                                                     <td>{{$package['package_name']}}</td>
                                                     <td>{{$package['amount']}}</td>
-                                                    <td>{{--<a href="/admin/edit/package/{{$package['id']}}" style="color: #fff" class="btn btn-sm btn-success btn-app"><i class="fas fa-edit"></i></a> --}}
+                                                    <td>
                                                         <button type="button" class="btn btn-success text-white" data-toggle="modal" data-target="#basicModal{{ $key }}"><i class="fa fa-edit"></i> </button>
                                                     </td>
 
