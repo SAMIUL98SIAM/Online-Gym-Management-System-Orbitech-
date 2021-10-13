@@ -8,6 +8,7 @@ use App\Http\Controllers\Admin\TrainerCrudController;
 use App\Http\Controllers\Admin\PaymentController;
 use App\Http\Controllers\Admin\PackageController;
 use App\Http\Controllers\Admin\Member\AdminMemberPackageController;
+use App\Http\Controllers\Admin\Member\AdminMemberPaymentController;
 // Admin Controller
 
 // Member Controller
@@ -64,19 +65,14 @@ Route::group(['middleware'=>['AuthCheck']] , function(){
 
 
     Route::resource('/admin/trainer', TrainerCrudController::class);
-
-    // Route::get('/admin/trainer/create', [TrainerCrudController::class,'index'])->name('admin.trainers_details');
     Route::post('/admin/trainer/create', [TrainerCrudController::class,'store'])->name('admin.trainer.store');
-
-    //Route::get('/admin/trainer/edit/{id}',[TrainerCrudController::class,'edit'])->name('admin.edit_trainer');
     Route::put('/admin/trainer/edit/{id}', [TrainerCrudController::class,'update'])->name('admin.trainer.update');
 
-    // Route::get('/admin/trainer/delete/{id}', [TrainerCrudController::class,'delete'])->name('admin.delete_trainer');
     Route::post('/admin/trainer/delete/{id}', [TrainerCrudController::class,'destroy'])->name('admin.trainer.destroy');
 
     Route::get('/admin/payment', [PaymentController::class,'index']);
-    Route::post('/admin/payment', [PaymentController::class,'payment']);
-    Route::put('/admin/paymen/{id}', [AdminMemberPackageController::class,'update'])->name('admin.member.package.store');
+    Route::put('/admin/payment/{id}', [AdminMemberPackageController::class,'update'])->name('admin.member.package.store');
+    Route::put('/admin/payment/{id}', [AdminMemberPaymentController::class,'update'])->name('admin.member.payment.store');
     // Route::post('/admin/payment', [PaymentController::class,'package']);
 
 

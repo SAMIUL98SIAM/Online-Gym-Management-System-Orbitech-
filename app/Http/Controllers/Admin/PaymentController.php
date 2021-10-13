@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Payment;
+use App\Models\User;
 use App\Models\Member;
 use App\Models\Package;
 use Illuminate\Http\Request;
@@ -12,10 +13,11 @@ class PaymentController extends Controller
 {
     public function index()
     {
+        $data = ['user'=>User::where('id','=',session('users'))->first()];
         $payment = Payment::all();
         $members = Member::all();
         $packages = Package::all();
-        return view('admin.payment.index',compact('members','packages'))->with('payment',$payment);
+        return view('admin.payment.index',compact('members','packages'),$data)->with('payment',$payment);
     }
 
     // public function package(Request $req)

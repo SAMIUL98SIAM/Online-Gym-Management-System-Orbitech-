@@ -47,11 +47,19 @@ class MemberPaymentController extends Controller
             'payment_type'=> 'required'
         ]);
         $data = ['member'=>Member::where('id','=',session('members'))->first()];
-        $payment = new Payment;
-        $payment->member_id = $request->member_id  ;
-        $payment->payment_type = $request->payment_type  ;
-        $payment->payment_counter = '1';
-        $payment_save = $payment->save();
+        // $payment = new Payment;
+        // $payment->member_id = $request->member_id  ;
+        // $payment->payment_type = $request->payment_type  ;
+        // $payment->payment_counter = '1';
+        $data = ['member'=>Member::where('id','=',session('members'))->first()];
+        // $data['member'] ->id = $request->id ;
+        $package = new Member;
+        // $data['member'] ->package_id = $request->package_id ;
+        // $data['member'] ->package_name = $request->package_name ;
+        $data['member'] ->payment_counter = "1" ;
+        $data['member'] ->payment_type = $request->payment_type ;
+        //$package = $data['member']->save();
+        $payment_save = $data['member']->save();
         $notifications = array('message'=>'You have payment successfully','alert-type'=>'success');
         if($payment_save)
         {

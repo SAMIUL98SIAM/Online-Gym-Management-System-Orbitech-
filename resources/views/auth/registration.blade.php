@@ -1,25 +1,9 @@
-<!doctype html>
-<html class="no-js" lang="">
-	<head>
-		<meta charset="utf-8">
-		<meta name="description" content="">
-		<title></title>
-		<link rel="manifest" href="site.webmanifest">
-		<link rel="apple-touch-icon" href="icon.png">
-		<!-- Place favicon.ico in the root directory -->
-		<link rel="stylesheet" href="css/normalize.css">
-			<link rel="stylesheet" href="css/responsive.css">
-		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-		<link rel="stylesheet" href="css/all.min.css">
-		<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
-		<link rel="stylesheet" href="css/main.css">
-    <link rel="stylesheet" href="css/style.css"/>
-	</head>
-	<title>Registration</title>
+@extends('layouts.default.app')
+    @section('content')
 	<body style="background: url('img/gym1.jpg');background-size:cover;">
-		<div>
+	<div>
 			<!-- menu-start -->
-			<div class="container-fluid" style="">
+		<div class="container-fluid" style="">
         <div class="row">
           <div class="col-md-4">
             <div class="card login_card" style="border: 1px solid rgba(191, 184, 199, 0.349)">
@@ -79,29 +63,6 @@
                     </div>
                     <span class="text-danger">@error('phone'){{ $message }}@enderror</span>
                   </div>
-                  {{-- <div class="input-group mb-3">
-                    <select name="type" class="form-control">
-                        <option selected="">type</option>
-                        <option value="member">Member</option>
-                        <option value="trainer">trainer</option>
-                        <option value="admin" disabled>Admin</option>
-                    </select>
-                    <div class="input-group-append">
-                      <div class="input-group-text">
-                        <span class="fas fa-user"></span>
-                      </div>
-                    </div>
-                    <span class="text-danger">@error('type'){{ $message }}@enderror</span>
-                 </div> 
-                  <div class="input-group  mb-3">
-                    <input type="number" name="trainer_id" value="{{old('trainer_id')}}" class="form-control" placeholder="Trainer Id">
-                    <div class="input-group-append">
-                      <div class="input-group-text">
-                        <span class="fas fa-calculator"></span>
-                      </div>
-                    </div>
-                    <span class="text-danger">@error('trainer_id'){{ $message }}@enderror</span>
-                  </div>--}}
                   <div class="input-group  mb-3">
                     <input type="number" name="member_id" value="{{old('member_id')}}" class="form-control" placeholder="Memeber Id">
                     <div class="input-group-append">
@@ -110,7 +71,7 @@
                       </div>
                     </div>
                     <span class="text-danger">@error('member_id'){{ $message }}@enderror</span>
-                  </div>              
+                  </div>
                   <div class="row">
                     <div class="col-7">
                       <div class="icheck-primary">
@@ -140,16 +101,5 @@
             </div>
           </div>
         </div>
-			</div>
-    </div> 
-	  
-		
-		
-		<script src="js/vendor/modernizr-3.11.2.min.js"></script>
-		<script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
-		<script src="js/plugins.js"></script>
-		<script type="text/javascript" src="js/popper.min.js"></script>
-		<script type="text/javascript" src="js/bootstrap.min.js"></script> 
-		<script src="js/main.js"></script>
-	</body>
-</html>
+	</div>
+

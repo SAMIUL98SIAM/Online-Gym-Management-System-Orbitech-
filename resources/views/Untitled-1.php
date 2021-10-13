@@ -1,74 +1,37 @@
-<td>
-                                                <a href="/memberlist/{{$member_user['id']}}" type="button" data-toggle="modal" data-target="#modal-default"  style="color: #fff" class="btn btn-success btn-app"> <i class="fas fa-edit"></i>Edit</a>
-                                                <div style="color: black" class="modal fade" id="modal-default">
-                                                    <div class="modal-dialog">
-                                                      <div class="modal-content">
-                                                        <div class="modal-header">
-                                                          <h4 class="modal-title">Default Modal</h4>
-                                                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                            <span aria-hidden="true">&times;</span>
-                                                          </button>
-                                                        </div>
-                                                        <div class="modal-body">
-                                                            <form method="post" action="" enctype="multipart/form-data">
-                                                                @csrf
-                                                                <input type="hidden" name="_token" value="{{csrf_token()}}">
-                                                                 @if (Session::get('success'))
-                                                                       <div class="alert alert-success">
-                                                                           {{ Session::get('success') }}
-                                                                       </div>
-                                                                   @endif
-                                                                 <div class="input-group mb-3">
-                                                                   <input type="text" name="first_name" value="{{$member_user['first_name']}}" class="form-control" placeholder="First Name">
-                                                                   <div class="input-group-append">
-                                                                     <div class="input-group-text">
-                                                                       <span class="fas fa-user"></span>
-                                                                     </div>
-                                                                   </div>
-                                                                   <span class="text-danger">@error('first_name'){{ $message }}@enderror</span>
-                                                                 </div>
-                                                                 <div class="input-group mb-3">
-                                                                   <input type="text" name="last_name" value="{{$member_user['last_name']}}" class="form-control" placeholder="Last Name">
-                                                                   <div class="input-group-append">
-                                                                     <div class="input-group-text">
-                                                                       <span class="fas fa-user"></span>
-                                                                     </div>
-                                                                   </div>
-                                                                   <span class="text-danger">@error('last_name'){{ $message }}@enderror</span>
-                                                                 </div>
-                                                                 <div class="input-group mb-3">
-                                                                   <input type="email" name="email" value="{{$member_user['email']}}" class="form-control" placeholder="Email">
-                                                                   <div class="input-group-append">
-                                                                     <div class="input-group-text">
-                                                                       <span class="fas fa-envelope"></span>
-                                                                     </div>
-                                                                   </div>
-                                                                   <span class="text-danger">@error('email'){{ $message }}@enderror</span>
-                                                                 </div>
-                                                                 <div class="input-group mb-3">
-                                                                   <input type="number" name="phone" value="{{$member_user['phone']}}" class="form-control" placeholder="Phone">
-                                                                   <div class="input-group-append">
-                                                                     <div class="input-group-text">
-                                                                       <span class="fas fa-phone"></span>
-                                                                     </div>
-                                                                   </div>
-                                                                   <span class="text-danger">@error('phone'){{ $message }}@enderror</span>
-                                                                 </div>           
-                                                                 <div class="row">
-                                                                   <!-- /.col -->
-                                                                   <div class="col-5">
-                                                                     <button style="color: white" type="submit" class="btn btn-primary btn-block">Update Member</button>
-                                                                   </div>
-                                                                 </div>
-                                                            </form>	
-                                                        </div>
-                                                        <div class="modal-footer justify-content-between">
-                                                          <button style="color: black" type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                                                        </div>
-                                                      </div>
-                                                      <!-- /.modal-content -->
-                                                    </div>
-                                                    <!-- /.modal-dialog -->
-                                                  </div>
-                                                  <!-- /.modal -->  
-                                                </td>
+ <!-- <link rel="apple-touch-icon" href="{{asset('/icon.png')}}">
+    <link rel="stylesheet" href="{{asset('/css/normalize.css')}}">
+    <link rel="stylesheet" href="{{asset('/css/responsive.css')}}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="{{asset('/css/all.min.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('css/bootstrap.min.css')}}">
+    <link rel="stylesheet" href="{{asset('/css/main.css')}}">
+    <link rel="stylesheet" href="{{asset('/css/style.css')}}"/>
+    <link rel="stylesheet" href="{{asset('/css/sweetalert.css')}}"/>
+    <link rel="stylesheet" href="{{asset('/css/toastr.css')}}"/>
+    <link rel="stylesheet" href="{{asset('/css/toastr.min.css')}}"/>
+        -->
+
+
+
+
+
+
+
+
+       <!-- <script src="{{asset('plugins/sweetalert2/sweetalert2.min.js')}}"></script>
+        <script src="{{asset('plugins/toastr/toastr.min.js')}}"></script>
+        <script src="{{asset('dist/js/adminlte.min.js')}}"></script>
+         <script src="{{ asset('/js/vendor/modernizr-3.11.2.min.js') }}"></script>
+         <script src="{{ asset('/js/jquery-3.4.1.min.js') }}"></script>
+         <script src="{{ asset('/js/plugins.js') }}"></script>
+         <script src="{{ asset('/js/popper.min.js') }}"></script>
+         <script src="{{ asset('/js/bootstrap.min.js') }}"></script>
+         <script src="{{ asset('/js/bootstrap.min.js') }}"></script>
+         <script src="{{ asset('/js/sweetalert.min.js') }}"></script>
+         <script src="{{ asset('/js/sweetalert.js') }}"></script>
+         <script src="{{ asset('/js/toastr.min.js') }}"></script>
+         <script src="{{ asset('js/main.js') }}"></script> -
+
+
+
+ -->

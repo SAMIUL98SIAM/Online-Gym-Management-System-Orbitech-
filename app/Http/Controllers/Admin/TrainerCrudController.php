@@ -16,8 +16,9 @@ class TrainerCrudController extends Controller
      */
     public function index()
     {
+        $data = ['user'=>User::where('id','=',session('users'))->first()];
         $trainer_users = Trainer::all();
-        return view('admin.trainer.index')->with('trainer_users',$trainer_users);
+        return view('admin.trainer.index',$data)->with('trainer_users',$trainer_users);
     }
 
     /**

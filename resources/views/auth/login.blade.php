@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.default.app')
     @section('content')
 	<body style="background: url('/img/gym1.jpg');background-size:cover;">
 	 <div>
