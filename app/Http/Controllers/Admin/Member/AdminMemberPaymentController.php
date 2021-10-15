@@ -72,18 +72,20 @@ class AdminMemberPaymentController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'payment_type'=> 'required'
+            'payment_type'=> 'required',
+            'payment_date'=> 'required'
         ]);
         $data = ['member'=>Member::where('id','=',session('members'))->first()];
         $member =Member::find($id);
 
+        $member->payment_date = $request->payment_date  ;
         $member->payment_type = $request->payment_type  ;
         $member->payment_counter = '1';
         $payment_save = $member->save();
         $notifications = array('message'=>'You have successfully payment to the Member','alert-type'=>'success');
         if($payment_save)
         {
-            return back()->with($notifications);
+            return redirect('/Member')->with($notifications);
         }
         else
         {

@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.0
+-- version 5.0.4
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 24, 2021 at 06:17 PM
--- Server version: 10.4.18-MariaDB
--- PHP Version: 7.3.27
+-- Generation Time: Oct 15, 2021 at 08:36 AM
+-- Server version: 10.4.17-MariaDB
+-- PHP Version: 7.3.26
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -20,6 +20,22 @@ SET time_zone = "+00:00";
 --
 -- Database: `gms`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `expenses`
+--
+
+CREATE TABLE `expenses` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `expense_name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `description` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `amount` int(11) DEFAULT NULL,
+  `trainer_id` int(11) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -53,8 +69,10 @@ CREATE TABLE `members` (
   `password` varchar(222) COLLATE utf8mb4_unicode_ci NOT NULL,
   `package_name` varchar(222) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `package_counter` int(11) DEFAULT NULL,
+  `payment_counter` int(11) DEFAULT NULL,
   `package_id` int(222) DEFAULT NULL,
   `payment_type` varchar(222) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `payment_date` datetime DEFAULT NULL,
   `amount` int(222) DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
@@ -64,17 +82,15 @@ CREATE TABLE `members` (
 -- Dumping data for table `members`
 --
 
-INSERT INTO `members` (`id`, `first_name`, `last_name`, `email`, `phone`, `trainer_id`, `password`, `package_name`, `package_counter`, `package_id`, `payment_type`, `amount`, `created_at`, `updated_at`) VALUES
-(1, 'Mohammad Nazmul', 'Hoque', 'nazmul34@gmail.com', 1780882914, NULL, '$2y$10$b8BEHGKhVLZc6JlZ67Za3e9NlHE6B41roxt.bKdUeZimFeEV2NGdC', NULL, NULL, NULL, '', NULL, '2021-09-19 08:16:59', '2021-09-21 04:22:55'),
-(2, 'Sharman akter', 'Mumu', 'mumucute9@gmail.com', 1780882914, 14, '$2y$10$nvVUTp8EM/h6IcLuQETZF.iaN8gVZbwAzdW.4IVFxzyblFUXr9T.2', NULL, NULL, NULL, '', NULL, '2021-09-19 08:17:27', '2021-09-21 00:37:37'),
-(3, 'Samiul', 'Hoque', 'samiulsiam59@gmail.com', 1325435, NULL, '$2y$10$kc71CZGj2SCAxlULTgMKyeYoXxmWYGCYUCNgbFLHMypf0JgmOyB1G', NULL, 1, 5, '', NULL, '2021-09-19 08:48:56', '2021-09-22 04:07:30'),
-(4, 'Mohmmad, Aminul', 'Hoque', 'Amnul121@gmail.com', 1111, NULL, '$2y$10$cTU2IwxSK6N0X1jkkWsr5ecfXOoGjLuevSOQHuKYuT5JKID0/2dVe', NULL, 1, 3, '', NULL, '2021-09-19 08:49:18', '2021-09-21 00:40:17'),
-(5, 'Md Al amin', 'Hossain', 'anamul145@gmail.com', 1780882914, NULL, '$2y$10$EAWln3i7CdmGIQJQj5Truud/ZLdIc141wWxL6DrG4VdATZpjQXa02', NULL, 1, 2, '', NULL, '2021-09-19 08:49:41', '2021-09-20 22:30:22'),
-(6, 'Raihan', 'Hoque', 'raihan54@gmail.com', 9909779, NULL, '$2y$10$hxnP/IBCCpZ72A44uErTIOa/EKYFf1DnqurtazrE9gbWbKNEYWMZC', NULL, NULL, NULL, '', NULL, '2021-09-19 08:50:00', '2021-09-23 14:04:05'),
-(7, 'Rafiur', 'Hoque', 'Rafiur12@gmail.com', 1780882914, NULL, '$2y$10$ijEBsFOV9ifrM5VTuDxiPu2/A4HDg9jcPJXsfDk2uH.2U/DGhT3l6', NULL, 1, 1, '', NULL, '2021-09-19 08:50:14', '2021-09-21 21:48:56'),
-(8, 'Mohammad Shariful', 'Khan', 'Shariful69@gmail.com', 1992569682, NULL, '$2y$10$ww2Y1tLOq0xJixmQY29mfe1ULf8ISEEmyOrfVFcG5OnwDPklt1yya', NULL, NULL, NULL, NULL, NULL, '2021-09-21 00:31:12', '2021-09-21 04:43:47'),
-(9, 'Anik', 'vii', 'Atowar14@gmail.com', 12314253, NULL, '$2y$10$77ySe89WG6nZd/mmfwAmh.ccUckIc2Pn3oNAnE/yJk9uehmE3EFUW', NULL, NULL, NULL, NULL, NULL, '2021-09-21 04:14:55', '2021-09-21 04:18:05'),
-(10, 'Mohammad Nazmul', 'Khan', 'samiulsm19@gmail.com', 123, NULL, '$2y$10$esJYBB0yviiKDAkXd/fMbeAfn/r2UCcsYaFZHbYav71jBdSUB42La', NULL, 1, 1, NULL, NULL, '2021-09-23 13:34:08', '2021-09-23 13:45:57');
+INSERT INTO `members` (`id`, `first_name`, `last_name`, `email`, `phone`, `trainer_id`, `password`, `package_name`, `package_counter`, `payment_counter`, `package_id`, `payment_type`, `payment_date`, `amount`, `created_at`, `updated_at`) VALUES
+(2, 'Anik', 'Vai', 'a3sa89@gmail.com', 1314, NULL, '$2y$10$.V3hsNjc5Jo7X5tcvtS97u.i4Juul/teFDo5Z4ThHu67E5RUR2jDy', NULL, 1, 1, 16, 'Card', '2021-10-23 12:34:00', NULL, '2021-10-05 10:50:39', '2021-10-15 00:35:11'),
+(5, 'Usaman', 'Ghani', 'Usman@gmail.com', 1324, NULL, '$2y$10$rJWZ9uCl04Z5T0BI3mgRfOnOQuQ3qrJcUDZiW9Ty20nVSmxR6kEb.', NULL, 1, 0, 16, 'cash', NULL, NULL, '2021-10-06 10:43:03', '2021-10-14 20:44:01'),
+(10, 'farukh', 'Vai', 'samiul89@gmail.com', 2453456, NULL, '$2y$10$0MJeiPVd90iFfJtZlzhmTOiGl//FFmMAgiWg92nStbJG7gchFmPue', NULL, 1, 1, 16, 'Bkash', '2021-10-14 00:46:00', NULL, '2021-10-07 10:35:53', '2021-10-13 12:46:09'),
+(17, 'Sami', 'Hoque', 'samiul59@gmail.com', 135346, NULL, '$2y$10$lQaX18aAIick2AMKdnxhm.kj5tsZpDAFWYCK49ayLp.JZfyyCjdwS', NULL, 1, 1, 19, 'cash', '2020-06-07 01:29:00', NULL, '2021-10-10 20:26:51', '2021-10-13 13:26:27'),
+(18, 'gfdgh', 'dfgfh', 'samiulsiam89@gmail.com324', 5363467, NULL, '$2y$10$p3cEKqUjzU7kh5PkyB6BmuJKhz31YU1dnBChji3vhc4q1Qz0j.fze', NULL, 1, 1, 7, 'Card', '2021-10-11 08:42:00', NULL, '2021-10-12 03:27:09', '2021-10-14 20:42:50'),
+(20, 'Khalil', 'khan', 'khalil@gmail.com', 536347, NULL, '$2y$10$KgX/GJVQH2CDvggJiYaz1.Ri5eOfupgxR3yny32Q7tECcdZkCkRz.', NULL, 1, 0, 16, 'Card', NULL, NULL, '2021-10-12 10:11:57', '2021-10-12 11:00:34'),
+(21, 'farukh', 'Vai', 'helal12@gmail.com12', 199213, NULL, '$2y$10$Pdh.Ii07553nS.ozob4PQuVzH8lFtj.ANrYDDx6Mx8/OAHQBngWWm', NULL, 1, 1, 12, 'Card', '2021-10-01 08:42:00', NULL, '2021-10-13 08:03:00', '2021-10-14 20:42:17'),
+(22, 'payment_counter', 'r3dasf', 'samiul89@gmail.com13', 5364, NULL, '$2y$10$jKPxuLRuIPtWwhNiGMtiZO4p/Cq2Rcbe4U7ymi75NgoSFasz0JmFK', NULL, 1, 1, 12, 'cash', '2021-10-15 07:50:00', NULL, '2021-10-13 08:03:48', '2021-10-14 19:51:03');
 
 -- --------------------------------------------------------
 
@@ -100,7 +116,8 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (7, '2021_09_07_184306_create_trainers_table', 4),
 (8, '2021_09_08_105408_create_payments_table', 5),
 (9, '2021_09_08_223004_create_packages_table', 6),
-(10, '2021_09_19_140317_create_members_table', 7);
+(10, '2021_09_19_140317_create_members_table', 7),
+(11, '2021_10_07_182252_create_expenses_table', 8);
 
 -- --------------------------------------------------------
 
@@ -121,11 +138,10 @@ CREATE TABLE `packages` (
 --
 
 INSERT INTO `packages` (`id`, `package_name`, `amount`, `created_at`, `updated_at`) VALUES
-(1, '90% discount', 123, '2021-09-21 12:28:59', '2021-09-21 12:28:59'),
-(2, '50% discount', 432, '2021-09-21 12:29:13', '2021-09-21 12:29:13'),
-(3, 'Alesha Card Offer', 900, '2021-09-21 12:29:27', '2021-09-21 12:29:27'),
-(4, 'Hot Offer', 111, '2021-09-21 12:29:51', '2021-09-21 12:29:51'),
-(5, 'Alesha Card Offer', 980, '2021-09-22 04:06:45', '2021-09-22 04:06:45');
+(7, '120% discount', 70, '2021-10-05 03:52:02', '2021-10-10 05:24:34'),
+(12, '70% discount', 211, '2021-10-10 04:11:16', '2021-10-10 05:24:06'),
+(16, 'Buy One Get one', 99, '2021-10-10 07:25:36', '2021-10-13 02:02:51'),
+(19, 'Hot Offer', 300, '2021-10-10 07:41:58', '2021-10-13 02:02:30');
 
 -- --------------------------------------------------------
 
@@ -153,6 +169,7 @@ CREATE TABLE `payments` (
   `member_name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `amount` int(222) DEFAULT NULL,
   `payment_type` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `payment_counter` int(11) DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -161,14 +178,8 @@ CREATE TABLE `payments` (
 -- Dumping data for table `payments`
 --
 
-INSERT INTO `payments` (`id`, `package_id`, `package_name`, `member_id`, `member_name`, `amount`, `payment_type`, `created_at`, `updated_at`) VALUES
-(1, NULL, NULL, 4, NULL, NULL, 'Bkash', '2021-09-21 21:42:00', '2021-09-21 21:42:00'),
-(2, NULL, NULL, 5, NULL, NULL, 'Card', '2021-09-21 21:46:48', '2021-09-21 21:46:48'),
-(3, NULL, NULL, 7, NULL, NULL, 'card', '2021-09-21 21:49:06', '2021-09-21 21:49:06'),
-(4, NULL, NULL, 3, NULL, NULL, 'cash', '2021-09-21 23:35:15', '2021-09-21 23:35:15'),
-(5, NULL, NULL, 4, NULL, NULL, 'Bkash', '2021-09-22 04:08:27', '2021-09-22 04:08:27'),
-(7, NULL, NULL, 10, NULL, NULL, 'Bkash', '2021-09-23 13:51:55', '2021-09-23 13:51:55'),
-(8, NULL, NULL, 3, NULL, NULL, 'cash', '2021-09-23 14:01:56', '2021-09-23 14:01:56');
+INSERT INTO `payments` (`id`, `package_id`, `package_name`, `member_id`, `member_name`, `amount`, `payment_type`, `payment_counter`, `created_at`, `updated_at`) VALUES
+(1, NULL, NULL, 2, NULL, NULL, 'Bkash', NULL, '2021-10-10 20:42:46', '2021-10-10 20:42:46');
 
 -- --------------------------------------------------------
 
@@ -198,6 +209,7 @@ CREATE TABLE `trainers` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `trainer_name` varchar(111) COLLATE utf8mb4_unicode_ci NOT NULL,
   `email` varchar(222) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `salary` int(11) DEFAULT NULL,
   `password` varchar(222) COLLATE utf8mb4_unicode_ci NOT NULL,
   `phone` int(11) DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
@@ -208,10 +220,11 @@ CREATE TABLE `trainers` (
 -- Dumping data for table `trainers`
 --
 
-INSERT INTO `trainers` (`id`, `trainer_name`, `email`, `password`, `phone`, `created_at`, `updated_at`) VALUES
-(14, 'Alimullah', 'anikvi@gmail.com', '$2y$10$VT0Ujp1m9weA58eSxZXqiunWvXuhNDf9dfBW65ownRgxRWWGE5bQ2', 1780882914, '2021-09-18 10:52:04', '2021-09-18 10:52:04'),
-(27, 'tashfiq Zahid', '18-38844-3@student.aiub.edu', '$2y$10$k0PTzlSSJ/zIPQxTa92yduKGpLzK6A1RmxXMZNp.g5KNQOsb07pNW', 1111, '2021-09-22 03:22:05', '2021-09-22 03:22:05'),
-(28, 'Eaffat', 'rajib113@student.aiub.edu', '$2y$10$Wg82QFIsFKQRwVFf4DkQouWVvUPRVBUBt1qU4.4aa6SQOX29IusQm', 1780882914, '2021-09-22 03:22:11', '2021-09-22 03:22:11');
+INSERT INTO `trainers` (`id`, `trainer_name`, `email`, `salary`, `password`, `phone`, `created_at`, `updated_at`) VALUES
+(36, 'defini', 'samiul89@gmail.com', NULL, '$2y$10$1CHXyCjKPuGJ8PIvHMhPWeVCOgc.SgJRNlVhidU740PK5iUpleYcm', 76869, '2021-10-07 06:51:42', '2021-10-10 14:44:46'),
+(38, 'Helal Uddin', 'helal12@gmail.com', NULL, '$2y$10$HekuZ73GfupOeW3Q7uLKfOERgB/YSVwjp1i6bcvn4Vy3ICvklDINq', 199213, '2021-10-10 12:46:21', '2021-10-10 12:46:21'),
+(40, 'daf Guard', 'samiulsiam89@gmail.com', NULL, '$2y$10$FA0suC/c8tpHwgbj5JE8VeWsEIhzGROyUGdksCtst/wqS5hfjG9iC', 425, '2021-10-11 09:47:43', '2021-10-11 09:47:43'),
+(43, 'daf', 'dasf@gmail.com', NULL, '$2y$10$YsUn8ALmuqHk2aXSFH7pjeQ3cLOvVSH4ThF4Y2IdfW.Ggg.ClSDwC', 64757, '2021-10-12 21:00:33', '2021-10-12 21:00:33');
 
 -- --------------------------------------------------------
 
@@ -246,11 +259,18 @@ INSERT INTO `users` (`id`, `first_name`, `last_name`, `email`, `phone`, `member_
 (11, 'Raihan', 'Uddin', 'raihanudding54@gmail.com', 1780882914, 13, 0, '$2y$10$CFY5YjaHbEB5Qu.4J7U6kOehlwC.wRgLmSOLzAXqznpD2JcO4379i', 'member', '2021-09-11 11:11:54', '2021-09-11 11:11:54'),
 (12, 'Sharman akter', 'Mumu', 'mumi45@gmail.com', 1780882914, 14, 0, '$2y$10$cl697mO6lYjt2PTXOAbZD.eVXB4lNY0egPvyoKNzjj1L76eXt83sW', 'member', '2021-09-11 11:23:40', '2021-09-11 11:23:40'),
 (13, 'Md Nazmul', 'Hoque', 'namzul121@gmail.com', 1780882914, 21, 0, '$2y$10$x6keKIsI4/imupVEi68b4OmFwplT6P/KC1hzqvEaTy8BhJHa7PCd.', 'member', '2021-09-11 11:50:47', '2021-09-11 11:50:47'),
-(14, 'Lionel', 'Messi', 'messi@gmail.com', 1780882914, 19, 0, '$2y$10$rBK0xP6ZQDQ/X9hz/1dU8u5H7RUrwFr8oU7KFFJQAUKBjV6NW7Lli', 'member', '2021-09-11 13:06:16', '2021-09-11 13:06:16');
+(14, 'Lionel', 'Messi', 'messi@gmail.com', 1780882914, 19, 0, '$2y$10$rBK0xP6ZQDQ/X9hz/1dU8u5H7RUrwFr8oU7KFFJQAUKBjV6NW7Lli', 'member', '2021-09-11 13:06:16', '2021-09-11 13:06:16'),
+(15, 'adada', 'dsafs', 'samiul89@gmail.com1231', 324, 21111222, 0, '$2y$10$KHIw/91KlejAb6vM3n/04eACYULe6GuJIkCml8Mcxm2eiduVAgXb2', 'member', '2021-10-04 12:00:29', '2021-10-04 12:00:29');
 
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `expenses`
+--
+ALTER TABLE `expenses`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `failed_jobs`
@@ -315,6 +335,12 @@ ALTER TABLE `users`
 --
 
 --
+-- AUTO_INCREMENT for table `expenses`
+--
+ALTER TABLE `expenses`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `failed_jobs`
 --
 ALTER TABLE `failed_jobs`
@@ -324,25 +350,25 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT for table `members`
 --
 ALTER TABLE `members`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `packages`
 --
 ALTER TABLE `packages`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT for table `payments`
 --
 ALTER TABLE `payments`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `personal_access_tokens`
@@ -354,13 +380,13 @@ ALTER TABLE `personal_access_tokens`
 -- AUTO_INCREMENT for table `trainers`
 --
 ALTER TABLE `trainers`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -52,6 +52,11 @@
                                 </div>
                                 <span class="text-danger">@error('package_id'){{ $message }}@enderror</span>
                             </div>
+                            <label>Date: </label>                                <div class="input-group  mb-3">
+                                <input type="datetime-local" id="payment_date"
+                                name="payment_date"  value="{{$member->payment_date}}">
+                                <span class="text-danger">@error('payment_date'){{ $message }}@enderror</span>
+                            </div>
                             <div class="input-group  mb-3">
                                 <select name="payment_type" id="payment_type" class="form-control">
                                     <option selected disabled>Select the payment option</option>

@@ -1,8 +1,8 @@
 @extends('layouts.default.app')
     @section('content')
-	<body style="background: url('img/gym1.jpg');background-size:cover;">
+	<body style="background: url('/img/gym1.jpg');background-size:cover;">
 	<div>
-			<!-- menu-start -->
+		<!-- menu-start -->
 		<div class="container-fluid" style="">
         <div class="row">
           <div class="col-md-4">

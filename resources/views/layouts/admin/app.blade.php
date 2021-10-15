@@ -39,10 +39,9 @@
     <!-- summernote -->
     <link rel="stylesheet" href="{{asset('plugins/summernote/summernote-bs4.min.css')}}">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-
-
     <link href="{{ asset('admin/css/style.css') }}" rel="stylesheet">
     <link href="{{ asset('admin/css/toastr.min.css') }}" rel="stylesheet">
+    @yield('style')
 </head>
 	<body>
 
@@ -166,8 +165,8 @@
             toastr.error("{{ Session::get('message') }}");
             break;
         }
-    </script>
-    @endif
+        </script>
+        @endif
         {{--Js & Jquery--}}
     @yield('scripts')
 	</body>

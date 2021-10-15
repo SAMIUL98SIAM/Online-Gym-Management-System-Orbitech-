@@ -25,8 +25,7 @@ use App\Http\Controllers\Trainer\TrainerController;
 use App\Http\Controllers\Auth\RegistrationController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\LogoutController;
-
-
+use Faker\Provider\cs_CZ\Payment;
 
 /*
 |--------------------------------------------------------------------------
@@ -71,9 +70,11 @@ Route::group(['middleware'=>['AuthCheck']] , function(){
     Route::post('/admin/trainer/delete/{id}', [TrainerCrudController::class,'destroy'])->name('admin.trainer.destroy');
 
     Route::get('/admin/payment', [PaymentController::class,'index']);
-    Route::put('/admin/payment/{id}', [AdminMemberPackageController::class,'update'])->name('admin.member.package.store');
     Route::put('/admin/payment/{id}', [AdminMemberPaymentController::class,'update'])->name('admin.member.payment.store');
+    Route::put('/admin/package/{id}', [AdminMemberPackageController::class,'update'])->name('admin.member.package.store');
+    Route::post('/search_date',[PaymentController::class,'search_date'])->name('admin.payment.search_date');
     // Route::post('/admin/payment', [PaymentController::class,'package']);
+
 
 
 

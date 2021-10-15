@@ -15,7 +15,21 @@
                     <h4>Payment Details</h4>
                 </div>
             </div>
-            <div class="card-body" style="background-color:#3498DB;">
+            <div class="card-body">
+                <div class="row">
+                    <div  class="col-md-12">
+                        <div class="card-body">
+                            <form action="/search_date" method="post">
+
+                                {{ csrf_field() }}
+                                <input type="date" name="from" class="input" value="{{date('Y-m-d')}}">&nbsp;
+                                <input type="date" name="to" class="input" value="{{date('Y-m-d')}}">&nbsp;
+                                <button type="submit" class="btn btn-primary text-white"><i class="fa fa-search"></i>Search</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
                 <div class="row">
                     <div class="col-md-12">
                         <div class="card card1">
@@ -44,12 +58,14 @@
                                                                     <th>Package Name</th>
                                                                     <th>Amount</th>
                                                                     <th>Member First Name</th>
+                                                                    <th>Date</th>
                                                                     <th>Payment Type</th>
                                                                 </tr>
                                                             </thead>
                                                             <tbody>
                                                             <tr>
-                                                                @foreach(App\Models\Member::latest()->get() as $row)
+                                                                {{-- @foreach(App\Models\Member::latest()->get() as $row) --}}
+                                                                @foreach($members as $row)
                                                                 @if($row->payment_counter == '1')
                                                                     <tbody>
                                                                         <tr>
@@ -58,6 +74,7 @@
                                                                         <td>{{$row->package['package_name']}}</td>
                                                                         <td>{{$row->package['amount']}}</td>
                                                                         <td>{{$row['first_name']}}</td>
+                                                                        <td>{{$row['payment_date']}}</td>
                                                                         <td>{{$row['payment_type']}}</td>
                                                                         </tr>
                                                                     </tbody>
@@ -118,6 +135,11 @@
                                                                                 <form method="post" action="{{ route('admin.member.payment.store',$member->id)}}">
                                                                                     @csrf
                                                                                     @method('PUT')
+                                                                                    <label>Date: </label>                                <div class="input-group  mb-3">
+                                                                                        <input type="datetime-local" id="payment_date"
+                                                                                        name="payment_date"  value="{{$member->payment_date}}">
+                                                                                        <span class="text-danger">@error('payment_date'){{ $message }}@enderror</span>
+                                                                                    </div>
                                                                                     <div class="input-group  mb-3">
                                                                                         <select name="payment_type" id="payment_type"     class="form-control">
                                                                                             <option selected disabled>Select the payment option</option>
@@ -153,7 +175,6 @@
                                         </div>
                                     </div>
 
-
                                     <!--Paid/Non-Paid/-->
                                     <div class="tab-pane" id="Weekly">
                                         <div class="row">
@@ -188,9 +209,10 @@
                                                                                     </button>
                                                                                 </div>
                                                                                 <div class="modal-body">
-                                                                                    <form method="post" action="">
+                                                                                    <form method="post" action="{{ route('admin.member.package.store',$member->id)}}">
                                                                                         @csrf
                                                                                         @method('PUT')
+                                                                                        {{-- admin.member.package.store --}}
                                                                                         <div class="form-group">
                                                                                             <label class="first_name">First Name</label>
                                                                                             <input type="text" name="first_name" class="form-control" required="" value="{{ $member->first_name }}">
@@ -226,18 +248,16 @@
                                                             @endforeach
                                                         </tr>
                                                     </tbody>
-                                                    </table>
+                                                  </table>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                        </div>
-                    </div>
-                </div>
+                            </div>
+                         </div>
+                     </div>
+                 </div>
             </div>
         </div>
-    </div>
 @endsection
-
-@section('scripts')

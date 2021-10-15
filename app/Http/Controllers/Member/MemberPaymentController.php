@@ -58,12 +58,13 @@ class MemberPaymentController extends Controller
         // $data['member'] ->package_name = $request->package_name ;
         $data['member'] ->payment_counter = "1" ;
         $data['member'] ->payment_type = $request->payment_type ;
+        $data['member'] ->payment_date = $request->payment_date ;
         //$package = $data['member']->save();
         $payment_save = $data['member']->save();
         $notifications = array('message'=>'You have payment successfully','alert-type'=>'success');
         if($payment_save)
         {
-            return back()->with($notifications);
+            return redirect('/Member')->with($notifications);
         }
         else
         {

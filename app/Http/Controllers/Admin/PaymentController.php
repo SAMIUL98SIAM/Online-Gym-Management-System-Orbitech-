@@ -14,11 +14,20 @@ class PaymentController extends Controller
     public function index()
     {
         $data = ['user'=>User::where('id','=',session('users'))->first()];
-        $payment = Payment::all();
+        $payments = Payment::all();
         $members = Member::all();
         $packages = Package::all();
-        return view('admin.payment.index',compact('members','packages'),$data)->with('payment',$payment);
+        return view('admin.payment.index',compact('members','packages'),$data)->with('payments',$payments);
     }
+
+    public function search_date(Request $request)
+    {
+        $data = ['user'=>User::where('id','=',session('users'))->first()];
+        $members = Member::where('payment_date','>=',$request->from)->where('payment_date','<=',$request->to)->get();
+        return view('admin.payment.index',compact('members'),$data);
+        // return redirect('/admin/payment')->with('members',$members);
+    }
+
 
     // public function package(Request $req)
     // {
@@ -40,46 +49,4 @@ class PaymentController extends Controller
     //         return back()->with('fail','try again');
     //     }
     // }
-
-    public function payment(Request $req)
-    {
-        $req->validate([
-            'member_id'=> 'required',
-            'payment_type'=> 'required'
-        ]);
-        $payment = new Payment ;
-        $payment->member_id = $req->member_id ;
-        $payment->payment_type = $req->payment_type  ;
-        $payment_save = $payment->save();
-
-        // $member = new Member;
-        // $member->payment_counter = '1';
-        // $member_save = $member->save();
-
-        $notifications = array('message'=>'Payment successfully','alert-type'=>'success');
-        if($payment_save )
-        {
-            return back()->with($notifications);
-        }
-        else
-        {
-            return back()->with('fail','try again');
-        }
-    }
-
-    public function member(Request $req)
-    {
-        $member = new Member;
-        $member->payment_counter = '1';
-        $member_save = $member->save();
-        $notifications = array('message'=>'Payment successfully','alert-type'=>'success');
-        if($member_save)
-        {
-            return back()->with($notifications);
-        }
-        else
-        {
-            return back()->with('fail','try again');
-        }
-    }
 }
