@@ -17,20 +17,6 @@
             </div>
             <div class="card-body">
                 <div class="row">
-                    <div  class="col-md-12">
-                        <div class="card-body">
-                            <form action="/search_date" method="post">
-
-                                {{ csrf_field() }}
-                                <input type="date" name="from" class="input" value="{{date('Y-m-d')}}">&nbsp;
-                                <input type="date" name="to" class="input" value="{{date('Y-m-d')}}">&nbsp;
-                                <button type="submit" class="btn btn-primary text-white"><i class="fa fa-search"></i>Search</button>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="row">
                     <div class="col-md-12">
                         <div class="card card1">
                             <div class="card-header p-2">
@@ -45,6 +31,19 @@
                             <!-- Content Wrapper. Contains page content -->
                                 <div class="tab-content">
                                     <div class="active tab-pane" id="activity">
+                                        <div class="row">
+                                            <div  class="col-md-12">
+                                                <div class="card-body">
+                                                    <form action="/search_date" method="post">
+                                                        {{ csrf_field() }}
+                                                        <input type="date" name="from" class="input" value="{{date('Y-m-d')}}">&nbsp;
+                                                        <input type="date" name="to" class="input" value="{{date('Y-m-d')}}">&nbsp;
+                                                        <button type="submit" class="btn btn-primary text-white"><i class="fa fa-search"></i>Search</button>
+                                                        <a href='/admin/payment' class="btn btn-success text-white"><i class="fa fa-refresh"></i>Refresh</a>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
                                         <div class="row">
                                             <div class="col-md-12">
                                                 <h1>Member who had already payment</h1>
@@ -109,9 +108,9 @@
                                                     </thead>
                                                     <tbody>
                                                     <tr>
-                                                        @foreach($members as $key=>$member)
+                                                        @foreach(App\Models\Member::latest()->get() as $key=>$member)
                                                         @if(
-                                                        (($member->payment_counter== '0')  ||         ($member->payment_counter== Null)) && ($member->package_counter== '1'))
+                                                        (($member->payment_counter== '0')||($member->payment_counter== Null))&&($member->package_counter== '1'))
                                                             <tbody>
                                                                 <tr>
                                                                 {{-- <td>{{$row['id']}}</td> --}}

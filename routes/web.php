@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 // Admin Controller
 use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Admin\ExpenseController;
 use App\Http\Controllers\Admin\MemberCrudController;
 use App\Http\Controllers\Admin\TrainerCrudController;
 use App\Http\Controllers\Admin\PaymentController;
@@ -66,7 +67,6 @@ Route::group(['middleware'=>['AuthCheck']] , function(){
     Route::resource('/admin/trainer', TrainerCrudController::class);
     Route::post('/admin/trainer/create', [TrainerCrudController::class,'store'])->name('admin.trainer.store');
     Route::put('/admin/trainer/edit/{id}', [TrainerCrudController::class,'update'])->name('admin.trainer.update');
-
     Route::post('/admin/trainer/delete/{id}', [TrainerCrudController::class,'destroy'])->name('admin.trainer.destroy');
 
     Route::get('/admin/payment', [PaymentController::class,'index']);
@@ -76,7 +76,10 @@ Route::group(['middleware'=>['AuthCheck']] , function(){
     // Route::post('/admin/payment', [PaymentController::class,'package']);
 
 
-
+    Route::get('/admin/expense',[ExpenseController::class,'index']);
+    Route::post('/admin/expense/create', [ExpenseController::class,'store'])->name('admin.expense.store');
+    Route::put('/admin/expense/edit/{id}', [ExpenseController::class,'update'])->name('admin.expense.update');
+    Route::get('/admin/expense/delete/{id}', [ExpenseController::class, 'destroy'])->name('admin.expense.delete');
 
 
     Route::resource('/admin/package',PackageController::class);

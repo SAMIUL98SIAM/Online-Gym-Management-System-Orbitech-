@@ -15,6 +15,7 @@
          <a href="/admin/member" class="list-group-item list-group-item-action">Members Details</a>
          <a href="/admin/package/create" class="list-group-item list-group-item-action">Package Details</a>
          <a href="/admin/payment" class="list-group-item list-group-item-action">Payments</a>
+         <a href="/admin/expense" class="list-group-item list-group-item-action">Expense</a>
      </div>
      {{--Member List Item--}}
      <hr/>
