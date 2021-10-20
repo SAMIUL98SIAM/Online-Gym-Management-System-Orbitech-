@@ -8,8 +8,9 @@ use Illuminate\Http\Request;
 //use Illuminate\Validation\Validator;
 use App\Models\User;
 use App\Models\Member;
+use App\Models\Package;
 use RealRashid\SweetAlert\Facades\Alert ;
-
+use Illuminate\Support\Facades\DB;
 
 class AdminController extends Controller
 {
@@ -23,9 +24,15 @@ class AdminController extends Controller
      */
     public function index()
     {
+        // $sum_amount = DB::table('packages')
+        //             //   ->join('members','members.package_id','packages.id')
+        //               ->select('packages.amount')
+        //               ->sum('amount');
+
+        $total_expense = DB::table('expenses')->sum('amount');
         $data = ['user'=>User::where('id','=',session('users'))->first()];
         Alert::success('You Successfully logged in','Success Message');
-        return view('admin.admin_panel',$data);
+        return view('admin.admin_panel',compact('total_expense'),$data);
     }
 
     /**

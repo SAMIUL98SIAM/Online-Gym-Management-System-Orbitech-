@@ -72,6 +72,7 @@
                                                                         <td>{{$row->package['id']}}</td>
                                                                         <td>{{$row->package['package_name']}}</td>
                                                                         <td>{{$row->package['amount']}}</td>
+                                                                        {{-- <td>{{$row->package->sum('amount')}}</td> --}}
                                                                         <td>{{$row['first_name']}}</td>
                                                                         <td>{{$row['payment_date']}}</td>
                                                                         <td>{{$row['payment_type']}}</td>

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 15, 2021 at 08:36 AM
+-- Generation Time: Oct 17, 2021 at 12:05 AM
 -- Server version: 10.4.17-MariaDB
 -- PHP Version: 7.3.26
 
@@ -36,6 +36,14 @@ CREATE TABLE `expenses` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `expenses`
+--
+
+INSERT INTO `expenses` (`id`, `expense_name`, `description`, `amount`, `trainer_id`, `created_at`, `updated_at`) VALUES
+(4, 'Khair', 'daf', 13, 40, '2021-10-16 13:43:37', '2021-10-16 15:53:45'),
+(5, 'Cost', 'cds sd', 1342, 36, '2021-10-16 15:34:24', '2021-10-16 15:34:24');
 
 -- --------------------------------------------------------
 
@@ -90,7 +98,7 @@ INSERT INTO `members` (`id`, `first_name`, `last_name`, `email`, `phone`, `train
 (18, 'gfdgh', 'dfgfh', 'samiulsiam89@gmail.com324', 5363467, NULL, '$2y$10$p3cEKqUjzU7kh5PkyB6BmuJKhz31YU1dnBChji3vhc4q1Qz0j.fze', NULL, 1, 1, 7, 'Card', '2021-10-11 08:42:00', NULL, '2021-10-12 03:27:09', '2021-10-14 20:42:50'),
 (20, 'Khalil', 'khan', 'khalil@gmail.com', 536347, NULL, '$2y$10$KgX/GJVQH2CDvggJiYaz1.Ri5eOfupgxR3yny32Q7tECcdZkCkRz.', NULL, 1, 0, 16, 'Card', NULL, NULL, '2021-10-12 10:11:57', '2021-10-12 11:00:34'),
 (21, 'farukh', 'Vai', 'helal12@gmail.com12', 199213, NULL, '$2y$10$Pdh.Ii07553nS.ozob4PQuVzH8lFtj.ANrYDDx6Mx8/OAHQBngWWm', NULL, 1, 1, 12, 'Card', '2021-10-01 08:42:00', NULL, '2021-10-13 08:03:00', '2021-10-14 20:42:17'),
-(22, 'payment_counter', 'r3dasf', 'samiul89@gmail.com13', 5364, NULL, '$2y$10$jKPxuLRuIPtWwhNiGMtiZO4p/Cq2Rcbe4U7ymi75NgoSFasz0JmFK', NULL, 1, 1, 12, 'cash', '2021-10-15 07:50:00', NULL, '2021-10-13 08:03:48', '2021-10-14 19:51:03');
+(23, 'Abul', 'Kashem', 'samiul8@gmail.com', 424, NULL, '$2y$10$NcNPMN0dwXg/dITO2VQFKeno8Ts3zZjKGDgb03uBZ/r/Babwfywae', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2021-10-15 05:19:11', '2021-10-15 05:19:11');
 
 -- --------------------------------------------------------
 
@@ -338,7 +346,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `expenses`
 --
 ALTER TABLE `expenses`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `failed_jobs`
@@ -350,7 +358,7 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT for table `members`
 --
 ALTER TABLE `members`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT for table `migrations`

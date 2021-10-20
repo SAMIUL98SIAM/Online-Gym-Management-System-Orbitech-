@@ -79,7 +79,7 @@ Route::group(['middleware'=>['AuthCheck']] , function(){
     Route::get('/admin/expense',[ExpenseController::class,'index']);
     Route::post('/admin/expense/create', [ExpenseController::class,'store'])->name('admin.expense.store');
     Route::put('/admin/expense/edit/{id}', [ExpenseController::class,'update'])->name('admin.expense.update');
-    Route::get('/admin/expense/delete/{id}', [ExpenseController::class, 'destroy'])->name('admin.expense.delete');
+    Route::get('/admin/expense/delete/{id}', [ExpenseController::class,'destroy'])->name('admin.expense.delete');
 
 
     Route::resource('/admin/package',PackageController::class);

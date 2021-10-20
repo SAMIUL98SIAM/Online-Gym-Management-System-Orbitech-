@@ -91,15 +91,14 @@ class ExpenseController extends Controller
         $validatedData = $request->validate([
             'expense_name'=> 'required',
             'amount'=> 'required',
-            'description'=>'required',
-            'trainer_id'=>'required'
+            'description'=>'required'
         ]);
         $expense = Expense::find($id);
         $expense->expense_name = $request->expense_name ;
         $expense->description = $request->description ;
         $expense->amount = $request->amount  ;
         $expense->trainer_id = $request->trainer_id  ;
-        $expense_save = $expense->save();
+        $expense_save = $expense->update();
         $notifications = array('message'=>'You Updated '.$request->expense_name.' expense','alert-type'=>'info');
         if($expense_save)
         {

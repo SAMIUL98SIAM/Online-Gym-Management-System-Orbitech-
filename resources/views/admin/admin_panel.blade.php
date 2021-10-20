@@ -65,15 +65,49 @@
                             <!-- small box -->
                             <div class="small-box bg-danger">
                               <div class="inner">
-                                @php
-
-                                @endphp
-                                <p>Total Amount</p>
+                                <h3>{{$total_expense}}</h3>
+                                <p>Total Expense</p>
                               </div>
                               <div class="icon">
                                 <i class="ion ion-pie-graph"></i>
                               </div>
-                              <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                              <a href="/admin/" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                            </div>
+                          </div>
+                          <!-- ./col -->
+                          <div class="col-lg-12 col-md-5">
+                            <!-- small box -->
+                            <div class="small-box bg-danger">
+                              <div class="inner">
+                                  <div>
+                                    @php
+                                        $sum_total=0;
+                                    @endphp
+                                    @foreach(App\Models\Member::latest()->get() as $key=>$member)
+                                        <tbody>
+                                            <tr>
+                                                <td>
+                                                @if($member->payment_counter == '1')
+                                                @php
+                                                    $sum_total= $sum_total + $member->package['amount'] ;
+                                                @endphp
+                                                </td>
+                                                @endif
+                                            </tr>
+                                        </tbody>
+                                    @endforeach
+                                  </div>
+                                <h3>
+                                    @php
+                                        echo $sum_total;
+                                    @endphp
+                                </h3>
+                                <p>Total Amount</p>
+                              </div>
+                              <div class="icon">
+                                <i class="ion ion-social-usd"></i>
+                              </div>
+                              <a href="/admin/expense" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                             </div>
                           </div>
                           <!-- ./col -->
