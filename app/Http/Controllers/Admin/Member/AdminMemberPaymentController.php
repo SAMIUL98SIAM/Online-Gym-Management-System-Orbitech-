@@ -85,7 +85,7 @@ class AdminMemberPaymentController extends Controller
         $notifications = array('message'=>'You have successfully payment to the Member','alert-type'=>'success');
         if($payment_save)
         {
-            return redirect('/Member')->with($notifications);
+            return redirect('/admin/payment')->with($notifications);
         }
         else
         {

@@ -24,6 +24,7 @@ class PaymentController extends Controller
     {
         $data = ['user'=>User::where('id','=',session('users'))->first()];
         $members = Member::where('payment_date','>=',$request->from)->where('payment_date','<=',$request->to)->get();
+        
         return view('admin.payment.index',compact('members'),$data);
         // return redirect('/admin/payment')->with('members',$members);
     }

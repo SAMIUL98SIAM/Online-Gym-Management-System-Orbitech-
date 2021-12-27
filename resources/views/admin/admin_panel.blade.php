@@ -71,11 +71,11 @@
                               <div class="icon">
                                 <i class="ion ion-pie-graph"></i>
                               </div>
-                              <a href="/admin/" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                              <a href="/admin/expense" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                             </div>
                           </div>
                           <!-- ./col -->
-                          <div class="col-lg-12 col-md-5">
+                          <div class="col-lg-6 col-md-5">
                             <!-- small box -->
                             <div class="small-box bg-danger">
                               <div class="inner">
@@ -107,8 +107,96 @@
                               <div class="icon">
                                 <i class="ion ion-social-usd"></i>
                               </div>
-                              <a href="/admin/expense" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                              <a href="/admin/payment" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                             </div>
+                          </div>
+                          <!-- ./col -->
+                          <div class="col-lg-6 col-md-5">
+                            <!-- small box -->
+                            <div class="small-box bg-danger">
+                              <div class="inner">
+                                  <div>
+                                    @php
+                                        $sum_due=0;
+                                    @endphp
+                                    @foreach(App\Models\Member::latest()->get() as $key=>$member)
+                                        <tbody>
+                                            <tr>
+                                                <td>
+                                                    @if((($member->package_counter == '1') || ($member->package_counter == null)) && (($member->payment_counter == '0')|| ($member->payment_counter == null)))
+                                                    @php
+                                                        $sum_due= $sum_due + $member->package['amount'] ;
+                                                    @endphp
+                                                    @endif
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    @endforeach
+                                  </div>
+                                <h3>
+                                    @php
+                                        echo $sum_due;
+                                    @endphp
+                                </h3>
+                                <p>Total Due</p>
+                              </div>
+                              <div class="icon">
+                                <i class="ion ion-social-usd"></i>
+                              </div>
+                              <a href="" data-toggle="modal" data-target="#paymentModal" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                                    <div style="color: #000" class="modal fade" id="paymentModal">
+                                        <div class="modal-dialog" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title">Due Bill</h5>
+                                                    <button type="button" class="close" data-dismiss="modal"><span>&times;</span>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <div class="card">
+                                                        <div class="card-header">
+                                                          <h3 class="card-title">Payment</h3>
+                                                        </div>
+                                                        <!-- /.card-header -->
+                                                        <div class="card-body p-0">
+                                                          <table class="table table-striped">
+                                                            <thead>
+                                                              <tr>
+                                                                {{-- <th style="width: 10px">#</th> --}}
+                                                                <th>Member Name</th>
+                                                                <th>Due</th>
+                                                              </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                <tr>
+                                                                    @foreach(App\Models\Member::latest()->get() as $member)
+                                                                    @if((($member->payment_counter== '0')||($member->payment_counter== Null))&&($member->package_counter== '1'))
+                                                                        <tbody>
+                                                                            <tr>
+                                                                                @php
+                                                                                //    echo '<td>'.$key.'</td>';
+                                                                                   echo '<td>'.$member['first_name'].'</td>';
+                                                                                   echo '<td>'.$member->package['amount'].'</td>' ;
+                                                                                @endphp
+                                                                                {{-- <td>{{$key}}</td>
+                                                                                <td>{{$member['first_name']}}</td>
+                                                                                <td>{{$member->package['amount']}}$</td> --}}
+                                                                            </tr>
+                                                                        </tbody>
+                                                                    @endif
+                                                                    @endforeach
+                                                                </tr>
+                                                            </tbody>
+                                                          </table>
+                                                        </div>
+                                                        <!-- /.card-body -->
+                                                      </div>
+                                                      <!-- /.card -->
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                               </div>
                           </div>
                           <!-- ./col -->
                         </div>

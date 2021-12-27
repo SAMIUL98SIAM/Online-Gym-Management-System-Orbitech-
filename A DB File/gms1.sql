@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 17, 2021 at 12:05 AM
+-- Generation Time: Nov 10, 2021 at 10:30 AM
 -- Server version: 10.4.17-MariaDB
 -- PHP Version: 7.3.26
 
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `gms`
+-- Database: `gms1`
 --
 
 -- --------------------------------------------------------
@@ -43,7 +43,7 @@ CREATE TABLE `expenses` (
 
 INSERT INTO `expenses` (`id`, `expense_name`, `description`, `amount`, `trainer_id`, `created_at`, `updated_at`) VALUES
 (4, 'Khair', 'daf', 13, 40, '2021-10-16 13:43:37', '2021-10-16 15:53:45'),
-(5, 'Cost', 'cds sd', 1342, 36, '2021-10-16 15:34:24', '2021-10-16 15:34:24');
+(5, 'Cost', 'adasf', 1342, 38, '2021-10-16 15:34:24', '2021-10-30 12:23:54');
 
 -- --------------------------------------------------------
 
@@ -91,14 +91,10 @@ CREATE TABLE `members` (
 --
 
 INSERT INTO `members` (`id`, `first_name`, `last_name`, `email`, `phone`, `trainer_id`, `password`, `package_name`, `package_counter`, `payment_counter`, `package_id`, `payment_type`, `payment_date`, `amount`, `created_at`, `updated_at`) VALUES
-(2, 'Anik', 'Vai', 'a3sa89@gmail.com', 1314, NULL, '$2y$10$.V3hsNjc5Jo7X5tcvtS97u.i4Juul/teFDo5Z4ThHu67E5RUR2jDy', NULL, 1, 1, 16, 'Card', '2021-10-23 12:34:00', NULL, '2021-10-05 10:50:39', '2021-10-15 00:35:11'),
-(5, 'Usaman', 'Ghani', 'Usman@gmail.com', 1324, NULL, '$2y$10$rJWZ9uCl04Z5T0BI3mgRfOnOQuQ3qrJcUDZiW9Ty20nVSmxR6kEb.', NULL, 1, 0, 16, 'cash', NULL, NULL, '2021-10-06 10:43:03', '2021-10-14 20:44:01'),
-(10, 'farukh', 'Vai', 'samiul89@gmail.com', 2453456, NULL, '$2y$10$0MJeiPVd90iFfJtZlzhmTOiGl//FFmMAgiWg92nStbJG7gchFmPue', NULL, 1, 1, 16, 'Bkash', '2021-10-14 00:46:00', NULL, '2021-10-07 10:35:53', '2021-10-13 12:46:09'),
-(17, 'Sami', 'Hoque', 'samiul59@gmail.com', 135346, NULL, '$2y$10$lQaX18aAIick2AMKdnxhm.kj5tsZpDAFWYCK49ayLp.JZfyyCjdwS', NULL, 1, 1, 19, 'cash', '2020-06-07 01:29:00', NULL, '2021-10-10 20:26:51', '2021-10-13 13:26:27'),
-(18, 'gfdgh', 'dfgfh', 'samiulsiam89@gmail.com324', 5363467, NULL, '$2y$10$p3cEKqUjzU7kh5PkyB6BmuJKhz31YU1dnBChji3vhc4q1Qz0j.fze', NULL, 1, 1, 7, 'Card', '2021-10-11 08:42:00', NULL, '2021-10-12 03:27:09', '2021-10-14 20:42:50'),
-(20, 'Khalil', 'khan', 'khalil@gmail.com', 536347, NULL, '$2y$10$KgX/GJVQH2CDvggJiYaz1.Ri5eOfupgxR3yny32Q7tECcdZkCkRz.', NULL, 1, 0, 16, 'Card', NULL, NULL, '2021-10-12 10:11:57', '2021-10-12 11:00:34'),
-(21, 'farukh', 'Vai', 'helal12@gmail.com12', 199213, NULL, '$2y$10$Pdh.Ii07553nS.ozob4PQuVzH8lFtj.ANrYDDx6Mx8/OAHQBngWWm', NULL, 1, 1, 12, 'Card', '2021-10-01 08:42:00', NULL, '2021-10-13 08:03:00', '2021-10-14 20:42:17'),
-(23, 'Abul', 'Kashem', 'samiul8@gmail.com', 424, NULL, '$2y$10$NcNPMN0dwXg/dITO2VQFKeno8Ts3zZjKGDgb03uBZ/r/Babwfywae', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2021-10-15 05:19:11', '2021-10-15 05:19:11');
+(1, 'Anikur', 'farrakh', 'samiul819@gmail.com', 2435, NULL, '$2y$10$p5mLOdBTYc5F2a0aXTux6eguU1yUXGaZgTvzQV.OdghFWl9GhCxFq', NULL, 1, 1, 19, 'cash', '2021-10-04 20:12:00', NULL, '2021-10-22 07:57:06', '2021-10-22 08:12:29'),
+(2, 'Ayon', 'Roy', 'ayom@aiub.edu', 132452, NULL, '$2y$10$ClI8kcOsSP/tUqWvsKAMVezh8/psTPrOmiILk7aIlv7.CPhGzn7Ae', NULL, 1, 1, 12, 'Bkash', '2021-10-02 16:25:00', NULL, '2021-10-22 07:57:22', '2021-10-29 04:25:28'),
+(3, 'Essat', '1as', 'anikaq9@aiub.edu113', 54356, NULL, '$2y$10$kO.4.vSZXz/zGdtgWsNw6ec6XRxd7.Xp1oxy3dZWHY/cF8bNMDzuC', NULL, 1, 1, 12, 'Bkash', '2021-10-06 20:03:00', NULL, '2021-10-22 07:57:35', '2021-10-22 08:03:32'),
+(5, 'Anikur', 'farrakh', 'samiul89@gmail.com123', 325423, NULL, '$2y$10$07DtVlIsCUDLEM0p00vIVOPaVIZY8nQL0nkGXwL4eB/GZ3Lmd2QIW', NULL, 1, 1, 16, 'Card', '2021-10-31 00:19:00', NULL, '2021-10-30 12:17:43', '2021-10-30 12:19:21');
 
 -- --------------------------------------------------------
 
@@ -231,8 +227,7 @@ CREATE TABLE `trainers` (
 INSERT INTO `trainers` (`id`, `trainer_name`, `email`, `salary`, `password`, `phone`, `created_at`, `updated_at`) VALUES
 (36, 'defini', 'samiul89@gmail.com', NULL, '$2y$10$1CHXyCjKPuGJ8PIvHMhPWeVCOgc.SgJRNlVhidU740PK5iUpleYcm', 76869, '2021-10-07 06:51:42', '2021-10-10 14:44:46'),
 (38, 'Helal Uddin', 'helal12@gmail.com', NULL, '$2y$10$HekuZ73GfupOeW3Q7uLKfOERgB/YSVwjp1i6bcvn4Vy3ICvklDINq', 199213, '2021-10-10 12:46:21', '2021-10-10 12:46:21'),
-(40, 'daf Guard', 'samiulsiam89@gmail.com', NULL, '$2y$10$FA0suC/c8tpHwgbj5JE8VeWsEIhzGROyUGdksCtst/wqS5hfjG9iC', 425, '2021-10-11 09:47:43', '2021-10-11 09:47:43'),
-(43, 'daf', 'dasf@gmail.com', NULL, '$2y$10$YsUn8ALmuqHk2aXSFH7pjeQ3cLOvVSH4ThF4Y2IdfW.Ggg.ClSDwC', 64757, '2021-10-12 21:00:33', '2021-10-12 21:00:33');
+(40, 'daf Guard', 'samiulsiam89@gmail.com', NULL, '$2y$10$FA0suC/c8tpHwgbj5JE8VeWsEIhzGROyUGdksCtst/wqS5hfjG9iC', 425, '2021-10-11 09:47:43', '2021-10-11 09:47:43');
 
 -- --------------------------------------------------------
 
@@ -358,7 +353,7 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT for table `members`
 --
 ALTER TABLE `members`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `migrations`
