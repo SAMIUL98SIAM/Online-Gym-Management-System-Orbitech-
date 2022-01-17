@@ -1,0 +1,7 @@
+samiuls.gyms.monisha.store
+
+db : moniafjl_gyms
+
+user : moniafjl_examplegyms
+
+pass: sm=iyvAd~$bG

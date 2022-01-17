@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 10, 2021 at 10:30 AM
+-- Generation Time: Jan 17, 2022 at 12:33 AM
 -- Server version: 10.4.17-MariaDB
 -- PHP Version: 7.3.26
 
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `gms1`
+-- Database: `gms`
 --
 
 -- --------------------------------------------------------
@@ -254,7 +254,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `first_name`, `last_name`, `email`, `phone`, `member_id`, `trainer_id`, `password`, `type`, `created_at`, `updated_at`) VALUES
-(6, 'MD. SAMIUL', 'HOQUE', 'samiul89@gmail.com', 1780882914, 4, 4, '$2y$10$omF3d6lUCO//j96yslIycOgonHRsQtpbU0yoVUp/IEOmp5y5XjPqy', 'admin', '2021-09-07 11:32:24', '2021-09-07 11:32:24'),
+(6, 'MD. SAMIUL', 'HOQUE', 'samiulsiam59@gmail.com', 1780882914, 4, 4, '$2y$10$G5g7hFaIZ/8FhIknkw5SCeYyHDsME0fMRPFP2nJnwojIm9SNR8ZRm', 'admin', '2021-09-07 11:32:24', '2021-09-07 11:32:24'),
 (7, 'Ziaul', 'Hoque', 'Ziaul54@gmailcom', 1780882914, 5, 5, '$2y$10$cduZIywxiTxULNyBdnvWCeJ715XO3SC6Seh0E0XhR/zrGPps/jd5q', 'member', '2021-09-07 11:49:10', '2021-09-07 11:49:10'),
 (8, 'Jubaer', 'Ahmad', 'jubaer90@gmail.com', 1780882914, 6, 6, '$2y$10$s7vD5Byg3Fjlf9wASCqGzuxqtxPOGDmsfOs.9OV/mvwHUqWmMCe9W', 'admin', '2021-09-07 12:16:19', '2021-09-07 12:16:19'),
 (9, 'Raihan', 'Ferdous', 'rabbi456@yahoo.com', 1780882914, 15, 15, '$2y$10$xh3Q4fUeGNsobqX.dpvQwu9AcM.al8WpOwRA0whY9qzITYM8DtQLq', 'member', '2021-09-07 13:20:25', '2021-09-07 13:20:25'),
